@@ -5,7 +5,8 @@
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
 		"start": "svelte-kit start",
-		"adapt": "svelte-kit adapt"
+		"adapt": "svelte-kit adapt",
+		"build:adapt": "svelte-kit build && svelte-kit adapt"
 	},
 	"devDependencies": {
 		"@snowpack/plugin-typescript": "^1.0.0",
