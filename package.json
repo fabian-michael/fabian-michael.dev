@@ -4,7 +4,8 @@
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
-		"start": "svelte-kit start"
+		"start": "svelte-kit start",
+		"adapt": "svelte-kit adapt"
 	},
 	"devDependencies": {
 		"@snowpack/plugin-typescript": "^1.0.0",
