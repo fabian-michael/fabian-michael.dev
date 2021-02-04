@@ -8,7 +8,7 @@
   publish = "build/"
 
   # Default build command.
-  command = "npm run build"
+  command = "npm run build && npm run adapt"
 
   # Directory with the serverless functions, including background functions,
   # to deploy to AWS. This is relative to the base directory if one has been set,

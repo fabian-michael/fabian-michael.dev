@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "svelte-kit dev",
-		"build": "svelte-kit adapt && svelte-kit build",
+		"build": "svelte-kit build",
 		"start": "svelte-kit start"
 	},
 	"devDependencies": {
