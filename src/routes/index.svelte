@@ -10,6 +10,6 @@
 
 <style>
     main {
-        background-image: url("pexels-pixabay-210517.jpg");
+        background-image: url("/images/pexels-pixabay-210517.jpg");
     }
 </style>
