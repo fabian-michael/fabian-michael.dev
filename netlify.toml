@@ -21,7 +21,6 @@
 # Deploy Preview context: all deploys generated from a pull/merge request will
 # inherit these settings.
 [context.deploy-preview]
-  publish = "draft/"
 
 [[headers]]
   Basic-Auth = "fabian-michael:7pj8K6s36JYMmYp9"
