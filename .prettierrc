@@ -1,0 +1,16 @@
+{
+	"tabWidth": 4,
+	"useTabs": true,
+	"singleQuote": true,
+	"trailingComma": "all",
+	"svelteBracketNewLine": true,
+	"arrowParens": "always",
+	"endOfLine": "lf",
+	"svelteStrictMode": true,
+	"jsxSingleQuote": true,
+	"printWidth": 120,
+	"singleAttributePerLine": true,
+	"plugins": ["prettier-plugin-svelte"],
+	"pluginSearchDirs": ["."],
+	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
+}
