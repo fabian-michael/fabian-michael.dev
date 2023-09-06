@@ -38,8 +38,8 @@ devDependencies:
     specifier: ^1.24.1
     version: 1.24.1(svelte@4.2.0)(vite@4.4.9)
   '@tabler/icons-svelte':
-    specifier: ^2.33.0
-    version: 2.33.0(svelte@4.2.0)
+    specifier: 2.31.0
+    version: 2.31.0(svelte@4.2.0)
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.3.3)
@@ -594,17 +594,17 @@ packages:
       - supports-color
     dev: true
 
-  /@tabler/icons-svelte@2.33.0(svelte@4.2.0):
-    resolution: {integrity: sha512-zJRW5o0bJGLS7nqoYt5OORurOo10hnynmiTZaoNBL9DxIiwyC+3bBT9rllDES1OYXp+1UCWrH2abAq3on94vMg==}
+  /@tabler/icons-svelte@2.31.0(svelte@4.2.0):
+    resolution: {integrity: sha512-Q1j8mfY6TDCqcopcpMg7SsnqMr3UWHvOXkK3kC8kzhumZ3ErIjuxEmnRFhCkFm3YGwsQahPY7ZT0gKgepgu5jQ==}
     peerDependencies:
       svelte: '>=3 <5'
     dependencies:
-      '@tabler/icons': 2.33.0
+      '@tabler/icons': 2.31.0
       svelte: 4.2.0
     dev: true
 
-  /@tabler/icons@2.33.0:
-    resolution: {integrity: sha512-cmVBeVANYGniLa0Q9gSUXU3SY0V9D3bfvHAq2bE+S0sdvnbMRNCHAmVQQv1lV6LT/aT7kzpwHAQz+6Iz1rPPsA==}
+  /@tabler/icons@2.31.0:
+    resolution: {integrity: sha512-vueOF4rjM0wcYAHOq7gcQB3fU04EAfHIwP0i/DVQdopXv84uu62DvOFHhYj9d0OBiM4O0PPoXEvsT8IVZDrYXw==}
     dev: true
 
   /@tailwindcss/typography@0.5.10(tailwindcss@3.3.3):
