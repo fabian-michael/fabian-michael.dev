@@ -2,7 +2,6 @@
 	import { writable } from 'svelte/store';
 
 	import { Icon } from '$components/icon';
-	import LL from '$i18n/i18n-svelte';
 	import { cn } from '$lib/utils';
 	import { createSelect, melt } from '@melt-ui/svelte';
 	import { IconCaretDownFilled } from '@tabler/icons-svelte';
@@ -58,10 +57,10 @@
 	<span
 		class="justify-between w-full normal-case"
 		use:melt="{$trigger}"
-		aria-label="{placeholder ?? $LL.common.select.placeholder()}"
+		aria-label="{placeholder ?? 'Select an option...'}"
 	>
 		<span class="inline-flex gap-1 items-center">
-			{$valueLabel ?? placeholder ?? $LL.common.select.placeholder()}
+			{$valueLabel ?? placeholder ?? 'Select an option...'}
 
 			{#if selectedOption?.icon}
 				<svelte:component

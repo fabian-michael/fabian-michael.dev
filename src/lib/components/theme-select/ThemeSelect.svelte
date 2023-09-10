@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Listbox, type IListboxOption } from '$components/listbox';
-	import LL from '$i18n/i18n-svelte';
 	import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-svelte';
 	import { onMount } from 'svelte';
 
@@ -11,17 +10,17 @@
 	let options: IListboxOption<Theme>[] = [
 		{
 			value: 'dark',
-			label: $LL.theme.dark(),
+			label: 'Dark',
 			icon: IconMoon,
 		},
 		{
 			value: 'light',
-			label: $LL.theme.light(),
+			label: 'Light',
 			icon: IconSun,
 		},
 		{
 			value: '',
-			label: $LL.theme.system(),
+			label: 'System',
 			icon: IconSunMoon,
 		},
 	];

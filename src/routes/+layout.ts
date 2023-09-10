@@ -1,12 +1,27 @@
-import type { Locales } from '$i18n/i18n-types'
-import { loadLocaleAsync } from '$i18n/i18n-util.async'
-import type { LayoutLoad } from './$types'
+import { PUBLIC_STORYBLOK_ACCESS_TOKEN } from '$env/static/public';
+import HeroBlok from '$lib/bloks/hero/HeroBlok.svelte';
+import PageBlok from '$lib/bloks/page/PageBlok.svelte';
+import { apiPlugin, storyblokInit, useStoryblokApi } from "@storyblok/svelte";
+import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async ({ data }) => {
-	const locale = data.locale as Locales
-	// load dictionary into memory
-	await loadLocaleAsync(locale)
+
+	storyblokInit({
+		accessToken: PUBLIC_STORYBLOK_ACCESS_TOKEN,
+		use: [apiPlugin],
+
+		apiOptions: {
+			https: true,
+			region: 'eu',
+		},
+
+		components: {
+			page: PageBlok,
+			hero: HeroBlok,
+		},
+	});
+	let storyblokApi = await useStoryblokApi();
 
 	// pass locale to the "rendering context"
-	return { locale }
+	return { storyblokApi }
 }

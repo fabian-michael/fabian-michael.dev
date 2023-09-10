@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Link } from '$components/link';
 	import { IconBrandGithub, IconBrandLinkedin, IconBrandX, IconBrandXing } from '@tabler/icons-svelte';
 </script>
 
@@ -50,21 +49,21 @@
 	</div>
 
 	<div class="grid grid-flow-col gap-4">
-		<Link
+		<a
 			class="link link-hover"
-			href="/about">About me</Link
+			href="/about">About me</a
 		>
-		<Link
+		<a
 			class="link link-hover"
-			href="/blog">Blog</Link
+			href="/blog">Blog</a
 		>
-		<Link
+		<a
 			class="link link-hover"
-			href="mailto:bucolic-ductile0d@icloud.com?subject=Hi%20Fabian%20%F0%9F%91%8B">Contact</Link
+			href="mailto:bucolic-ductile0d@icloud.com?subject=Hi%20Fabian%20%F0%9F%91%8B">Contact</a
 		>
-		<Link
+		<a
 			class="link link-hover"
-			href="/legal-notice">Legal notice</Link
+			href="/legal-notice">Legal notice</a
 		>
 	</div>
 

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Collapsible } from '$components/collapsible';
-	import { Link } from '$components/link';
 	import { Logo } from '$components/logo';
 	import { melt } from '@melt-ui/svelte';
 	import type { CollapsibleEvents } from '@melt-ui/svelte/dist/builders/collapsible/events';
@@ -38,12 +37,12 @@
 		<div class="container">
 			<div class="flex items-center py-6">
 				<div class="flex-1">
-					<Link
+					<a
 						href="/"
 						class="block w-fit"
 					>
 						<Logo />
-					</Link>
+					</a>
 				</div>
 
 				<div class="flex gap-4 items-center">
