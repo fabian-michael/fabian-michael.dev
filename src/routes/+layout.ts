@@ -1,6 +1,7 @@
 import { PUBLIC_STORYBLOK_ACCESS_TOKEN } from '$env/static/public';
-import HeroBlok from '$lib/bloks/hero/HeroBlok.svelte';
-import PageBlok from '$lib/bloks/page/PageBlok.svelte';
+import { HeroBlok } from '$lib/bloks/hero';
+import { PageBlok } from '$lib/bloks/page';
+import { TextmediaBlok } from '$lib/bloks/textmedia';
 import { apiPlugin, storyblokInit, useStoryblokApi } from "@storyblok/svelte";
 import type { LayoutLoad } from './$types';
 
@@ -18,6 +19,7 @@ export const load: LayoutLoad = async ({ data }) => {
 		components: {
 			page: PageBlok,
 			hero: HeroBlok,
+			textmedia: TextmediaBlok
 		},
 	});
 	let storyblokApi = await useStoryblokApi();
