@@ -23,9 +23,6 @@ dependencies:
   tailwind-merge:
     specifier: ^1.14.0
     version: 1.14.0
-  typesafe-i18n:
-    specifier: ^5.26.2
-    version: 5.26.2(typescript@5.2.2)
 
 devDependencies:
   '@melt-ui/pp':
@@ -41,8 +38,8 @@ devDependencies:
     specifier: ^1.24.1
     version: 1.24.1(svelte@4.2.0)(vite@4.4.9)
   '@tabler/icons-svelte':
-    specifier: 2.34.0
-    version: 2.34.0(svelte@4.2.0)
+    specifier: 2.31.0
+    version: 2.31.0(svelte@4.2.0)
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.3.3)
@@ -739,17 +736,17 @@ packages:
       - supports-color
     dev: true
 
-  /@tabler/icons-svelte@2.34.0(svelte@4.2.0):
-    resolution: {integrity: sha512-/qLJWUo8jcn6wzYrcqtlwfjpvRDbBoDP53qQPU6ig/SzaaB5aFe7dJEl4YJ1m/c+UNgTXVbbDbZw7NqJLh1cxw==}
+  /@tabler/icons-svelte@2.31.0(svelte@4.2.0):
+    resolution: {integrity: sha512-Q1j8mfY6TDCqcopcpMg7SsnqMr3UWHvOXkK3kC8kzhumZ3ErIjuxEmnRFhCkFm3YGwsQahPY7ZT0gKgepgu5jQ==}
     peerDependencies:
       svelte: '>=3 <5'
     dependencies:
-      '@tabler/icons': 2.34.0
+      '@tabler/icons': 2.31.0
       svelte: 4.2.0
     dev: true
 
-  /@tabler/icons@2.34.0:
-    resolution: {integrity: sha512-65GsJsT4ZBETWcdrNxbsjsbRoZvbVk3CcU2SafaElrzP1wpOeuAn9aELVEbxhdyZyP9dg2SCfgH6iAArJgp7lw==}
+  /@tabler/icons@2.31.0:
+    resolution: {integrity: sha512-vueOF4rjM0wcYAHOq7gcQB3fU04EAfHIwP0i/DVQdopXv84uu62DvOFHhYj9d0OBiM4O0PPoXEvsT8IVZDrYXw==}
     dev: true
 
   /@tailwindcss/typography@0.5.10(tailwindcss@3.3.3):
@@ -3083,19 +3080,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /typesafe-i18n@5.26.2(typescript@5.2.2):
-    resolution: {integrity: sha512-2QAriFmiY5JwUAJtG7yufoE/XZ1aFBY++wj7YFS2yo89a3jLBfKoWSdq5JfQYk1V2BS7V2c/u+KEcaCQoE65hw==}
-    hasBin: true
-    peerDependencies:
-      typescript: '>=3.5.1'
-    dependencies:
-      typescript: 5.2.2
-    dev: false
-
   /typescript@5.2.2:
     resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
     engines: {node: '>=14.17'}
     hasBin: true
+    dev: true
 
   /ufo@1.3.0:
     resolution: {integrity: sha512-bRn3CsoojyNStCZe0BG0Mt4Nr/4KF+rhFlnNXybgqt5pXHNFRlqinSoQaTrGyzE4X8aHplSb+TorH+COin9Yxw==}
