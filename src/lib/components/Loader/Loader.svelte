@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Loader2 } from 'lucide-svelte';
+	import { IconLoader2 } from '@tabler/icons-svelte';
 
 	export let size = 24;
 </script>
 
 <span class="loader text-primary">
-	<Loader2 size="{size}" />
+	<IconLoader2 {size} />
 </span>
 
 <style lang="postcss">

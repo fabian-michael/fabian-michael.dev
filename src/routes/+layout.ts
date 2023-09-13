@@ -1,3 +1,4 @@
+import { dev } from '$app/environment';
 import { PUBLIC_STORYBLOK_ACCESS_TOKEN } from '$env/static/public';
 import { HeroBlok } from '$lib/bloks/hero';
 import { PageBlok } from '$lib/bloks/page';
@@ -12,7 +13,7 @@ export const load: LayoutLoad = async ({ data }) => {
 		use: [apiPlugin],
 
 		apiOptions: {
-			https: true,
+			https: !dev,
 			region: 'eu',
 		},
 

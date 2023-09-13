@@ -3,20 +3,21 @@
 	import { cva, type VariantProps } from 'class-variance-authority';
 
 	const avatar = cva(
-		'bg-neutral-focus text-neutral-content rounded-full ring-2 ring-primary ring-offset-base-100 ring-offset-2',
+		'bg-neutral-focus text-neutral-content rounded-full ring-2 ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden',
 		{
 			variants: {
 				size: {
 					small: 'w-4 h-4',
 					medium: 'w-12 h-12',
 					large: 'w-24 h-24',
+					fill: 'w-full h-full',
 				},
 			},
 		},
 	);
 
 	interface $$Props extends VariantProps<typeof avatar> {
-		src: string;
+		src?: string;
 		name: string;
 	}
 
@@ -38,10 +39,10 @@
 </script>
 
 <div
-	class="avatar"
+	class="avatar {avatar({ size })}"
 	class:placeholder="{$loadingStatus !== 'loaded'}"
 >
-	<div class="{avatar({ size })}">
+	<div class="w-full h-full">
 		<img
 			use:melt="{$image}"
 			alt="{name} avatar"

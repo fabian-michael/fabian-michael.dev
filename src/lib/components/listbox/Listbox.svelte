@@ -4,8 +4,7 @@
 	import { Icon } from '$components/icon';
 	import { cn } from '$lib/utils';
 	import { createSelect, melt } from '@melt-ui/svelte';
-	import { IconCaretDownFilled } from '@tabler/icons-svelte';
-	import { Check } from 'lucide-svelte';
+	import { IconCaretDownFilled, IconCheck } from '@tabler/icons-svelte';
 	import { afterUpdate, onMount } from 'svelte';
 	import type { IListboxOption } from './Listbox';
 
@@ -83,7 +82,7 @@
 				use:melt="{$option(item)}"
 			>
 				{#if $isSelected(item.value)}
-					<Check class="w-4 h-4 shrink-0" />
+					<IconCheck class="w-4 h-4 shrink-0" />
 				{:else}
 					<span class="inline-block w-4 h-4 shrink-0"></span>
 				{/if}
