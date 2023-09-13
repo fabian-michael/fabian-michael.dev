@@ -101,17 +101,11 @@
 		</div>
 
 		<div class="flex flex-col gap-16">
-			<div
-				class="aspect-square w-[320px] flex items-center justify-center border-2 border-surface-100-800-token rounded-full"
-			>
-				<div
-					class="aspect-square w-[256px] flex items-center justify-center border-2 border-surface-100-800-token rounded-full"
-				>
-					<Avatar
-						name="Fabian Michael"
-						size="fill"
-					/>
-				</div>
+			<div class="aspect-square w-[320px]">
+				<Avatar
+					name="Fabian Michael"
+					size="fill"
+				/>
 			</div>
 			<article class="max-w-xs prose">
 				<h3>CONTACT</h3>

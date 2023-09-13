@@ -1,4 +1,6 @@
 <script lang="ts">
 </script>
 
-<slot />
+<div class="py-16">
+	<slot />
+</div>
