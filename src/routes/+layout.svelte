@@ -2,6 +2,17 @@
 	import '../theme.css';
 
 	import '../app.css';
+
+	import Header from './Header.svelte';
+
+	let isMenuOpen = false;
 </script>
 
-<slot />
+<Header bind:isMenuOpen />
+
+<main class="overflow-hidden rounded-t-3xl">
+	<slot />
+</main>
+
+<style lang="scss">
+</style>
