@@ -23,21 +23,27 @@
 		},
 	];
 
+	let loading = true;
 	$: selectedTheme = $themeStore;
 	$: icon = options.find((option) => option.value === selectedTheme)?.icon;
+	$: loading = typeof selectedTheme === 'undefined';
 </script>
 
 <Listbox
 	{options}
-	bind:value="{$themeStore}"
+	value="{$themeStore}"
+	on:change="{(event) => themeStore.set(event.detail)}"
 	let:trigger
 	let:label
 >
 	<button
 		class="btn btn-ghost btn-square"
 		use:melt="{trigger}"
+		disabled="{loading}"
 	>
-		{#if icon}
+		{#if loading}
+			<span class="loading loading-spinner text-white"></span>
+		{:else if icon}
 			<Icon {icon} />
 		{/if}
 	</button>

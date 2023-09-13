@@ -4,7 +4,7 @@ import { writable } from "svelte/store";
 export type Theme = 'dark' | 'light' | '';
 
 export const themeStore = (() => {
-    const store = writable<Theme>('');
+    const store = writable<Theme>(undefined);
 
     if (browser) {
         const theme = window.getTheme();
@@ -14,6 +14,10 @@ export const themeStore = (() => {
     return {
         subscribe: store.subscribe,
         set: (theme: Theme) => {
+            if (!browser) {
+                return
+            };
+
             window.setTheme(theme);
             store.set(theme);
         }

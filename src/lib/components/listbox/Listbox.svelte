@@ -6,8 +6,10 @@
 	import type { SelectOption } from '@melt-ui/svelte';
 	import { createSelect, melt } from '@melt-ui/svelte';
 	import { IconCheck } from '@tabler/icons-svelte';
-	import { afterUpdate, onMount } from 'svelte';
+	import { afterUpdate, createEventDispatcher, onMount } from 'svelte';
 	import type { IListboxOption } from './Listbox';
+
+	const dispatchEvent = createEventDispatcher();
 
 	type T = $$Generic<string | number>;
 
@@ -42,6 +44,7 @@
 		const unsubscribe = selected.subscribe(($selected) => {
 			if (value !== $selected.value) {
 				value = $selected.value;
+				dispatchEvent('change', value);
 			}
 		});
 
