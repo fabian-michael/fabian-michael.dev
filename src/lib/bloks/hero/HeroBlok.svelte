@@ -1,10 +1,21 @@
 <script lang="ts">
 	import { Avatar } from '$components/avatar';
 	import { renderRichText, storyblokEditable } from '@storyblok/svelte';
-	import { IconBuildingSkyscraper } from '@tabler/icons-svelte';
+	import { IconBuildingSkyscraper, IconClock, IconMapPin } from '@tabler/icons-svelte';
+	import { format } from 'date-fns';
+	import { readable } from 'svelte/store';
 	import type { HeroBlokData } from './HeroBlokData';
 
 	export let blok: HeroBlokData;
+
+	const timeZone = 'Europe/Berlin';
+	const time = readable(new Date(), (set) => {
+		const interval = setInterval(() => {
+			set(new Date());
+		}, 1000);
+
+		return () => clearInterval(interval);
+	});
 </script>
 
 {#key blok}
@@ -24,22 +35,41 @@
 						{@html renderRichText(blok.headline)}
 					</h1>
 				</div>
-				<p>
-					<small class="inline-flex items-center gap-2">
-						<IconBuildingSkyscraper size="{18}" />
+
+				<div class="prose">
+					{@html renderRichText(blok.text)}
+				</div>
+				<div class="flex flex-col sm:flex-row gap-4">
+					<small>
+						<IconBuildingSkyscraper
+							size="1.5em"
+							class="inline-block"
+						/>
 						<a
 							class="link link-hover"
 							href="https://form4.de"
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							form4 GmbH & Co. KG, Berlin
+							form4 GmbH & Co. KG
 						</a>
 					</small>
-				</p>
 
-				<div class="prose">
-					{@html renderRichText(blok.text)}
+					<small>
+						<IconMapPin
+							size="1.5em"
+							class="inline-block"
+						/>
+						Berlin, Germany
+					</small>
+
+					<small class="font-mono">
+						<IconClock
+							size="1.5em"
+							class="inline-block"
+						/>
+						{format($time, 'HH:mm:ss', { timeZone })}
+					</small>
 				</div>
 			</div>
 		</div>
