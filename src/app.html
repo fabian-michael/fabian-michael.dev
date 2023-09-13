@@ -30,6 +30,10 @@
 				}
 			};
 
+			window.getTheme = function () {
+				return localStorage.getItem('theme');
+			};
+
 			(function () {
 				const prefersColorSchemeDark = window.matchMedia('(prefers-color-scheme: dark)');
 				setTheme(localStorage.getItem('theme'));

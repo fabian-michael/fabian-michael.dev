@@ -1,12 +1,10 @@
 <script lang="ts">
+	import { Icon } from '$components/icon';
 	import { Listbox, type IListboxOption } from '$components/listbox';
+	import { themeStore, type Theme } from '$lib/client/stores/theme-store';
+	import { melt } from '@melt-ui/svelte';
 	import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-svelte';
-	import { onMount } from 'svelte';
 
-	type Theme = 'dark' | 'light' | '';
-
-	let mounted = false;
-	let selectedTheme: Theme = '';
 	let options: IListboxOption<Theme>[] = [
 		{
 			value: 'dark',
@@ -25,17 +23,22 @@
 		},
 	];
 
-	$: if (mounted) {
-		window.setTheme(selectedTheme);
-	}
-
-	onMount(() => {
-		mounted = true;
-		selectedTheme = localStorage.getItem('theme') as Theme;
-	});
+	$: selectedTheme = $themeStore;
+	$: icon = options.find((option) => option.value === selectedTheme)?.icon;
 </script>
 
 <Listbox
 	{options}
-	bind:value="{selectedTheme}"
-/>
+	bind:value="{$themeStore}"
+	let:trigger
+	let:label
+>
+	<button
+		class="btn btn-ghost btn-square"
+		use:melt="{trigger}"
+	>
+		{#if icon}
+			<Icon {icon} />
+		{/if}
+	</button>
+</Listbox>

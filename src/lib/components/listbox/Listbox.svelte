@@ -3,8 +3,9 @@
 
 	import { Icon } from '$components/icon';
 	import { cn } from '$lib/utils';
+	import type { SelectOption } from '@melt-ui/svelte';
 	import { createSelect, melt } from '@melt-ui/svelte';
-	import { IconCaretDownFilled, IconCheck } from '@tabler/icons-svelte';
+	import { IconCheck } from '@tabler/icons-svelte';
 	import { afterUpdate, onMount } from 'svelte';
 	import type { IListboxOption } from './Listbox';
 
@@ -17,14 +18,14 @@
 	export let value: T = '' as T;
 	export let placeholder: string = '';
 
-	const valueStore = writable(value);
+	const selected = writable<SelectOption<T>>(options.find((option) => option.value === value));
 
 	const {
-		states: { valueLabel },
+		states: { selectedLabel },
 		helpers: { isSelected },
 		elements: { menu, option, trigger },
 	} = createSelect({
-		value: valueStore,
+		selected,
 		positioning: {
 			placement: 'bottom',
 			sameWidth: false,
@@ -32,15 +33,15 @@
 	});
 
 	afterUpdate(() => {
-		if (value !== $valueStore) {
-			$valueStore = value;
+		if (value !== $selected.value) {
+			$selected = options.find((option) => option.value === value)!;
 		}
 	});
 
 	onMount(() => {
-		const unsubscribe = valueStore.subscribe((val) => {
-			if (value !== val) {
-				value = val as T;
+		const unsubscribe = selected.subscribe(($selected) => {
+			if (value !== $selected.value) {
+				value = $selected.value;
 			}
 		});
 
@@ -53,24 +54,10 @@
 </script>
 
 <div class="{cn('dropdown', className)}">
-	<span
-		class="justify-between w-full normal-case"
-		use:melt="{$trigger}"
-		aria-label="{placeholder ?? 'Select an option...'}"
-	>
-		<span class="inline-flex gap-1 items-center">
-			{$valueLabel ?? placeholder ?? 'Select an option...'}
-
-			{#if selectedOption?.icon}
-				<svelte:component
-					this="{selectedOption.icon}"
-					class="w-auto h-4"
-				/>
-			{/if}
-		</span>
-
-		<IconCaretDownFilled class="w-auto h-4 ml-1 shrink-0" />
-	</span>
+	<slot
+		trigger="{$trigger}"
+		label="{$selectedLabel}"
+	/>
 
 	<ul
 		class="p-1 border rounded-lg shadow-lg dropdown-content bg-base-200 border-base-300"

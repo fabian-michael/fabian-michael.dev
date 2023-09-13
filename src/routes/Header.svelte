@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Collapsible } from '$components/collapsible';
 	import { Logo } from '$components/logo';
+	import { ThemeSelect } from '$components/theme-select';
 	import { melt } from '@melt-ui/svelte';
 	import type { CollapsibleEvents } from '@melt-ui/svelte/dist/builders/collapsible/events';
 	import type { ExplicitBuilderReturn } from '@melt-ui/svelte/internal/helpers';
@@ -46,6 +47,8 @@
 				</div>
 
 				<div class="flex gap-4 items-center">
+					<ThemeSelect />
+
 					{#if typeof menuTrigger !== 'undefined'}
 						<button
 							class="btn btn-square btn-ghost !grid !items-center"
@@ -53,14 +56,14 @@
 							use:melt="{$menuTrigger}"
 						>
 							<span
-								class="block w-8 h-0.5 bg-base-content row-span-full col-span-full transition-all"
+								class="block w-6 h-0.5 bg-base-content row-span-full col-span-full transition-all"
 								class:rotate-45="{isMenuOpen}"
-								class:-translate-y-2="{!isMenuOpen}"
+								class:-translate-y-1.5="{!isMenuOpen}"
 							></span>
 							<span
-								class="block w-8 h-0.5 bg-base-content row-span-full col-span-full transition-all"
+								class="block w-6 h-0.5 bg-base-content row-span-full col-span-full transition-all"
 								class:-rotate-45="{isMenuOpen}"
-								class:translate-y-2="{!isMenuOpen}"
+								class:translate-y-1.5="{!isMenuOpen}"
 							></span>
 						</button>
 					{/if}

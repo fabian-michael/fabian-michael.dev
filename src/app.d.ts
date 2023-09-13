@@ -5,6 +5,7 @@ declare global {
 
 	interface Window {
 		setTheme(theme: 'dark' | 'light' | ''): void;
+		getTheme(): 'dark' | 'light' | '';
 	}
 
 	namespace App {
