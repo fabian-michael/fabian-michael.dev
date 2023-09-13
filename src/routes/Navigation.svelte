@@ -8,6 +8,8 @@
 		<li><NavigationItem href="/">Home</NavigationItem></li>
 		<li><NavigationItem href="/about">About me</NavigationItem></li>
 		<li><NavigationItem href="/blog">Blog</NavigationItem></li>
-		<li><NavigationItem href="/resume">Resume <IconLockSquareRoundedFilled size="1.5em" /></NavigationItem></li>
+		<li>
+			<NavigationItem href="/resume">Resume (tbd) <IconLockSquareRoundedFilled size="1.5em" /></NavigationItem>
+		</li>
 	</ul>
 </nav>
