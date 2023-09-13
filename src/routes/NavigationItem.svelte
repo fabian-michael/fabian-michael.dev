@@ -4,7 +4,7 @@
 
 	export let href: string;
 
-	$: active = $page.url.pathname === `/${href === '/' ? '' : href}`;
+	$: active = href === '/' ? $page.url.pathname === '/' : $page.url.pathname.startsWith(href);
 </script>
 
 <a
