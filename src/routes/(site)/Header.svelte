@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 	import { Collapsible } from '$components/collapsible';
 	import { Logo } from '$components/logo';
 	import { ThemeSelect } from '$components/theme-select';
@@ -6,6 +8,7 @@
 	import type { CollapsibleEvents } from '@melt-ui/svelte/dist/builders/collapsible/events';
 	import type { ExplicitBuilderReturn } from '@melt-ui/svelte/internal/helpers';
 	import type { MeltActionReturn } from '@melt-ui/svelte/internal/types';
+	import { IconLogout } from '@tabler/icons-svelte';
 	import type { Invalidator, Subscriber, Unsubscriber, Updater, Writable } from 'svelte/store';
 	import Navigation from './Navigation.svelte';
 
@@ -46,12 +49,21 @@
 					</a>
 				</div>
 
-				<div class="flex gap-4 items-center">
+				<div class="flex items-center gap-4">
+					{#if browser && $page.data.session}
+						<a
+							href="/auth/logout?redirectTo={$page.url.pathname}"
+							class="btn btn-square btn-ghost"
+						>
+							<IconLogout />
+						</a>
+					{/if}
+
 					<ThemeSelect />
 
 					{#if typeof menuTrigger !== 'undefined'}
 						<button
-							class="btn btn-square btn-ghost !grid !items-center"
+							class="btn btn-square btn-ghost !grid !place-content-center"
 							title="Toggle menu"
 							use:melt="{$menuTrigger}"
 						>

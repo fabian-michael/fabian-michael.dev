@@ -18,7 +18,6 @@
 
 	export let options: IListboxOption<T>[];
 	export let value: T = '' as T;
-	export let placeholder: string = '';
 
 	const selected = writable<SelectOption<T>>(options.find((option) => option.value === value));
 
@@ -81,7 +80,7 @@
 
 				{#if item.icon}
 					<Icon
-						class="w-auto h-4 shrink-0 ml-2"
+						class="w-auto h-4 ml-2 shrink-0"
 						icon="{item.icon}"
 					/>
 				{/if}

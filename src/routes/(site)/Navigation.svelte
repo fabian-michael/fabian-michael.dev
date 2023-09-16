@@ -9,7 +9,12 @@
 		<li><NavigationItem href="/about">About me</NavigationItem></li>
 		<li><NavigationItem href="/blog">Blog</NavigationItem></li>
 		<li>
-			<NavigationItem href="/resume">Resume (tbd) <IconLockSquareRoundedFilled size="1.5em" /></NavigationItem>
+			<NavigationItem
+				href="/resume"
+				preload="{false}"
+			>
+				Resume (tbd) <IconLockSquareRoundedFilled size="1.5em" />
+			</NavigationItem>
 		</li>
 	</ul>
 </nav>

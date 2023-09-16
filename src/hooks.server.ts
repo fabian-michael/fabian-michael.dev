@@ -1,5 +1,7 @@
-import { authenticate, authorize } from "$lib/server/hooks/auth/auth";
+import { supabase } from "$lib/server/hooks/supabase/supabase";
 import type { Handle } from "@sveltejs/kit";
 import { sequence } from "@sveltejs/kit/hooks";
 
-export const handle: Handle = sequence(authenticate, authorize);
+export const handle: Handle = sequence(
+    supabase,
+);

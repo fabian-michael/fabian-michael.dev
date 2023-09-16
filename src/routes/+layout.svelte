@@ -3,19 +3,26 @@
 
 	import '../app.css';
 
-	import Footer from './Footer.svelte';
-	import Header from './Header.svelte';
+	import { invalidate } from '$app/navigation';
+	import { onMount } from 'svelte';
 
-	let isMenuOpen = false;
+	export let data;
+
+	let { supabase, session } = data;
+	$: ({ supabase, session } = data);
+
+	onMount(() => {
+		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
+			if (_session?.expires_at !== session?.expires_at) {
+				invalidate('supabase:auth');
+			}
+		});
+
+		return () => data.subscription.unsubscribe();
+	});
 </script>
 
-<Header bind:isMenuOpen />
-
-<main class="overflow-hidden rounded-t-3xl">
-	<slot />
-</main>
-
-<Footer />
+<slot />
 
 <style lang="scss">
 </style>
