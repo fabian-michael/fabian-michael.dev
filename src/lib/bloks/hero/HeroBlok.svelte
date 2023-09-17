@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import { Avatar } from '$components/avatar';
 	import { renderRichText, storyblokEditable } from '@storyblok/svelte';
 	import { IconBuildingSkyscraper, IconClock, IconMapPin } from '@tabler/icons-svelte';
-	import { format } from 'date-fns';
+	import { formatInTimeZone } from 'date-fns-tz';
 	import { readable } from 'svelte/store';
 	import type { HeroBlokData } from './HeroBlokData';
 
@@ -68,7 +69,7 @@
 							size="1.5em"
 							class="inline-block"
 						/>
-						{format($time, 'HH:mm:ss', { timeZone })}
+						{browser ? formatInTimeZone($time, timeZone, 'HH:mm:ss') : '00:00:00'}
 					</small>
 				</div>
 			</div>
