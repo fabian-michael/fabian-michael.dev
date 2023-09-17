@@ -1,15 +1,32 @@
 import { browser } from "$app/environment";
 import { writable } from "svelte/store";
 
-export type Theme = 'dark' | 'light' | '';
+export type Theme = 'night' | 'light' | '';
 
 export const themeStore = (() => {
-    const store = writable<Theme>(undefined);
+    const store = writable<Theme>(undefined, (set) => {
+        if (!browser) {
+            return
+        };
 
-    if (browser) {
-        const theme = window.getTheme();
-        store.set(theme ?? '');
-    }
+        const theme = localStorage.getItem('theme') as Theme;
+        console.log('theme', theme);
+
+        set(theme);
+
+        function handleThemeChange(event: StorageEvent) {
+            if (event.key === 'theme') {
+                const theme = event.newValue as Theme;
+                set(theme);
+            }
+        }
+
+        window.addEventListener('storage', handleThemeChange);
+
+        return () => {
+            window.removeEventListener('storage', handleThemeChange);
+        };
+    });
 
     return {
         subscribe: store.subscribe,

@@ -17,9 +17,10 @@
 	export { className as class };
 
 	export let options: IListboxOption<T>[];
-	export let value: T = '' as T;
+	export let defaultValue = options[0].value;
+	export let value: T = defaultValue;
 
-	const selected = writable<SelectOption<T>>(options.find((option) => option.value === value));
+	const selected = writable<SelectOption<T>>(options.find((option) => option.value === value ?? defaultValue));
 
 	const {
 		states: { selectedLabel },
@@ -34,15 +35,15 @@
 	});
 
 	afterUpdate(() => {
-		if (value !== $selected.value) {
-			$selected = options.find((option) => option.value === value)!;
+		if (value !== $selected?.value) {
+			$selected = options.find((option) => option.value === value ?? defaultValue)!;
 		}
 	});
 
 	onMount(() => {
 		const unsubscribe = selected.subscribe(($selected) => {
-			if (value !== $selected.value) {
-				value = $selected.value;
+			if (value !== $selected?.value) {
+				value = $selected?.value;
 				dispatchEvent('change', value);
 			}
 		});
@@ -51,8 +52,6 @@
 			unsubscribe();
 		};
 	});
-
-	$: selectedOption = options.find((option) => option.value === value);
 </script>
 
 <div class="{cn('dropdown', className)}">

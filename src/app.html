@@ -12,34 +12,42 @@
 		/>
 
 		<script type="text/javascript">
+			const defaultTheme = '';
+			const darkTheme = 'night';
+			const lightTheme = 'light';
+
 			window.setTheme = function (theme) {
 				const prefersColorSchemeDark = window.matchMedia('(prefers-color-scheme: dark)');
 
-				// update localstorage
-				if (theme) {
-					localStorage.setItem('theme', theme);
-				} else {
-					localStorage.removeItem('theme');
-				}
+				// update local storage
+				localStorage.setItem('theme', theme);
 
 				// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-				if (theme === 'dark' || (!theme && prefersColorSchemeDark.matches)) {
-					document.documentElement.dataset.theme = 'dark';
+				if (theme === 'night' || (!theme && prefersColorSchemeDark.matches)) {
+					document.documentElement.dataset.theme = darkTheme;
 				} else {
-					document.documentElement.dataset.theme = 'light';
+					document.documentElement.dataset.theme = lightTheme;
 				}
-			};
-
-			window.getTheme = function () {
-				return localStorage.getItem('theme');
 			};
 
 			(function () {
+				// init local storage
+				if (!localStorage.getItem('theme')) {
+					localStorage.setItem('theme', defaultTheme);
+				}
+
+				// update theme if system preference changes
 				const prefersColorSchemeDark = window.matchMedia('(prefers-color-scheme: dark)');
 				setTheme(localStorage.getItem('theme'));
-
 				prefersColorSchemeDark.addEventListener('change', () => {
 					setTheme(localStorage.getItem('theme'));
+				});
+
+				// update theme if local storage changes in another tab
+				window.addEventListener('storage', (event) => {
+					if (event.key === 'theme') {
+						setTheme(event.newValue);
+					}
 				});
 			})();
 		</script>

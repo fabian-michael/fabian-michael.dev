@@ -7,7 +7,7 @@
 
 	let options: IListboxOption<Theme>[] = [
 		{
-			value: 'dark',
+			value: 'night',
 			label: 'Dark',
 			icon: IconMoon,
 		},
@@ -27,11 +27,14 @@
 	$: selectedTheme = $themeStore;
 	$: icon = options.find((option) => option.value === selectedTheme)?.icon;
 	$: loading = typeof selectedTheme === 'undefined';
+
+	$: console.log(selectedTheme);
 </script>
 
 <Listbox
 	{options}
 	value="{$themeStore}"
+	defaultValue="night"
 	on:change="{(event) => themeStore.set(event.detail)}"
 	let:trigger
 	let:label
@@ -45,6 +48,8 @@
 			<span class="loading loading-spinner text-white"></span>
 		{:else if icon}
 			<Icon {icon} />
+		{:else}
+			<IconSunMoon />
 		{/if}
 	</button>
 </Listbox>

@@ -1,13 +1,13 @@
 // See https://kit.svelte.dev/docs/types#app
 
+import type { Theme } from "$lib/client/stores/theme-store";
 import type { Session, SupabaseClient } from "@supabase/supabase-js";
 
 // for information about these interfaces
 declare global {
 
 	interface Window {
-		setTheme(theme: 'dark' | 'light' | ''): void;
-		getTheme(): 'dark' | 'light' | '';
+		setTheme(theme: Theme): void;
 	}
 
 	namespace App {
