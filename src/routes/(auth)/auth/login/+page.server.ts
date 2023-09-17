@@ -1,6 +1,9 @@
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
+export const ssr = false;
+export const csr = true;
+
 export const load: PageServerLoad = async ({ url, locals: { getSession } }) => {
     const session = await getSession();
     const redirectTo = url.searchParams.get('redirectTo') || '/';
@@ -11,6 +14,6 @@ export const load: PageServerLoad = async ({ url, locals: { getSession } }) => {
 
     return {
         url: url.origin,
-        redirectTo
+        redirectTo,
     };
 }

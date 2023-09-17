@@ -1,20 +1,18 @@
 <script lang="ts">
 	import { createAvatar, melt } from '@melt-ui/svelte';
-	import { cva, type VariantProps } from 'class-variance-authority';
+	import { tv, type VariantProps } from 'tailwind-variants';
 
-	const avatar = cva(
-		'bg-neutral-focus text-neutral-content rounded-full ring-2 ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden',
-		{
-			variants: {
-				size: {
-					small: 'w-4 h-4',
-					medium: 'w-12 h-12',
-					large: 'w-24 h-24',
-					fill: 'w-full h-full',
-				},
+	const avatar = tv({
+		base: 'bg-neutral-focus text-neutral-content rounded-full ring-2 ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden',
+		variants: {
+			size: {
+				small: 'w-4 h-4',
+				medium: 'w-12 h-12',
+				large: 'w-24 h-24',
+				fill: 'w-full h-full',
 			},
 		},
-	);
+	});
 
 	interface $$Props extends VariantProps<typeof avatar> {
 		src?: string;

@@ -1,29 +1,95 @@
 <script lang="ts">
-	import { Auth } from '@supabase/auth-ui-svelte';
+	import { goto } from '$app/navigation';
+	import { Form, Input } from '$components/form/index.js';
+	import { sleep } from '$lib/utils.js';
+	import { IconKey } from '@tabler/icons-svelte';
+	import { superValidateSync } from 'sveltekit-superforms/client';
+	import { schema } from './schema.js';
 
 	export let data;
+
+	const form = superValidateSync(schema);
+	let status: 'initial' | 'idle' | 'loading' = 'initial';
+	let error = '';
 </script>
 
 <div class="grid min-h-screen place-content-center">
 	<div class="max-w-sm card bg-neutral text-neutral-content">
-		<div class="card-body">
-			<div class="justify-center card-title">Login</div>
-			<Auth
-				supabaseClient="{data.supabase}"
-				view="sign_in"
-				redirectTo="{`${data.url}/auth/callback?redirect=${data.redirectTo}`}"
-				showLinks="{false}"
-				appearance="{{
-					extend: false,
+		<Form
+			{schema}
+			action="{async ({ form }) => {
+				if (!form.valid) {
+					return;
+				}
 
-					className: {
-						container: 'space-y-4',
-						button: 'btn btn-primary',
-						input: 'input input-bordered w-full',
-						label: 'label',
-					},
-				}}"
+				try {
+					error = '';
+					status = 'loading';
+					const response = await data.supabase.auth.signInWithPassword({
+						email: form.data.email,
+						password: form.data.password,
+					});
+					await sleep(500);
+
+					if (response.error) {
+						throw new Error(response.error.message);
+					}
+
+					const redirectTo = data.redirectTo || '/';
+					goto(redirectTo);
+				} catch (err) {
+					console.error(err);
+
+					if (err instanceof Error) {
+						error = err.message;
+					} else {
+						error = 'Something went wrong';
+					}
+				} finally {
+					status = 'idle';
+				}
+			}}"
+			data="{form}"
+			class="card-body"
+			spa
+			let:errors
+		>
+			<div class="justify-center card-title"><IconKey /> Login</div>
+
+			<Input
+				type="email"
+				id="login-email"
+				name="email"
+				label="Email"
+				placeholder="Email"
 			/>
-		</div>
+
+			<Input
+				type="password"
+				id="login-password"
+				name="password"
+				label="Password"
+				placeholder="Password"
+			/>
+
+			<div class="card-actions mt-6">
+				<button
+					type="submit"
+					class="btn btn-primary w-full"
+				>
+					{#if status === 'loading'}
+						<span class="loading loading-spinner"></span>
+					{:else}
+						Login
+					{/if}
+				</button>
+
+				{#if error}
+					<p class="text-error">
+						{error}
+					</p>
+				{/if}
+			</div>
+		</Form>
 	</div>
 </div>
