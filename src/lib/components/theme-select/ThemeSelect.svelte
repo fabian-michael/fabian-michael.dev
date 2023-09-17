@@ -27,8 +27,6 @@
 	$: selectedTheme = $themeStore;
 	$: icon = options.find((option) => option.value === selectedTheme)?.icon;
 	$: loading = typeof selectedTheme === 'undefined';
-
-	$: console.log(selectedTheme);
 </script>
 
 <Listbox

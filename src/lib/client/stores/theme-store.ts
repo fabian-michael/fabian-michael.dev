@@ -10,8 +10,6 @@ export const themeStore = (() => {
         };
 
         const theme = localStorage.getItem('theme') as Theme;
-        console.log('theme', theme);
-
         set(theme);
 
         function handleThemeChange(event: StorageEvent) {
