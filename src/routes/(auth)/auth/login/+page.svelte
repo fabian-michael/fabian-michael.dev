@@ -18,18 +18,20 @@
 		<Form
 			{schema}
 			action="{async ({ form }) => {
-				if (!form.valid) {
+				if (!form.valid || status === 'loading') {
 					return;
 				}
 
 				try {
 					error = '';
 					status = 'loading';
+
+					await sleep(500);
+
 					const response = await data.supabase.auth.signInWithPassword({
 						email: form.data.email,
 						password: form.data.password,
 					});
-					await sleep(500);
 
 					if (response.error) {
 						throw new Error(response.error.message);
@@ -52,7 +54,6 @@
 			data="{form}"
 			class="card-body"
 			spa
-			let:errors
 		>
 			<div class="justify-center card-title"><IconKey /> Login</div>
 
@@ -62,6 +63,7 @@
 				name="email"
 				label="Email"
 				placeholder="Email"
+				disabled="{status === 'loading'}"
 			/>
 
 			<Input
@@ -70,12 +72,14 @@
 				name="password"
 				label="Password"
 				placeholder="Password"
+				disabled="{status === 'loading'}"
 			/>
 
 			<div class="mt-6 card-actions">
 				<button
 					type="submit"
 					class="w-full btn btn-primary"
+					disabled="{status === 'loading'}"
 				>
 					{#if status === 'loading'}
 						<span class="loading loading-spinner"></span>

@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import type { HTMLInputAttributes } from 'svelte/elements';
+	import type { Form } from '.';
 
 	interface $$Props extends HTMLInputAttributes {
 		label: string;
 	}
 
-	const { form, errors, constraints } = getContext('form');
+	const { form, errors, constraints } = getContext('form') as Form<any, any>;
 
 	$: error = $errors[$$props.name];
 </script>
@@ -27,6 +28,7 @@
 		placeholder="{$$props.placeholder}"
 		class="input input-bordered"
 		class:input-error="{$errors[$$props.name]}"
+		disabled="{$$props.disabled}"
 		value="{$form[$$props.name]}"
 		on:input="{(event) => ($form[$$props.name] = event.target?.value)}"
 		{...$constraints[$$props.name]}
