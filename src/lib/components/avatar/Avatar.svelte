@@ -3,7 +3,7 @@
 	import { tv, type VariantProps } from 'tailwind-variants';
 
 	const avatar = tv({
-		base: 'bg-neutral-focus text-neutral-content rounded-full ring-2 ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden',
+		base: 'avatar bg-base-100 text-primary font-semibold rounded-full ring-2 ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden',
 		variants: {
 			size: {
 				small: 'w-4 h-4',
@@ -37,7 +37,7 @@
 </script>
 
 <div
-	class="avatar {avatar({ size })}"
+	class="{avatar({ size })}"
 	class:placeholder="{$loadingStatus !== 'loaded'}"
 >
 	<div class="w-full h-full">

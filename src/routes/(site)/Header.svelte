@@ -49,7 +49,7 @@
 					</a>
 				</div>
 
-				<div class="flex items-center gap-4">
+				<div class="flex items-center gap-1 sm:gap-4">
 					{#if browser && $page.data.session}
 						<a
 							href="/auth/logout?redirectTo={$page.url.pathname}"

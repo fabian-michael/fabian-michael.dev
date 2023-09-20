@@ -13,7 +13,7 @@
 	let error = '';
 </script>
 
-<div class="grid min-h-screen place-content-center">
+<div class="fixed inset-0 grid items-end justify-center px-4 py-8 md:items-center">
 	<div class="max-w-sm card bg-neutral text-neutral-content">
 		<Form
 			{schema}
@@ -72,10 +72,10 @@
 				placeholder="Password"
 			/>
 
-			<div class="card-actions mt-6">
+			<div class="mt-6 card-actions">
 				<button
 					type="submit"
-					class="btn btn-primary w-full"
+					class="w-full btn btn-primary"
 				>
 					{#if status === 'loading'}
 						<span class="loading loading-spinner"></span>

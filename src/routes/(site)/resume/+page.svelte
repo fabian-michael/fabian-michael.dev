@@ -13,7 +13,54 @@
 </script>
 
 <div class="container">
-	<div class="flex">
+	<div class="mb-16 prose">
+		<h1>Resume</h1>
+	</div>
+
+	<div class="flex flex-col gap-16 md:flex-row">
+		<div class="flex flex-col gap-16">
+			<div class="w-full max-w-xs mx-auto aspect-square">
+				<Avatar
+					name="Fabian Michael"
+					size="fill"
+				/>
+			</div>
+			<article class="max-w-xs prose">
+				<h3>CONTACT</h3>
+				<p class="relative pl-8">
+					<IconMapPin class="absolute left-0 inline-block" />
+					Adlerstr. 75, 14612 Falkensee, Brandenburg, Germany
+				</p>
+				<p class="relative pl-8">
+					<IconPhone class="absolute left-0 inline-block" />
+					<a
+						href="tel:+4917622214373"
+						title=""
+					>
+						(+49) 176 222 143 73
+					</a>
+				</p>
+				<p class="relative pl-8">
+					<IconMail class="absolute left-0 inline-block" />
+					<a
+						href="mailto:hello@fabian-michael.dev"
+						title=""
+					>
+						hello@fabian-michael.dev
+					</a>
+				</p>
+				<p class="relative pl-8">
+					<IconWorld class="absolute left-0 inline-block" />
+					<a
+						href="https://fabian-michael.dev"
+						title=""
+					>
+						fabian-michael.dev
+					</a>
+				</p>
+			</article>
+		</div>
+
 		<div class="flex flex-col flex-1 gap-16">
 			<article class="prose">
 				<h2 class="relative pl-12">
@@ -97,49 +144,6 @@
 						</small>
 					</li>
 				</ul>
-			</article>
-		</div>
-
-		<div class="flex flex-col gap-16">
-			<div class="aspect-square w-[320px]">
-				<Avatar
-					name="Fabian Michael"
-					size="fill"
-				/>
-			</div>
-			<article class="max-w-xs prose">
-				<h3>CONTACT</h3>
-				<p class="relative pl-8">
-					<IconMapPin class="absolute left-0 inline-block" />
-					Adlerstr. 75, 14612 Falkensee, Brandenburg, Germany
-				</p>
-				<p class="relative pl-8">
-					<IconPhone class="absolute left-0 inline-block" />
-					<a
-						href="tel:+4917622214373"
-						title=""
-					>
-						(+49) 176 222 143 73
-					</a>
-				</p>
-				<p class="relative pl-8">
-					<IconMail class="absolute left-0 inline-block" />
-					<a
-						href="mailto:hello@fabian-michael.dev"
-						title=""
-					>
-						hello@fabian-michael.dev
-					</a>
-				</p>
-				<p class="relative pl-8">
-					<IconWorld class="absolute left-0 inline-block" />
-					<a
-						href="https://fabian-michael.dev"
-						title=""
-					>
-						fabian-michael.dev
-					</a>
-				</p>
 			</article>
 		</div>
 	</div>
