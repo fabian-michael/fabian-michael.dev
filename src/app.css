@@ -4,6 +4,8 @@
 
 @layer base {
 	body {
+		@apply min-h-screen;
+
 		--bg-gradient-left: hsl(var(--s) / 0.2);
 		--bg-gradient-right: hsl(var(--p) / 0.1);
 		background-image: radial-gradient(at 0 -100px, var(--bg-gradient-left) 0px, rgba(0, 0, 0, 0) 50%),
