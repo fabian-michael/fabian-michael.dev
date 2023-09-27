@@ -3,8 +3,13 @@
 @tailwind utilities;
 
 @layer base {
+    html {
+        height: -webkit-fill-available;
+    }
+    
 	body {
-		@apply min-h-screen;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
 
 		--bg-gradient-left: hsl(var(--s) / 0.2);
 		--bg-gradient-right: hsl(var(--p) / 0.1);
