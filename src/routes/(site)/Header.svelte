@@ -9,28 +9,30 @@
 	import type { ExplicitBuilderReturn } from '@melt-ui/svelte/internal/helpers';
 	import type { MeltActionReturn } from '@melt-ui/svelte/internal/types';
 	import { IconLogout } from '@tabler/icons-svelte';
-	import type { Invalidator, Subscriber, Unsubscriber, Updater, Writable } from 'svelte/store';
 	import Navigation from './Navigation.svelte';
 
 	export let isMenuOpen = false;
 	let menuTrigger: ExplicitBuilderReturn<
 		[
 			{
-				update: (updater: Updater<boolean>, sideEffect?: ((newValue: boolean) => void) | undefined) => void;
+				update: (
+					updater: import('svelte/store').Updater<boolean>,
+					sideEffect?: ((newValue: boolean) => void) | undefined,
+				) => void;
 				set: (this: void, value: boolean) => void;
 				subscribe(
 					this: void,
-					run: Subscriber<boolean>,
-					invalidate?: Invalidator<boolean> | undefined,
-				): Unsubscriber;
+					run: import('svelte/store').Subscriber<boolean>,
+					invalidate?: import('svelte/store').Invalidator<boolean> | undefined,
+				): import('svelte/store').Unsubscriber;
 			},
-			Writable<boolean>,
+			import('svelte/store').Writable<boolean>,
 		],
 		(node: HTMLElement) => MeltActionReturn<CollapsibleEvents['trigger']>,
 		([$open, $disabled]: [boolean, boolean]) => {
 			readonly 'data-state': 'open' | 'closed';
-			readonly 'data-disabled': '' | undefined;
-			readonly disabled: boolean;
+			readonly 'data-disabled': true | undefined;
+			readonly disabled: true | undefined;
 		},
 		string
 	>;

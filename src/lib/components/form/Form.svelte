@@ -1,10 +1,9 @@
 <script lang="ts">
-	import type { AnyZodObject } from 'zod';
-
 	import { setContext } from 'svelte';
 	import type { HTMLFormAttributes } from 'svelte/elements';
 	import type { SuperValidated, ZodValidation } from 'sveltekit-superforms';
 	import { superForm, type FormOptions } from 'sveltekit-superforms/client';
+	import type { AnyZodObject } from 'zod';
 
 	type S = $$Generic<AnyZodObject>;
 	type T = $$Generic<ZodValidation<S>>;
@@ -13,9 +12,10 @@
 	export let spa: true | undefined = undefined;
 	export let schema: T | undefined = undefined;
 	export let action: string | FormOptions<T, any>['onUpdate'] = '';
+
 	let { enhance, form, errors, constraints } = superForm(data, {
 		SPA: spa,
-		validators: schema,
+		validators: schema as ZodValidation<any>,
 		onUpdate: typeof action !== 'string' ? action : undefined,
 	});
 

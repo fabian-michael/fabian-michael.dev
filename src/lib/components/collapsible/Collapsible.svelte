@@ -16,6 +16,8 @@
 		open: openStore,
 	});
 
+	type Trigger = typeof trigger;
+
 	export { trigger };
 
 	afterUpdate(() => {

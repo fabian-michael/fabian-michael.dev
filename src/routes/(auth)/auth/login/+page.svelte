@@ -8,7 +8,7 @@
 
 	export let data;
 
-	const form = superValidateSync(schema);
+	const form = superValidateSync(schema); 
 	let status: 'initial' | 'idle' | 'loading' = 'initial';
 	let error = '';
 </script>
