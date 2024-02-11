@@ -4,13 +4,13 @@
 	"singleQuote": true,
 	"trailingComma": "all",
 	"svelteBracketNewLine": true,
+	"svelteAllowShorthand": true,
 	"arrowParens": "always",
 	"endOfLine": "lf",
-	"svelteStrictMode": true,
+	"svelteStrictMode": false,
 	"jsxSingleQuote": true,
 	"printWidth": 120,
 	"singleAttributePerLine": true,
 	"plugins": ["prettier-plugin-svelte"],
-	"pluginSearchDirs": ["."],
 	"overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }]
 }

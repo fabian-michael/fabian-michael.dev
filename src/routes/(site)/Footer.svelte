@@ -1,9 +1,14 @@
 <script lang="ts">
-	import { IconBrandGithub, IconBrandLinkedin, IconBrandX, IconBrandXing } from '@tabler/icons-svelte';
+	import SvelteLogo from '~icons/logos/svelte-icon';
+	import SimpleIconsGithub from '~icons/simple-icons/github';
+	import SimpleIconsLinkedin from '~icons/simple-icons/linkedin';
+	import SimpleIconsVercel from '~icons/simple-icons/vercel';
+	import SimpleIconsX from '~icons/simple-icons/x';
+	import SimpleIconsXing from '~icons/simple-icons/xing';
 </script>
 
-<footer class="rounded footer footer-center gap-y-6 pb-6 bg-base-200 text-base-content sticky top-[100vh]">
-	<div class="w-full py-4 bg-primary text-primary-content">
+<footer class="rounded footer footer-center gap-y-6 pb-6 bg-base-200 text-base-content sticky top-[100dvh]">
+	<div class="w-full py-4">
 		<ul class="flex items-center justify-center gap-8 text-4xl">
 			<li>
 				<a
@@ -12,7 +17,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<IconBrandX size="1em" />
+					<SimpleIconsX />
 				</a>
 			</li>
 			<li>
@@ -22,7 +27,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<IconBrandLinkedin size="1em" />
+					<SimpleIconsLinkedin />
 				</a>
 			</li>
 			<li>
@@ -32,7 +37,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<IconBrandXing size="1em" />
+					<SimpleIconsXing />
 				</a>
 			</li>
 			<li>
@@ -42,7 +47,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 				>
-					<IconBrandGithub size="1em" />
+					<SimpleIconsGithub />
 				</a>
 			</li>
 		</ul>
@@ -52,10 +57,6 @@
 		<a
 			class="link link-hover"
 			href="/about">About me</a
-		>
-		<a
-			class="link link-hover"
-			href="/blog">Blog</a
 		>
 		<a
 			class="link link-hover"
@@ -73,13 +74,9 @@
 			<a
 				href="https://kit.svelte.dev"
 				target="_blank"
-				class="font-normal font-[Overpass] inline-block"
+				class="inline-block font-normal font-overpass"
 			>
-				<img
-					src="/images/svelte-logo.svg"
-					alt="Svelte logo"
-					class="inline-block h-6"
-				/> SVELTE KIT
+				<SvelteLogo class="inline-block h-6 align-middle" />
 			</a>
 		</span>
 
@@ -88,12 +85,7 @@
 				href="https://vercel.com"
 				target="_blank"
 				title="Vercel"
-				class="inline-block"
-				><img
-					src="/images/vercel-logotype-light.svg"
-					alt="Vercel logo"
-					class="inline-block h-4 cursor-pointer select-none"
-				/></a
+				class="inline-block"><SimpleIconsVercel class="inline-block h-6 align-middle" /></a
 			>
 		</span>
 	</div>

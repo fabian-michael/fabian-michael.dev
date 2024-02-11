@@ -5,37 +5,10 @@
 	import { Logo } from '$components/logo';
 	import { ThemeSelect } from '$components/theme-select';
 	import { melt } from '@melt-ui/svelte';
-	import type { CollapsibleEvents } from '@melt-ui/svelte/dist/builders/collapsible/events';
-	import type { ExplicitBuilderReturn } from '@melt-ui/svelte/internal/helpers';
-	import type { MeltActionReturn } from '@melt-ui/svelte/internal/types';
-	import { IconLogout } from '@tabler/icons-svelte';
 	import Navigation from './Navigation.svelte';
 
 	export let isMenuOpen = false;
-	let menuTrigger: ExplicitBuilderReturn<
-		[
-			{
-				update: (
-					updater: import('svelte/store').Updater<boolean>,
-					sideEffect?: ((newValue: boolean) => void) | undefined,
-				) => void;
-				set: (this: void, value: boolean) => void;
-				subscribe(
-					this: void,
-					run: import('svelte/store').Subscriber<boolean>,
-					invalidate?: import('svelte/store').Invalidator<boolean> | undefined,
-				): import('svelte/store').Unsubscriber;
-			},
-			import('svelte/store').Writable<boolean>,
-		],
-		(node: HTMLElement) => MeltActionReturn<CollapsibleEvents['trigger']>,
-		([$open, $disabled]: [boolean, boolean]) => {
-			readonly 'data-state': 'open' | 'closed';
-			readonly 'data-disabled': true | undefined;
-			readonly disabled: true | undefined;
-		},
-		string
-	>;
+	let menuTrigger: any;
 </script>
 
 <header>
@@ -57,7 +30,7 @@
 							href="/auth/logout?redirectTo={$page.url.pathname}"
 							class="btn btn-square btn-ghost"
 						>
-							<IconLogout />
+							<!-- <IconLogout /> -->
 						</a>
 					{/if}
 
@@ -67,17 +40,34 @@
 						<button
 							class="btn btn-square btn-ghost !grid !place-content-center"
 							title="Toggle menu"
-							use:melt="{$menuTrigger}"
+							use:melt={$menuTrigger}
 						>
 							<span
 								class="block w-6 h-0.5 bg-base-content row-span-full col-span-full transition-all"
-								class:rotate-45="{isMenuOpen}"
-								class:-translate-y-1.5="{!isMenuOpen}"
+								class:rotate-45={isMenuOpen}
+								class:-translate-y-1.5={!isMenuOpen}
 							></span>
 							<span
 								class="block w-6 h-0.5 bg-base-content row-span-full col-span-full transition-all"
-								class:-rotate-45="{isMenuOpen}"
-								class:translate-y-1.5="{!isMenuOpen}"
+								class:-rotate-45={isMenuOpen}
+								class:translate-y-1.5={!isMenuOpen}
+							></span>
+						</button>
+					{:else}
+						<button
+							class="btn btn-square btn-ghost !grid !place-content-center"
+							title="Toggle menu"
+							disabled
+						>
+							<span
+								class="block w-6 h-0.5 bg-base-content row-span-full col-span-full transition-all"
+								class:rotate-45={isMenuOpen}
+								class:-translate-y-1.5={!isMenuOpen}
+							></span>
+							<span
+								class="block w-6 h-0.5 bg-base-content row-span-full col-span-full transition-all"
+								class:-rotate-45={isMenuOpen}
+								class:translate-y-1.5={!isMenuOpen}
 							></span>
 						</button>
 					{/if}
@@ -88,8 +78,8 @@
 
 	<div>
 		<Collapsible
-			bind:open="{isMenuOpen}"
-			bind:trigger="{menuTrigger}"
+			onOpenChange={({ next }) => (isMenuOpen = next)}
+			triggerRef={(trigger) => (menuTrigger = trigger)}
 		>
 			<div class="container flex items-center justify-end pb-6">
 				<Navigation />

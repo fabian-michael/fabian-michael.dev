@@ -1,20 +1,20 @@
 <script lang="ts">
 	import { cn } from '$lib/utils';
-	import type { Icon, IconProps } from '@tabler/icons-svelte';
-	import type { ComponentType } from 'svelte';
+	import type { ComponentType, SvelteComponent } from 'svelte';
+	import type { SVGAttributes, SvelteHTMLElements } from 'svelte/elements';
 
-	let className: string = '';
+	let className: string | null = '';
 	export { className as class };
-	export let icon: ComponentType<Icon>;
+	export let icon: ComponentType<SvelteComponent<SvelteHTMLElements['svg']>>;
 
-	interface $$Props extends IconProps {
-		icon: ComponentType<Icon>;
+	interface $$Props extends SVGAttributes<SVGElement> {
+		icon: ComponentType<SvelteComponent<SvelteHTMLElements['svg']>>;
 	}
 </script>
 
 <svelte:component
-	this="{icon}"
-	class="{cn('inline-block leading-none align-middle', className)}"
+	this={icon}
+	class={cn('inline-block leading-none', className)}
 	aria-hidden="true"
 	{...$$restProps}
 />

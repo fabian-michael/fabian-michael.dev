@@ -1,13 +1,13 @@
-import { browser } from "$app/environment";
-import { writable } from "svelte/store";
+import { browser } from '$app/environment';
+import { writable } from 'svelte/store';
 
 export type Theme = 'night' | 'light' | '';
 
 export const themeStore = (() => {
     const store = writable<Theme>(undefined, (set) => {
         if (!browser) {
-            return
-        };
+            return;
+        }
 
         const theme = localStorage.getItem('theme') as Theme;
         set(theme);
@@ -30,11 +30,11 @@ export const themeStore = (() => {
         subscribe: store.subscribe,
         set: (theme: Theme) => {
             if (!browser) {
-                return
-            };
+                return;
+            }
 
             window.setTheme(theme);
             store.set(theme);
-        }
-    }
+        },
+    };
 })();

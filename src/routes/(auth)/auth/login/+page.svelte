@@ -2,13 +2,12 @@
 	import { goto } from '$app/navigation';
 	import { Form, Input } from '$components/form/index.js';
 	import { sleep } from '$lib/utils.js';
-	import { IconKey } from '@tabler/icons-svelte';
 	import { superValidateSync } from 'sveltekit-superforms/client';
 	import { schema } from './schema.js';
 
 	export let data;
 
-	const form = superValidateSync(schema); 
+	const form = superValidateSync(schema);
 	let status: 'initial' | 'idle' | 'loading' = 'initial';
 	let error = '';
 </script>
@@ -17,7 +16,7 @@
 	<div class="max-w-sm card bg-neutral text-neutral-content">
 		<Form
 			{schema}
-			action="{async ({ form }) => {
+			action={async ({ form }) => {
 				if (!form.valid || status === 'loading') {
 					return;
 				}
@@ -28,10 +27,12 @@
 
 					await sleep(500);
 
-					const response = await data.supabase.auth.signInWithPassword({
-						email: form.data.email,
-						password: form.data.password,
-					});
+					// TODO
+					const response = {
+						error: {
+							message: 'Login is not implemented yet',
+						},
+					};
 
 					if (response.error) {
 						throw new Error(response.error.message);
@@ -50,12 +51,12 @@
 				} finally {
 					status = 'idle';
 				}
-			}}"
-			data="{form}"
+			}}
+			data={form}
 			class="card-body"
 			spa
 		>
-			<div class="justify-center card-title"><IconKey /> Login</div>
+			<!-- <div class="justify-center card-title"><IconKey /> Login</div> -->
 
 			<Input
 				type="email"
@@ -63,7 +64,7 @@
 				name="email"
 				label="Email"
 				placeholder="Email"
-				disabled="{status === 'loading'}"
+				disabled={status === 'loading'}
 			/>
 
 			<Input
@@ -72,14 +73,14 @@
 				name="password"
 				label="Password"
 				placeholder="Password"
-				disabled="{status === 'loading'}"
+				disabled={status === 'loading'}
 			/>
 
 			<div class="mt-6 card-actions">
 				<button
 					type="submit"
 					class="w-full btn btn-primary"
-					disabled="{status === 'loading'}"
+					disabled={status === 'loading'}
 				>
 					{#if status === 'loading'}
 						<span class="loading loading-spinner"></span>

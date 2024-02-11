@@ -1,5 +1,5 @@
 <script>
-	import { IconLockSquareRoundedFilled } from '@tabler/icons-svelte';
+	import OouiLock from '~icons/ooui/lock';
 	import NavigationItem from './NavigationItem.svelte';
 </script>
 
@@ -7,13 +7,12 @@
 	<ul class="px-1 menu sm:menu-horizontal">
 		<li><NavigationItem href="/">Home</NavigationItem></li>
 		<li><NavigationItem href="/about">About me</NavigationItem></li>
-		<li><NavigationItem href="/blog">Blog</NavigationItem></li>
 		<li>
 			<NavigationItem
 				href="/resume"
-				preload="{false}"
+				preload={false}
 			>
-				Resume (tbd) <IconLockSquareRoundedFilled size="1.5em" />
+				<OouiLock size="1.5em" /> Resume (tbd)
 			</NavigationItem>
 		</li>
 	</ul>

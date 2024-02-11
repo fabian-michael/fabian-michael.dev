@@ -1,12 +1,18 @@
 <script lang="ts">
 	import { createCollapsible, melt } from '@melt-ui/svelte';
-	import { afterUpdate, onMount } from 'svelte';
+	import type { ChangeFn } from '@melt-ui/svelte/internal/helpers';
 	import { writable } from 'svelte/store';
 	import { fade, fly, slide } from 'svelte/transition';
 
-	let _open = false;
-	export { _open as open };
+	type Trigger = typeof trigger;
 
+	type CollapsibleProps = {
+		open?: boolean;
+		onOpenChange: ChangeFn<boolean>;
+		triggerRef?: (trigger: Trigger) => void;
+	};
+
+	const { open: _open = false, onOpenChange, triggerRef } = $props<CollapsibleProps>();
 	const openStore = writable(_open);
 
 	const {
@@ -14,35 +20,23 @@
 		states: { open },
 	} = createCollapsible({
 		open: openStore,
+		onOpenChange,
 	});
+	triggerRef?.(trigger);
 
-	type Trigger = typeof trigger;
-
-	export { trigger };
-
-	afterUpdate(() => {
-		if (_open !== $openStore) {
-			$openStore = _open;
-		}
-	});
-
-	onMount(() => {
-		return openStore.subscribe((value) => {
-			if (value !== _open) {
-				_open = value;
-			}
-		});
+	$effect(() => {
+		openStore.set(_open);
 	});
 </script>
 
-<div use:melt="{$root}">
+<div use:melt={$root}>
 	{#if $open}
 		<div
-			use:melt="{$content}"
-			transition:slide="{{ duration: 300 }}"
+			use:melt={$content}
+			transition:slide={{ duration: 300 }}
 		>
-			<div transition:fade="{{ duration: 200 }}">
-				<div transition:fly="{{ y: -32, duration: 300 }}">
+			<div transition:fade={{ duration: 200 }}>
+				<div transition:fly={{ y: -32, duration: 300 }}>
 					<slot />
 				</div>
 			</div>

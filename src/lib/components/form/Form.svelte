@@ -39,5 +39,5 @@
 	method="post"
 	use:enhance
 >
-	<slot errors="{$errors}" />
+	<slot errors={$errors} />
 </form>

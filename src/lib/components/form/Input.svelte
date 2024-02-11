@@ -14,7 +14,7 @@
 
 <div class="form-control">
 	<label
-		for="{$$props.id}"
+		for={$$props.id}
 		class="label"
 	>
 		<span class="label-text">
@@ -22,15 +22,15 @@
 		</span>
 	</label>
 	<input
-		type="{$$props.type}"
-		id="{$$props.id}"
-		name="{$$props.name}"
-		placeholder="{$$props.placeholder}"
+		type={$$props.type}
+		id={$$props.id}
+		name={$$props.name}
+		placeholder={$$props.placeholder}
 		class="input input-bordered"
-		class:input-error="{$errors[$$props.name]}"
-		disabled="{$$props.disabled}"
-		value="{$form[$$props.name]}"
-		on:input="{(event) => ($form[$$props.name] = event.target?.value)}"
+		class:input-error={$errors[$$props.name]}
+		disabled={$$props.disabled}
+		value={$form[$$props.name]}
+		on:input={(event) => ($form[$$props.name] = event.target?.value)}
 		{...$constraints[$$props.name]}
 	/>
 	{#if error}

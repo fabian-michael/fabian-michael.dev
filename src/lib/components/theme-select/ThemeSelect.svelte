@@ -3,51 +3,63 @@
 	import { Listbox, type IListboxOption } from '$components/listbox';
 	import { themeStore, type Theme } from '$lib/client/stores/theme-store';
 	import { melt } from '@melt-ui/svelte';
-	import { IconMoon, IconSun, IconSunMoon } from '@tabler/icons-svelte';
+	import PhGearFine from '~icons/ph/gear-fine';
+	import TablerMoonStars from '~icons/tabler/moon-stars';
+	import TablerSun from '~icons/tabler/sun';
+	import TablerSunMoon from '~icons/tabler/sun-moon';
 
 	let options: IListboxOption<Theme>[] = [
 		{
 			value: 'night',
 			label: 'Dark',
-			icon: IconMoon,
+			icon: TablerMoonStars,
 		},
 		{
 			value: 'light',
 			label: 'Light',
-			icon: IconSun,
+			icon: TablerSun,
 		},
 		{
 			value: '',
 			label: 'System',
-			icon: IconSunMoon,
+			icon: TablerSunMoon,
 		},
 	];
 
-	let loading = true;
-	$: selectedTheme = $themeStore;
-	$: icon = options.find((option) => option.value === selectedTheme)?.icon;
-	$: loading = typeof selectedTheme === 'undefined';
+	let listboxTrigger: any;
+	let loading = $state(true);
+	const selectedTheme = $derived($themeStore);
+	const icon = $derived(options.find((option) => option.value === selectedTheme)?.icon);
+
+	$effect(() => {
+		loading = selectedTheme === undefined || listboxTrigger === undefined;
+	});
 </script>
 
 <Listbox
 	{options}
-	value="{$themeStore}"
+	value={selectedTheme}
 	defaultValue="night"
-	on:change="{(event) => themeStore.set(event.detail)}"
-	let:trigger
-	let:label
+	onchange={({ next }) => {
+		themeStore.set(next?.value ?? 'night');
+		return next;
+	}}
+	triggerRef={(trigger) => (listboxTrigger = trigger)}
 >
-	<button
-		class="btn btn-ghost btn-square"
-		use:melt="{trigger}"
-		disabled="{loading}"
-	>
-		{#if loading}
-			<span class="loading loading-spinner text-white"></span>
-		{:else if icon}
-			<Icon {icon} />
-		{:else}
-			<IconSunMoon />
-		{/if}
-	</button>
+	{#if loading}
+		<span class="btn btn-ghost btn-square">
+			<span class="text-white loading loading-spinner"></span>
+		</span>
+	{:else}
+		<button
+			class="text-lg btn btn-ghost btn-square"
+			use:melt={$listboxTrigger}
+		>
+			{#if icon}
+				<Icon {icon} />
+			{:else}
+				<PhGearFine />
+			{/if}
+		</button>
+	{/if}
 </Listbox>

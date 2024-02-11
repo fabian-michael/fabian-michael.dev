@@ -2,7 +2,7 @@ export function accordion(node: HTMLElement, isOpen: boolean) {
     node.style.height = 'auto';
     let initialHeight = node.offsetHeight;
     node.style.height = isOpen ? 'auto' : '0';
-    node.style.overflow = "hidden";
+    node.style.overflow = 'hidden';
 
     return {
         update(isOpen: boolean) {
@@ -15,7 +15,7 @@ export function accordion(node: HTMLElement, isOpen: boolean) {
                     {
                         height: '0',
                         overflow: 'hidden',
-                    }
+                    },
                 ],
                 {
                     duration: 200,
@@ -31,6 +31,6 @@ export function accordion(node: HTMLElement, isOpen: boolean) {
             } else {
                 animation.reverse();
             }
-        }
+        },
     };
 }

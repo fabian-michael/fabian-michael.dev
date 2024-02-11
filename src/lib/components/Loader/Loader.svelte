@@ -1,11 +1,9 @@
 <script lang="ts">
-	import { IconLoader2 } from '@tabler/icons-svelte';
-
 	export let size = 24;
 </script>
 
 <span class="loader text-primary">
-	<IconLoader2 {size} />
+	<!-- <IconLoader2 {size} /> -->
 </span>
 
 <style lang="postcss">

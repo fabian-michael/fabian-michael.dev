@@ -11,8 +11,8 @@
 </script>
 
 <select
-	class="{cn('select select-sm accent-accent', className)}"
-	bind:value="{value}"
+	class={cn('select select-sm accent-accent', className)}
+	bind:value
 >
 	<option
 		value=""
@@ -25,7 +25,7 @@
 	{#each options as item}
 		<option
 			class="font-sans option accent-accent"
-			value="{item.value}"
+			value={item.value}
 		>
 			{item.label}
 		</option>

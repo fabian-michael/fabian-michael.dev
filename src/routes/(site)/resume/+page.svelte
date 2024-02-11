@@ -1,16 +1,6 @@
 <script>
 	import { Avatar } from '$components/avatar';
 	import { Timeline } from '$components/timeline';
-	import {
-		IconAddressBook,
-		IconBriefcase,
-		IconMail,
-		IconMapPin,
-		IconPhone,
-		IconSchool,
-		IconUserScan,
-		IconWorld,
-	} from '@tabler/icons-svelte';
 </script>
 
 <div class="container">
@@ -26,19 +16,19 @@
 			<section class="max-w-xs">
 				<div class="prose">
 					<h2 class="relative pl-12">
-						<IconAddressBook
+						<!-- <IconAddressBook
 							class="absolute left-0 inline-block align-middle"
 							size="1.3333em"
-						/>
+						/> -->
 						<span class="align-middle">Contact</span>
 					</h2>
 
 					<p class="relative pl-8">
-						<IconMapPin class="absolute left-0 inline-block" />
+						<!-- <IconMapPin class="absolute left-0 inline-block" /> -->
 						Adlerstr. 75, 14612 Falkensee, Brandenburg, Germany
 					</p>
 					<p class="relative pl-8">
-						<IconPhone class="absolute left-0 inline-block" />
+						<!-- <IconPhone class="absolute left-0 inline-block" /> -->
 						<a
 							href="tel:+4917622214373"
 							title=""
@@ -47,7 +37,7 @@
 						</a>
 					</p>
 					<p class="relative pl-8">
-						<IconMail class="absolute left-0 inline-block" />
+						<!-- <IconMail class="absolute left-0 inline-block" /> -->
 						<a
 							href="mailto:hello@fabian-michael.dev"
 							title=""
@@ -56,7 +46,7 @@
 						</a>
 					</p>
 					<p class="relative pl-8">
-						<IconWorld class="absolute left-0 inline-block" />
+						<!-- <IconWorld class="absolute left-0 inline-block" /> -->
 						<a
 							href="https://fabian-michael.dev"
 							title=""
@@ -81,10 +71,10 @@
 					<hr />
 
 					<h2 class="relative pl-12">
-						<IconUserScan
+						<!-- <IconUserScan
 							class="absolute left-0 inline-block align-middle"
 							size="1.3333em"
-						/>
+						/> -->
 						<span class="align-middle">Profile</span>
 					</h2>
 					<ul>
@@ -105,10 +95,10 @@
 			<section>
 				<div class="prose">
 					<h2 class="relative pl-12 mb-[1em]">
-						<IconBriefcase
+						<!-- <IconBriefcase
 							class="absolute left-0 inline-block align-middle"
 							size="1.3333em"
-						/>
+						/> -->
 						<span class="align-middle">Experience</span>
 					</h2>
 				</div>
@@ -135,10 +125,10 @@
 			<section>
 				<div class="prose">
 					<h2 class="relative pl-12 mb-[1em]">
-						<IconSchool
+						<!-- <IconSchool
 							class="absolute left-0 inline-block align-middle"
 							size="1.3333em"
-						/>
+						/> -->
 						<span class="align-middle">Education</span>
 					</h2>
 				</div>

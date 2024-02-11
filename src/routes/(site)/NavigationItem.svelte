@@ -10,8 +10,8 @@
 
 <a
 	{href}
-	class="{cn({ active })}"
-	data-sveltekit-preload-data="{preload ? 'hover' : 'off'}"
+	class={cn({ active })}
+	data-sveltekit-preload-data={preload ? 'hover' : 'off'}
 >
 	<slot />
 </a>

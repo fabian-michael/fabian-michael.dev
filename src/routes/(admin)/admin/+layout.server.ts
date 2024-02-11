@@ -1,17 +1,18 @@
-import { PUBLIC_ADMIN_EMAIL } from '$env/static/public';
 import { error, redirect } from '@sveltejs/kit';
 
 export const prerender = false;
 
-export const load = async ({ locals: { getSession }, url, }) => {
-    const session = await getSession();
+export const load = async ({ locals, url, }) => {
+    const session = null; // TODO
     const redirectTo = url.pathname;
 
     if (!session) {
-        throw redirect(303, '/auth/login?redirectTo=' + redirectTo);
+        redirect(303, '/auth/login?redirectTo=' + redirectTo);
     }
 
-    if (session.user.email !== PUBLIC_ADMIN_EMAIL) {
-        throw error(403, 'Forbidden');
+    const isAdmin = false;
+
+    if (!isAdmin) {
+        error(403, 'Forbidden');
     }
 };

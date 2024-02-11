@@ -3,30 +3,30 @@
 	import { tv, type VariantProps } from 'tailwind-variants';
 
 	const avatar = tv({
-		base: 'avatar bg-base-100 text-primary font-semibold rounded-full ring-2 ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden',
+		base: 'avatar bg-base-100 text-primary font-semibold overflow-hidden',
 		variants: {
 			size: {
-				small: 'w-4 h-4',
-				medium: 'w-12 h-12',
-				large: 'w-24 h-24',
-				fill: 'w-full h-full',
+				small: 'size-4',
+				medium: 'size-12',
+				large: 'size-24',
+				fill: 'size-full',
 			},
 		},
 	});
 
-	interface $$Props extends VariantProps<typeof avatar> {
+	type AvatarProps = VariantProps<typeof avatar> & {
 		src?: string;
 		name: string;
-	}
+	};
 
-	export let size: $$Props['size'] = 'medium';
-	export let src: string = '';
-	export let name: string;
+	const { name, src = '', size = 'medium' } = $props<AvatarProps>();
 
-	$: initials = name
-		.split(' ')
-		.map((word) => word[0].toUpperCase())
-		.join('');
+	const initials = $derived(
+		name
+			.split(' ')
+			.map((word) => word[0].toUpperCase())
+			.join(''),
+	);
 
 	const {
 		elements: { fallback, image },
@@ -37,17 +37,17 @@
 </script>
 
 <div
-	class="{avatar({ size })}"
-	class:placeholder="{$loadingStatus !== 'loaded'}"
+	class={avatar({ size })}
+	class:placeholder={$loadingStatus !== 'loaded'}
 >
 	<div class="w-full h-full">
 		<img
-			use:melt="{$image}"
-			alt="{name} avatar"
+			use:melt={$image}
+			alt={name}
 		/>
 		<span
 			class="block"
-			use:melt="{$fallback}">{initials}</span
+			use:melt={$fallback}>{initials}</span
 		>
 	</div>
 </div>
