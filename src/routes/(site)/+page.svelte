@@ -5,6 +5,10 @@
 	export let data;
 </script>
 
+<svelte:head>
+	<title>{data.general.title} | Fabian Michael</title>
+</svelte:head>
+
 <section class="my-12">
 	<div class="container flex flex-wrap items-center justify-between gap-12">
 		<div class="flex-1 prose">

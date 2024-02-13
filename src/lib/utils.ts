@@ -1,3 +1,4 @@
+import { PUBLIC_PAYLOAD_BASE } from '$env/static/public';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -30,4 +31,28 @@ export function buildUrl(parts: string[], trailingSlash?: boolean): string {
         .join('/');
 
     return url + (trailingSlash ? '/' : '');
+}
+
+export async function makePayloadRequest<T>({
+    slug,
+    fetch,
+    init,
+}: {
+    slug: string;
+    fetch: (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
+    init?: RequestInit;
+}): Promise<T> {
+    const url = buildUrl([
+        PUBLIC_PAYLOAD_BASE,
+        slug,
+    ]);
+
+    const payloadResponse = await fetch(url, init);
+
+    if (!payloadResponse.ok) {
+        throw payloadResponse;
+    }
+
+    return payloadResponse.json() as Promise<T>;
+
 }

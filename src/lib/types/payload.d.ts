@@ -25,5 +25,10 @@ export namespace Payload {
                 image: Image;
             }
         }
+
+        type LegalNotice = {
+            title: string;
+            text_html: string;
+        }
     }
 }
