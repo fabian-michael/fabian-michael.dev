@@ -2,12 +2,13 @@
 	import { goto } from '$app/navigation';
 	import { Form, Input } from '$components/form/index.js';
 	import { sleep } from '$lib/utils.js';
-	import { superValidateSync } from 'sveltekit-superforms/client';
+	import { zod } from 'sveltekit-superforms/adapters';
+	import { defaults } from 'sveltekit-superforms/client';
 	import { schema } from './schema.js';
 
 	export let data;
 
-	const form = superValidateSync(schema);
+	const form = defaults(zod(schema));
 	let status: 'initial' | 'idle' | 'loading' = 'initial';
 	let error = '';
 </script>
@@ -15,7 +16,8 @@
 <div class="fixed inset-0 grid items-end justify-center px-4 py-8 md:items-center">
 	<div class="max-w-sm card bg-neutral text-neutral-content">
 		<Form
-			{schema}
+			data={form}
+			validationAdapter={zod(schema)}
 			action={async ({ form }) => {
 				if (!form.valid || status === 'loading') {
 					return;
@@ -52,7 +54,6 @@
 					status = 'idle';
 				}
 			}}
-			data={form}
 			class="card-body"
 			spa
 		>

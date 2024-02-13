@@ -3,35 +3,38 @@
 	import type { HTMLInputAttributes } from 'svelte/elements';
 	import type { Form } from '.';
 
-	interface $$Props extends HTMLInputAttributes {
+	type InputProps = HTMLInputAttributes & {
 		label: string;
-	}
+		name: string;
+	};
 
-	const { form, errors, constraints } = getContext('form') as Form<any, any>;
+	const { ...props } = $props<InputProps>();
 
-	$: error = $errors[$$props.name];
+	const { form, errors, constraints } = getContext('form') as Form<any>;
+
+	const error = $derived($errors[props.name]);
 </script>
 
 <div class="form-control">
 	<label
-		for={$$props.id}
+		for={props.id}
 		class="label"
 	>
 		<span class="label-text">
-			{$$props.label}
+			{props.label}
 		</span>
 	</label>
 	<input
-		type={$$props.type}
-		id={$$props.id}
-		name={$$props.name}
-		placeholder={$$props.placeholder}
+		type={props.type}
+		id={props.id}
+		name={props.name}
+		placeholder={props.placeholder}
 		class="input input-bordered"
-		class:input-error={$errors[$$props.name]}
-		disabled={$$props.disabled}
-		value={$form[$$props.name]}
-		on:input={(event) => ($form[$$props.name] = event.target?.value)}
-		{...$constraints[$$props.name]}
+		class:input-error={$errors[props.name]}
+		disabled={props.disabled}
+		value={$form[props.name]}
+		on:input={(event: InputEvent) => ($form[props.name] = (event.target as HTMLInputElement)?.value)}
+		{...$constraints[props.name]}
 	/>
 	{#if error}
 		<span class="label">
