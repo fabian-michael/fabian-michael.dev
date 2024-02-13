@@ -6,23 +6,27 @@
 </script>
 
 <svelte:head>
-	<title>{data.general.title} | Fabian Michael</title>
+	<title>{data?.general?.title} | Fabian Michael</title>
 </svelte:head>
 
 <section class="my-12">
 	<div class="container flex flex-wrap items-center justify-between gap-12">
-		<div class="flex-1 prose">
-			{@html data.hero.text_html}
-		</div>
-		<div class="w-full px-8 sm:px-0 sm:w-2/5 lg:w-1/4 shrink-0 avatar-wrapper">
-			<div class="w-full overflow-hidden shadow-2xl aspect-square rounded-3xl">
-				<Avatar
-					name="Fabian Michael"
-					src={buildUrl([PUBLIC_PAYLOAD_BASE, data.hero.image.sizes.square.url])}
-					size="fill"
-				/>
+		{#if data?.hero?.text_html}
+			<div class="flex-1 prose">
+				{@html data.hero.text_html}
 			</div>
-		</div>
+		{/if}
+		{#if data?.hero?.image?.sizes?.square?.url}
+			<div class="w-full px-8 sm:px-0 sm:w-2/5 lg:w-1/4 shrink-0 avatar-wrapper">
+				<div class="w-full overflow-hidden shadow-2xl aspect-square rounded-3xl">
+					<Avatar
+						name="Fabian Michael"
+						src={buildUrl([PUBLIC_PAYLOAD_BASE, data.hero.image.sizes.square.url])}
+						size="fill"
+					/>
+				</div>
+			</div>
+		{/if}
 	</div>
 </section>
 
