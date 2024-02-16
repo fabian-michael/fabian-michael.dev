@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { getYear } from 'date-fns';
 	import SvelteLogo from '~icons/logos/svelte-icon';
 	import SimpleIconsGithub from '~icons/simple-icons/github';
 	import SimpleIconsLinkedin from '~icons/simple-icons/linkedin';
@@ -91,6 +92,6 @@
 	</div>
 
 	<div>
-		<p>Copyright © 2023 - All right reserved by Fabian Michael</p>
+		<p>Copyright © {getYear(new Date())} - All right reserved by Fabian Michael</p>
 	</div>
 </footer>

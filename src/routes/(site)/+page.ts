@@ -1,17 +1,24 @@
 import type { Payload } from '$lib/types/payload';
 import { makePayloadRequest } from '$lib/utils';
 import { error, type NumericRange } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import type { PageLoad } from './$types';
 
 const PAYLOAD_SLUG = '/api/globals/home';
+const PAYLOAD_BLOGPOSTINGS_SLUG = '/api/blog-postings';
 
 
 export const load = (async ({ fetch }) => {
     try {
-        return makePayloadRequest<Payload.Globals.Home>({
-            slug: PAYLOAD_SLUG,
-            fetch,
-        });
+        return {
+            blogPostings: makePayloadRequest<Payload.CollectionResponse<Payload.Collections.BlogPostings>>({
+                fetch,
+                slug: PAYLOAD_BLOGPOSTINGS_SLUG,
+            }),
+            ...(await await makePayloadRequest<Payload.Globals.Home>({
+                slug: PAYLOAD_SLUG,
+                fetch,
+            }))
+        };
 
     } catch (err) {
         if (err instanceof Response) {
@@ -22,4 +29,4 @@ export const load = (async ({ fetch }) => {
             error(503);
         }
     }
-}) satisfies PageServerLoad;
+}) satisfies PageLoad;

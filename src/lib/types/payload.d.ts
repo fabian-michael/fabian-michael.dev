@@ -15,6 +15,36 @@ export namespace Payload {
         },
     }
 
+    type Collection = {
+        id: string;
+        _status: 'published' | 'draft';
+        createdAt: string;
+        updatedAt: string;
+    }
+
+    type CollectionResponse<T extends Collection> = {
+        docs: T[];
+        totalDocs: number;
+        limit: number;
+        totalPages: number;
+        page: number;
+        pagingCounter: number;
+        hasPrevPage: boolean;
+        hasNextPage: boolean;
+        prevPage: number | null;
+        nextPage: number | null;
+    }
+
+    namespace Collections {
+        type BlogPostings = Collection & {
+            image: Image;
+            title: string;
+            abstract: string;
+            slug: string;
+            text_html: string;
+        }
+    }
+
     namespace Globals {
         type Home = {
             general: {

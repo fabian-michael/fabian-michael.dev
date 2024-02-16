@@ -1,4 +1,6 @@
 <script>
+	import { Prose } from '$components/prose';
+
 	export let data;
 </script>
 
@@ -9,15 +11,15 @@
 <section class="my-12">
 	<header class="my-12">
 		<div class="container">
-			<div class="prose">
+			<Prose centered>
 				<h1>{data.title}</h1>
-			</div>
+			</Prose>
 		</div>
 	</header>
 
 	<div class="container">
-		<div class="prose">
+		<Prose centered>
 			{@html data.text_html}
-		</div>
+		</Prose>
 	</div>
 </section>

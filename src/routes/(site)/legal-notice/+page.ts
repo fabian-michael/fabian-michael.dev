@@ -1,7 +1,7 @@
 import type { Payload } from '$lib/types/payload';
 import { makePayloadRequest } from '$lib/utils';
 import { error, type NumericRange } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import type { PageLoad } from './$types';
 
 const PAYLOAD_SLUG = '/api/globals/legal-notice';
 
@@ -21,4 +21,4 @@ export const load = (async ({ fetch }) => {
             error(503);
         }
     }
-}) satisfies PageServerLoad;
+}) satisfies PageLoad;

@@ -1,5 +1,6 @@
 import { PUBLIC_PAYLOAD_BASE } from '$env/static/public';
 import { clsx, type ClassValue } from 'clsx';
+import qs from 'qs';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -36,16 +37,34 @@ export function buildUrl(parts: string[], trailingSlash?: boolean): string {
 export async function makePayloadRequest<T>({
     slug,
     fetch,
+    where,
     init,
 }: {
     slug: string;
     fetch: (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
     init?: RequestInit;
+    where?: Record<string, any>;
 }): Promise<T> {
-    const url = buildUrl([
+    const urlParts = [
         PUBLIC_PAYLOAD_BASE,
         slug,
-    ]);
+    ];
+
+    if (where) {
+        const queryString = qs.stringify(
+            {
+                where,
+            },
+            {
+                addQueryPrefix: true
+            },
+        );
+
+        urlParts.push(queryString);
+    }
+
+    const url = buildUrl(urlParts);
+
 
     const payloadResponse = await fetch(url, init);
 
