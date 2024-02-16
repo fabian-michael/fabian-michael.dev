@@ -36,7 +36,7 @@
 <section class="my-12">
 	<div class="container">
 		<Prose class="prose-a:no-underline">
-			<h2>Recent blog postings (TBD)</h2>
+			<h2>Recent blog postings</h2>
 			<p>
 				Explose my recent blog postings, where I unravel the latest trends, hacks, and breakthroughs in web
 				development. Dive right in and level up your coding game!
