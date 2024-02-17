@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { Prose } from '$components/prose';
-	import { PUBLIC_PAYLOAD_BASE } from '$env/static/public';
-	import { buildUrl } from '$lib/utils';
 	import { formatDistanceToNow, parseISO } from 'date-fns';
 
 	const { data } = $props();
@@ -31,7 +29,7 @@
 					<img
 						id="header-image"
 						class="object-cover aspect-video"
-						src={buildUrl([PUBLIC_PAYLOAD_BASE, data.image.url])}
+						src={data.image.url}
 						alt={data.title}
 					/>
 				{/if}
@@ -40,11 +38,11 @@
 	</header>
 
 	<div class="container">
-		<Prose centered>
+		<Prose
+			class="prose-img:aspect-video prose-img:object-cover"
+			centered
+		>
 			{@html data.text_html}
 		</Prose>
 	</div>
 </section>
-
-<style>
-</style>

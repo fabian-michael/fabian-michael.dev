@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { Avatar } from '$components/avatar';
 	import { Prose } from '$components/prose/index.js';
-	import { PUBLIC_PAYLOAD_BASE } from '$env/static/public';
-	import { buildUrl } from '$lib/utils';
 	import { formatDistanceToNow, parseISO } from 'date-fns';
 
 	const { data } = $props();
@@ -24,7 +22,7 @@
 				<div class="w-full overflow-hidden shadow-2xl aspect-square rounded-3xl">
 					<Avatar
 						name="Fabian Michael"
-						src={buildUrl([PUBLIC_PAYLOAD_BASE, data.hero.image.sizes.square.url])}
+						src={data.hero.image.sizes.square.url}
 						size="fill"
 					/>
 				</div>
@@ -63,7 +61,7 @@
 							>
 								<img
 									class="block object-cover my-0 size-full"
-									src={buildUrl([PUBLIC_PAYLOAD_BASE, blogPosting.image.url])}
+									src={blogPosting.image.url}
 									alt={blogPosting.title}
 								/>
 							</a>
