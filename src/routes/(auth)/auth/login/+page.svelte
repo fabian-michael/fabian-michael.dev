@@ -13,7 +13,6 @@
 
 	const form = defaults(zod(schema));
 	let status: 'initial' | 'idle' | 'loading' = 'initial';
-	// let error = '';
 
 	type ToastData = {
 		title: string;
@@ -35,8 +34,6 @@
 			data={form}
 			validationAdapter={zod(schema)}
 			action={async ({ form }) => {
-				// error = '';
-
 				if (!form.valid || status === 'loading') {
 					return;
 				}
@@ -63,7 +60,6 @@
 					console.error(err);
 
 					if (err instanceof Error) {
-						// error = err.message;
 						addToast({
 							data: {
 								title: 'Login failed',
@@ -72,7 +68,6 @@
 							},
 						});
 					} else {
-						// error = 'Something went wrong';
 						addToast({
 							data: {
 								title: 'Login failed',
@@ -157,13 +152,14 @@
 					fill="none"
 					viewBox="0 0 24 24"
 					stroke="currentColor"
-					><path
+				>
+					<path
 						stroke-linecap="round"
 						stroke-linejoin="round"
 						stroke-width="2"
 						d="M6 18L18 6M6 6l12 12"
-					/></svg
-				>
+					/>
+				</svg>
 			</button>
 		</div>
 	{/each}
