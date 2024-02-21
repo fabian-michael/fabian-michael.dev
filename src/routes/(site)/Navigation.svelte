@@ -12,7 +12,7 @@
 				href="/resume"
 				preload={false}
 			>
-				<OouiLock size="1.5em" /> Resume (tbd)
+				<OouiLock /> Resume (tbd)
 			</NavigationItem>
 		</li>
 	</ul>

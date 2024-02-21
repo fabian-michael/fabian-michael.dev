@@ -1,7 +1,14 @@
 <script lang="ts">
-	const { class: className = '', centered = false } = $props<{
+	import type { Snippet } from 'svelte';
+
+	const {
+		class: className = '',
+		centered = false,
+		children,
+	} = $props<{
 		class?: string;
 		centered?: boolean;
+		children: Snippet<void>;
 	}>();
 </script>
 
@@ -9,5 +16,5 @@
 	class="prose prose-img:rounded-xl {className}"
 	class:mx-auto={centered}
 >
-	<slot />
+	{@render children()}
 </div>

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { createCollapsible, melt } from '@melt-ui/svelte';
 	import type { ChangeFn } from '@melt-ui/svelte/internal/helpers';
+	import type { Snippet } from 'svelte';
 	import { writable } from 'svelte/store';
 	import { fade, fly, slide } from 'svelte/transition';
 
@@ -10,9 +11,10 @@
 		open?: boolean;
 		onOpenChange: ChangeFn<boolean>;
 		triggerRef?: (trigger: Trigger) => void;
+		children: Snippet<void>;
 	};
 
-	const { open: _open = false, onOpenChange, triggerRef } = $props<CollapsibleProps>();
+	const { open: _open = false, onOpenChange, triggerRef, children } = $props<CollapsibleProps>();
 	const openStore = writable(_open);
 
 	const {
@@ -37,7 +39,7 @@
 		>
 			<div transition:fade={{ duration: 200 }}>
 				<div transition:fly={{ y: -32, duration: 300 }}>
-					<slot />
+					{@render children()}
 				</div>
 			</div>
 		</div>
