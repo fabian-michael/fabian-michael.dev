@@ -13,8 +13,8 @@
 	/>
 </svelte:head>
 
-<section class="my-12">
-	<header class="my-12">
+<section>
+	<header class="mb-12">
 		<div class="container">
 			<Prose centered>
 				<h1>{data.title}</h1>

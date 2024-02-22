@@ -1,12 +1,24 @@
-<script>
+<script lang="ts">
+	import { clickOutside } from '$lib/client/actions/clickOutside';
 	import OouiLock from '~icons/ooui/lock';
 	import NavigationItem from './NavigationItem.svelte';
+
+	const { onClickOutside } = $props<{
+		onClickOutside?: () => void;
+	}>();
 </script>
 
-<nav aria-label="Main navigation">
-	<ul class="px-1 menu sm:menu-horizontal">
-		<li><NavigationItem href="/">Home</NavigationItem></li>
-		<li><NavigationItem href="/about">About me</NavigationItem></li>
+<nav
+	aria-label="Main navigation"
+	use:clickOutside={onClickOutside}
+>
+	<ul class="shadow-lg menu sm:menu-horizontal bg-base-100 sm:bg-transparent rounded-box sm:shadow-none">
+		<li>
+			<NavigationItem href="/">Home</NavigationItem>
+		</li>
+		<li>
+			<NavigationItem href="/about">About me</NavigationItem>
+		</li>
 		<li>
 			<NavigationItem
 				href="/resume"

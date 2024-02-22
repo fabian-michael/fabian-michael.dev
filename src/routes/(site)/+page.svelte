@@ -10,7 +10,7 @@
 	<title>{data?.general?.title} | Fabian Michael</title>
 </svelte:head>
 
-<section class="my-12">
+<section>
 	<div class="container flex flex-wrap items-center justify-between gap-12">
 		{#if data?.hero?.text_html}
 			<div class="flex-1 prose">
@@ -31,7 +31,7 @@
 	</div>
 </section>
 
-<section class="my-12">
+<section>
 	<div class="container">
 		<Prose class="prose-a:no-underline">
 			<h2>Recent blog postings</h2>
@@ -96,15 +96,15 @@
 <style lang="postcss">
 	.avatar-wrapper {
 		transform-style: preserve-3d;
-		--rotateX: 0deg;
+		--translateX: 0;
 		--rotateY: 0deg;
 		--rotateZ: 0deg;
-		transform: perspective(500px) rotateX(var(--rotateX)) rotateY(var(--rotateY)) rotateZ(var(--rotateZ));
+		transform: perspective(500px) rotateY(var(--rotateY)) rotateZ(var(--rotateZ)) translateX(var(--translateX));
 	}
 
 	@screen sm {
 		.avatar-wrapper {
-			--rotateX: -5deg;
+			--translateX: -20px;
 			--rotateY: -15deg;
 			--rotateZ: -2deg;
 		}

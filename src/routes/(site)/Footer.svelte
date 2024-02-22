@@ -8,7 +8,7 @@
 	import SimpleIconsXing from '~icons/simple-icons/xing';
 </script>
 
-<footer class="rounded footer footer-center gap-y-6 pb-6 bg-base-200 text-base-content sticky top-[100dvh]">
+<footer class="rounded footer footer-center gap-y-6 pb-24 sm:pb-6 bg-base-200 text-base-content sticky top-[100dvh]">
 	<div class="w-full py-4">
 		<ul class="flex items-center justify-center gap-8 text-4xl">
 			<li>

@@ -10,7 +10,7 @@
 
 <a
 	{href}
-	class={cn({ active })}
+	class={cn('whitespace-nowrap', { active })}
 	data-sveltekit-preload-data={preload ? 'hover' : 'off'}
 >
 	<slot />
