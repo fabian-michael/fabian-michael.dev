@@ -19,11 +19,13 @@
 			<Prose centered>
 				<h1>{data.title}</h1>
 				<p>
-					<time datetime={data.createdAt}>
-						<small>
+					<small>
+						<span>
 							posted {formatDistanceToNow(parseISO(data.createdAt))} ago
-						</small>
-					</time>
+						</span>
+						–
+						<span>updated {formatDistanceToNow(parseISO(data.updatedAt))} ago</span>
+					</small>
 				</p>
 				{#if data.image}
 					<img
