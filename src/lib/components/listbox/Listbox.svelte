@@ -80,7 +80,7 @@
 				<li>
 					<button
 						use:melt={$option(_option)}
-						class={cn('flex items-center gap-1 leading-7 select-none', {
+						class={cn('flex items-center gap-1', {
 							'!bg-primary !text-primary-content': $isHighlighted(_option.value),
 						})}
 					>
