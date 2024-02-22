@@ -37,6 +37,7 @@
 </script>
 
 <Listbox
+	title="Theme"
 	{options}
 	value={selectedTheme}
 	defaultValue="night"

@@ -2,7 +2,7 @@
 	lang="ts"
 	generics="T extends string | number"
 >
-	import Logo from '$components/logo/Logo_.svelte';
+	import { fade } from 'svelte/transition';
 
 	import { Icon } from '$components/icon';
 	import { cn } from '$lib/utils';
@@ -19,6 +19,7 @@
 
 	interface IListboxProps<T extends string | number> {
 		class?: string;
+		title?: string;
 		options: IListboxOption<T>[];
 		defaultValue?: T;
 		value?: T;
@@ -26,13 +27,13 @@
 		triggerRef?: (trigger: Trigger) => void;
 	}
 
-	let { class: className, options, defaultValue, value, onchange, triggerRef } = $props<IListboxProps<T>>();
+	let { class: className, title, options, defaultValue, value, onchange, triggerRef } = $props<IListboxProps<T>>();
 
 	const findSelectedOptionByValue = () => options.find((option) => option.value === value ?? defaultValue)!;
 	const selected = writable<SelectOption<T>>(findSelectedOptionByValue());
 
 	const {
-		states: { selectedLabel },
+		states: { open, selectedLabel },
 		helpers: { isSelected, isHighlighted },
 		elements: { menu, option, trigger },
 	} = createSelect({
@@ -41,6 +42,7 @@
 		positioning: {
 			placement: 'bottom',
 			sameWidth: false,
+			gutter: 16,
 		},
 	});
 	triggerRef?.(trigger);
@@ -64,35 +66,43 @@
 <div class={cn('dropdown', className)}>
 	<slot label={$selectedLabel} />
 
-	<ul
-		class="p-1 border rounded-lg shadow-lg dropdown-content bg-base-200 border-base-300"
-		use:melt={$menu}
-	>
-		{#each options as _option}
-			<li use:melt={$option(_option)}>
-				<div
-					class={cn('flex items-center gap-1 px-1 leading-7 rounded-md cursor-default select-none', {
-						'bg-primary text-primary-content': $isHighlighted(_option.value),
-					})}
-				>
-					<span
-						class={cn('inline-block w-4 h-4 shrink-0', {
-							invisible: !$isSelected(_option.value),
+	{#if $open}
+		<ul
+			class="shadow-lg rounded-box dropdown-content bg-base-200 menu"
+			use:melt={$menu}
+			transition:fade={{ duration: 150 }}
+		>
+			{#if title}
+				<li class="text-center menu-title">{title}</li>
+			{/if}
+
+			{#each options as _option}
+				<li>
+					<button
+						use:melt={$option(_option)}
+						class={cn('flex items-center gap-1 leading-7 select-none', {
+							'!bg-primary !text-primary-content': $isHighlighted(_option.value),
 						})}
 					>
-						<IconCheck />
-					</span>
+						<span
+							class={cn('inline-block w-4 h-4 shrink-0', {
+								invisible: !$isSelected(_option.value),
+							})}
+						>
+							<IconCheck />
+						</span>
 
-					<span class="flex-1">{_option.label}</span>
+						<span class="flex-1">{_option.label}</span>
 
-					{#if _option.icon}
-						<Icon
-							class="w-auto h-4 ml-2 shrink-0"
-							icon={_option.icon}
-						/>
-					{/if}
-				</div>
-			</li>
-		{/each}
-	</ul>
+						{#if _option.icon}
+							<Icon
+								class="w-auto h-5 ml-2 shrink-0"
+								icon={_option.icon}
+							/>
+						{/if}
+					</button>
+				</li>
+			{/each}
+		</ul>
+	{/if}
 </div>

@@ -1,4 +1,10 @@
+<script>
+	import { Prose } from '$components/prose';
+</script>
+
 <div class="container">
-	<h1 class="text-6xl font-semibold leading-tight">About me</h1>
-	<p class="text-2xl">TBD</p>
+	<Prose>
+		<h1>About me</h1>
+		<p>TBD</p>
+	</Prose>
 </div>
