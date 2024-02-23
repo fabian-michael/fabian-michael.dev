@@ -11,7 +11,7 @@
 	let menuTrigger: any;
 </script>
 
-<header class="fixed bottom-0 z-30 flex flex-col-reverse w-full py-4 sm:static sm:flex-col">
+<header class="fixed bottom-0 z-30 flex flex-col-reverse w-full py-4 sm:relative sm:flex-col">
 	<div class="container">
 		<div class="shadow-lg navbar bg-base-100 rounded-box sm:bg-transparent sm:shadow-none">
 			<div class="navbar-start">

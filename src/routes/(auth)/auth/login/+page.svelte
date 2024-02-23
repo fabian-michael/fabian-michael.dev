@@ -2,12 +2,12 @@
 	import { goto } from '$app/navigation';
 	import { Form, Input } from '$components/form/index.js';
 	import { sleep } from '$lib/utils.js';
-	import { zod } from 'sveltekit-superforms/adapters';
-	import { defaults } from 'sveltekit-superforms/client';
-	import { schema } from './schema.js';
 	import { createToaster, melt } from '@melt-ui/svelte';
 	import { flip } from 'svelte/animate';
 	import { fly } from 'svelte/transition';
+	import { zod } from 'sveltekit-superforms/adapters';
+	import { defaults } from 'sveltekit-superforms/client';
+	import { schema } from './schema.js';
 
 	export let data;
 
@@ -28,93 +28,120 @@
 	} = createToaster<ToastData>();
 </script>
 
-<div class="fixed inset-0 grid items-end justify-center px-4 py-8 md:items-center">
-	<div class="max-w-sm w-screen card bg-neutral text-neutral-content">
-		<Form
-			data={form}
-			validationAdapter={zod(schema)}
-			action={async ({ form }) => {
-				if (!form.valid || status === 'loading') {
-					return;
-				}
-
-				try {
-					status = 'loading';
-
-					await sleep(500);
-
-					// TODO
-					const response = {
-						error: {
-							message: 'Login is not implemented yet',
-						},
-					};
-
-					if (response.error) {
-						throw new Error(response.error.message);
+<div class="fixed inset-0 z-0 grid items-end py-24 sm:items-center">
+	<div class="w-full px-6 mx-auto max-w-screen-xs">
+		<div class="shadow-lg card bg-base-100">
+			<Form
+				data={form}
+				validationAdapter={zod(schema)}
+				action={async ({ form }) => {
+					if (!form.valid || status === 'loading') {
+						return;
 					}
 
-					const redirectTo = data.redirectTo || '/';
-					goto(redirectTo);
-				} catch (err) {
-					console.error(err);
+					try {
+						status = 'loading';
 
-					if (err instanceof Error) {
-						addToast({
-							data: {
-								title: 'Login failed',
-								description: err.message,
-								type: 'error',
+						await sleep(500);
+
+						// TODO
+						const response = {
+							error: {
+								message: 'Login is not implemented yet',
 							},
-						});
-					} else {
-						addToast({
-							data: {
-								title: 'Login failed',
-								description: 'Something went wrong. Please try again later.',
-								type: 'error',
-							},
-						});
+						};
+
+						if (response.error) {
+							throw new Error(response.error.message);
+						}
+
+						const redirectTo = data.redirectTo || '/';
+						goto(redirectTo);
+					} catch (err) {
+						console.error(err);
+
+						if (err instanceof Error) {
+							addToast({
+								data: {
+									title: 'Login failed',
+									description: err.message,
+									type: 'error',
+								},
+							});
+						} else {
+							addToast({
+								data: {
+									title: 'Login failed',
+									description: 'Something went wrong. Please try again later.',
+									type: 'error',
+								},
+							});
+						}
+					} finally {
+						status = 'idle';
 					}
-				} finally {
-					status = 'idle';
-				}
-			}}
-			class="card-body"
-			spa
-		>
-			<Input
-				type="email"
-				id="login-email"
-				name="email"
-				label="Email"
-				placeholder="Email"
-				disabled={status === 'loading'}
-			/>
-
-			<Input
-				type="password"
-				id="login-password"
-				name="password"
-				label="Password"
-				placeholder="Password"
-				disabled={status === 'loading'}
-			/>
-
-			<div class="mt-6 card-actions">
-				<button
-					type="submit"
-					class="w-full btn btn-primary"
+				}}
+				class="card-body"
+				spa
+			>
+				<Input
+					type="email"
+					id="login-email"
+					name="email"
+					label="Email"
+					placeholder="Email"
 					disabled={status === 'loading'}
-				>
-					{#if status === 'loading'}
-						<span class="loading loading-spinner"></span>
-					{:else}
-						Login
-					{/if}
-				</button>
-			</div>
-		</Form>
+				/>
+
+				<Input
+					type="password"
+					id="login-password"
+					name="password"
+					label="Password"
+					placeholder="Password"
+					disabled={status === 'loading'}
+				/>
+
+				<div class="flex-col items-stretch mt-6 card-actions">
+					<div class="flex items-center justify-between">
+						<div class="form-control">
+							<label class="cursor-pointer label">
+								<input
+									name="remember_me"
+									type="checkbox"
+									class="toggle toggle-sm"
+									checked
+								/>
+								<span class="ml-2 text-xs label-text">Remember me</span>
+							</label>
+						</div>
+
+						<div>
+							<a
+								href=""
+								class="text-xs link">Forgot password</a
+							>
+						</div>
+					</div>
+					<button
+						type="submit"
+						class="w-full btn btn-primary"
+						disabled={status === 'loading'}
+					>
+						{#if status === 'loading'}
+							<span class="loading loading-spinner"></span>
+						{:else}
+							Login
+						{/if}
+					</button>
+
+					<a
+						href=""
+						class="self-end text-xs link">Request access</a
+					>
+				</div>
+			</Form>
+		</div>
 	</div>
 </div>
 
@@ -128,7 +155,7 @@
 			animate:flip={{ duration: 500 }}
 			in:fly={{ duration: 150, x: '100%' }}
 			out:fly={{ duration: 150, x: '100%' }}
-			class="alert shadow-lg"
+			class="shadow-lg alert"
 			class:alert-error={data.type === 'error'}
 		>
 			<div>
@@ -148,7 +175,7 @@
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
-					class="h-4 w-4"
+					class="w-4 h-4"
 					fill="none"
 					viewBox="0 0 24 24"
 					stroke="currentColor"
