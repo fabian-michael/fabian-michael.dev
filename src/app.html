@@ -13,7 +13,7 @@
 
 		<script type="text/javascript">
 			const defaultTheme = '';
-			const darkTheme = 'night';
+			const darkTheme = 'dark';
 			const lightTheme = 'light';
 
 			window.setTheme = function (theme) {
@@ -23,7 +23,7 @@
 				localStorage.setItem('theme', theme);
 
 				// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-				if (theme === 'night' || (!theme && prefersColorSchemeDark.matches)) {
+				if (theme === darkTheme || (!theme && prefersColorSchemeDark.matches)) {
 					document.documentElement.dataset.theme = darkTheme;
 				} else {
 					document.documentElement.dataset.theme = lightTheme;

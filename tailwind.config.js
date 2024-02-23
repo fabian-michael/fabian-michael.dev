@@ -4,8 +4,35 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	daisyui: {
-		themes: ['light', 'night', 'cupcake'],
-		darkTheme: 'night',
+		themes: [
+			{
+				light: {
+					"primary": "#38bdf8",
+					"secondary": "#4f46e5",
+					"accent": "#d946ef",
+					"neutral": "#1b302a",
+					"base-100": "#ffffff",
+					"info": "#00beff",
+					"success": "#22c55e",
+					"warning": "#facc15",
+					"error": "#f87171",
+				},
+			},
+			{
+				dark: {
+					"primary": "#38bdf8",
+					"secondary": "#4f46e5",
+					"accent": "#d946ef",
+					"neutral": "#111827",
+					"base-100": "#1f2937",
+					"info": "#00beff",
+					"success": "#22c55e",
+					"warning": "#facc15",
+					"error": "#f87171",
+				},
+			},
+		],
+		darkTheme: 'dark',
 	},
 	theme: {
 		screens: {

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Icon } from '$components/icon';
 	import { Listbox, type IListboxOption } from '$components/listbox';
-	import { themeStore, type Theme } from '$lib/client/stores/theme-store';
+	import { DARK_THEME, LIGHT_THEME, SYSTEM_THEME, themeStore, type Theme } from '$lib/client/stores/theme-store';
 	import { melt } from '@melt-ui/svelte';
 	import PhGearFine from '~icons/ph/gear-fine';
 	import TablerMoonStars from '~icons/tabler/moon-stars';
@@ -10,17 +10,17 @@
 
 	let options: IListboxOption<Theme>[] = [
 		{
-			value: 'night',
+			value: DARK_THEME,
 			label: 'Dark',
 			icon: TablerMoonStars,
 		},
 		{
-			value: 'light',
+			value: LIGHT_THEME,
 			label: 'Light',
 			icon: TablerSun,
 		},
 		{
-			value: '',
+			value: SYSTEM_THEME,
 			label: 'System',
 			icon: TablerSunMoon,
 		},
@@ -40,9 +40,9 @@
 	title="Theme"
 	{options}
 	value={selectedTheme}
-	defaultValue="night"
+	defaultValue={DARK_THEME}
 	onchange={({ next }) => {
-		themeStore.set(next?.value ?? 'night');
+		themeStore.set(next?.value ?? DARK_THEME);
 		return next;
 	}}
 	triggerRef={(trigger) => (listboxTrigger = trigger)}

@@ -10,8 +10,8 @@
 	body {
 		min-height: 100dvh;
 
-		--bg-gradient-left: oklch(var(--s) / 0.15);
-		--bg-gradient-right: oklch(var(--p) / 0.15);
+		--bg-gradient-left: oklch(var(--p) / 0.15);
+		--bg-gradient-right: oklch(var(--s) / 0.15);
 		background-image: radial-gradient(at 0 -100px, var(--bg-gradient-left) 0px, rgba(0, 0, 0, 0) 50%),
 			radial-gradient(at 98% 100px, var(--bg-gradient-right) 0px, rgba(0, 0, 0, 0) 50%);
 	}

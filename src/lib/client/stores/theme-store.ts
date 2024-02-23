@@ -1,7 +1,11 @@
 import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
 
-export type Theme = 'night' | 'light' | '';
+export type Theme = typeof THEMES[number];
+export const THEMES = ['dark', 'light', ''] as const;
+export const DARK_THEME: Theme = 'dark';
+export const LIGHT_THEME: Theme = 'light';
+export const SYSTEM_THEME = '';
 
 export const themeStore = (() => {
     const store = writable<Theme>(undefined, (set) => {
@@ -10,7 +14,11 @@ export const themeStore = (() => {
         }
 
         const theme = localStorage.getItem('theme') as Theme;
-        set(theme);
+        if (!THEMES.includes(theme)) {
+            set(SYSTEM_THEME);
+        } else {
+            set(theme);
+        }
 
         function handleThemeChange(event: StorageEvent) {
             if (event.key === 'theme') {
