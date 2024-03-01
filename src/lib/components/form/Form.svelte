@@ -16,7 +16,7 @@
 		action: string | FormOptions<T>['onUpdate'];
 	};
 
-	const { data, spa, validationAdapter, action, ...restProps } = $props<FormProps<T>>();
+	const { data: data, spa, validationAdapter, action, ...restProps } = $props<FormProps<T>>();
 
 	let { enhance, form, errors, constraints } = superForm(data, {
 		SPA: spa,

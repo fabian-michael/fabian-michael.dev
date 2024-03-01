@@ -11,12 +11,26 @@ declare global {
 	}
 
 	namespace App {
+		interface FlashMessage {
+			type: 'info' | 'success' | 'warning' | 'error';
+			title?: string;
+			message: string;
+		}
 		// interface Error {}
 		interface Locals {
 		}
 		interface PageData {
+			flash?: FlashMessage;
+		}
+		interface ActionData {
+			flash?: FlashMessage;
 		}
 		// interface Platform {}
+		namespace Superforms {
+			type Message = {
+				type: 'error' | 'success', text: string
+			}
+		}
 	}
 }
 
