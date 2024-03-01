@@ -2,13 +2,10 @@
 	lang="ts"
 	generics="S extends ZodObject<ZodRawShape>"
 >
-	import type { FormContext } from '.';
-
 	import type { ZodObject, ZodRawShape } from 'zod';
 
 	import { zodClient } from 'sveltekit-superforms/adapters';
 
-	import { setContext } from 'svelte';
 	import type { HTMLFormAttributes } from 'svelte/elements';
 	import type { Infer, SuperValidated } from 'sveltekit-superforms';
 	import { superForm, type FormOptions } from 'sveltekit-superforms/client';
@@ -25,17 +22,13 @@
 
 	const { data: data, spa, schema, action, ...restProps } = $props<FormProps<S>>();
 
-	let { enhance, form, errors, constraints } = superForm(data, {
+	const form = superForm(data, {
 		SPA: spa,
 		validators: zodClient(schema),
 		onUpdate: typeof action !== 'string' ? action : undefined,
 	});
 
-	setContext<FormContext>('form', {
-		form,
-		errors,
-		constraints,
-	});
+	const { enhance } = form;
 </script>
 
 <form
@@ -44,5 +37,5 @@
 	method="post"
 	use:enhance
 >
-	<slot errors={$errors} />
+	<slot {form} />
 </form>

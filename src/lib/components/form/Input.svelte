@@ -1,18 +1,19 @@
-<script lang="ts">
-	import { getContext } from 'svelte';
+<script
+	lang="ts"
+	generics="T extends Record<string, unknown>"
+>
 	import type { HTMLInputAttributes } from 'svelte/elements';
-	import type { FormContext } from '.';
+	import { formFieldProxy, type FormPathLeaves, type SuperForm } from 'sveltekit-superforms';
 
-	type InputProps = HTMLInputAttributes & {
+	type InputProps<T extends Record<string, unknown>> = Omit<HTMLInputAttributes, 'form' | 'name' | 'value'> & {
+		form: SuperForm<T>;
 		label: string;
-		name: string;
+		name: FormPathLeaves<T>;
 	};
 
-	const { ...props } = $props<InputProps>();
+	const { form, ...props } = $props<InputProps<T>>();
 
-	const { form, errors, constraints } = getContext<FormContext>('form');
-
-	const error = $derived($errors[props.name]);
+	const { value, errors, constraints } = formFieldProxy(form, props.name);
 </script>
 
 <div class="form-control">
@@ -25,21 +26,16 @@
 		</span>
 	</label>
 	<input
-		type={props.type}
-		id={props.id}
-		name={props.name}
-		placeholder={props.placeholder}
+		{...props}
+		bind:value={$value}
 		class="input input-bordered"
-		class:input-error={$errors[props.name]}
-		disabled={props.disabled}
-		value={$form[props.name]}
-		on:input={(event) => ($form[props.name] = (event.target as HTMLInputElement)?.value)}
-		{...$constraints[props.name]}
+		class:input-error={$errors?.length}
+		{...$constraints}
 	/>
-	{#if error}
+	{#if $errors?.length}
 		<span class="label">
 			<span class="label-text text-error">
-				{error}
+				{$errors}
 			</span>
 		</span>
 	{/if}

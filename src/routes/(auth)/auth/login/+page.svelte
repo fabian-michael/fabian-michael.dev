@@ -16,8 +16,10 @@
 				data={loginForm}
 				action="/login"
 				class="card-body"
+				let:form
 			>
 				<Input
+					{form}
 					type="email"
 					id="login-email"
 					name="email"
@@ -27,6 +29,7 @@
 				/>
 
 				<Input
+					{form}
 					type="password"
 					id="login-password"
 					name="password"
