@@ -1,3 +1,4 @@
+import { sleep } from '$lib/utils';
 import { error, fail, redirect } from '@sveltejs/kit';
 import { setFlash } from 'sveltekit-flash-message/server';
 import { superValidate } from 'sveltekit-superforms';
@@ -35,6 +36,7 @@ export const actions: Actions = {
         }
 
         // TODO: login
+        await sleep(500);
 
         setFlash({
             title: 'Failed to login',

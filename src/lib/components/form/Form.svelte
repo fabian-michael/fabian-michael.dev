@@ -28,7 +28,7 @@
 		onUpdate: typeof action !== 'string' ? action : undefined,
 	});
 
-	const { enhance } = form;
+	const { enhance, submitting } = form;
 </script>
 
 <form
@@ -37,5 +37,8 @@
 	method="post"
 	use:enhance
 >
-	<slot {form} />
+	<slot
+		{form}
+		submitting={$submitting}
+	/>
 </form>

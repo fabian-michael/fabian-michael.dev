@@ -4,8 +4,6 @@
 
 	const { data } = $props();
 	const loginForm = $derived(data.loginForm);
-	$inspect(loginForm.message);
-	let status: 'initial' | 'idle' | 'loading' = 'initial';
 </script>
 
 <div class="fixed inset-0 z-0 grid items-end py-24 sm:items-center">
@@ -17,6 +15,7 @@
 				action="/login"
 				class="card-body"
 				let:form
+				let:submitting
 			>
 				<Input
 					{form}
@@ -25,7 +24,7 @@
 					name="email"
 					label="Email"
 					placeholder="Email"
-					disabled={status === 'loading'}
+					disabled={submitting}
 				/>
 
 				<Input
@@ -35,7 +34,7 @@
 					name="password"
 					label="Password"
 					placeholder="Password"
-					disabled={status === 'loading'}
+					disabled={submitting}
 				/>
 
 				<div class="flex-col items-stretch mt-6 card-actions">
@@ -62,9 +61,9 @@
 					<button
 						type="submit"
 						class="w-full btn btn-primary"
-						disabled={status === 'loading'}
+						disabled={submitting}
 					>
-						{#if status === 'loading'}
+						{#if submitting}
 							<span class="loading loading-spinner"></span>
 						{:else}
 							Login
