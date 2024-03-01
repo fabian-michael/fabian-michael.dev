@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext } from 'svelte';
 	import type { HTMLInputAttributes } from 'svelte/elements';
-	import type { Form } from '.';
+	import type { FormContext } from '.';
 
 	type InputProps = HTMLInputAttributes & {
 		label: string;
@@ -10,7 +10,7 @@
 
 	const { ...props } = $props<InputProps>();
 
-	const { form, errors, constraints } = getContext('form') as Form<any>;
+	const { form, errors, constraints } = getContext<FormContext>('form');
 
 	const error = $derived($errors[props.name]);
 </script>
@@ -33,7 +33,7 @@
 		class:input-error={$errors[props.name]}
 		disabled={props.disabled}
 		value={$form[props.name]}
-		on:input={(event: InputEvent) => ($form[props.name] = (event.target as HTMLInputElement)?.value)}
+		on:input={(event) => ($form[props.name] = (event.target as HTMLInputElement)?.value)}
 		{...$constraints[props.name]}
 	/>
 	{#if error}

@@ -1,30 +1,37 @@
 <script
 	lang="ts"
-	generics="T extends Record<string, unknown>"
+	generics="S extends ZodObject<ZodRawShape>"
 >
-	import type { ValidationAdapter } from 'sveltekit-superforms/adapters';
+	import type { FormContext } from '.';
+
+	import type { ZodObject, ZodRawShape } from 'zod';
+
+	import { zodClient } from 'sveltekit-superforms/adapters';
 
 	import { setContext } from 'svelte';
 	import type { HTMLFormAttributes } from 'svelte/elements';
-	import type { SuperValidated } from 'sveltekit-superforms';
+	import type { Infer, SuperValidated } from 'sveltekit-superforms';
 	import { superForm, type FormOptions } from 'sveltekit-superforms/client';
 
-	type FormProps<T extends Record<string, unknown>> = Omit<HTMLFormAttributes, 'action'> & {
+	type FormProps<S extends ZodObject<ZodRawShape>, T extends Record<string, unknown> = Infer<S>> = Omit<
+		HTMLFormAttributes,
+		'action'
+	> & {
+		schema: S;
 		data: SuperValidated<T>;
-		spa?: true;
-		validationAdapter: ValidationAdapter<T>;
 		action: string | FormOptions<T>['onUpdate'];
+		spa?: true;
 	};
 
-	const { data: data, spa, validationAdapter, action, ...restProps } = $props<FormProps<T>>();
+	const { data: data, spa, schema, action, ...restProps } = $props<FormProps<S>>();
 
 	let { enhance, form, errors, constraints } = superForm(data, {
 		SPA: spa,
-		validators: validationAdapter,
+		validators: zodClient(schema),
 		onUpdate: typeof action !== 'string' ? action : undefined,
 	});
 
-	setContext('form', {
+	setContext<FormContext>('form', {
 		form,
 		errors,
 		constraints,

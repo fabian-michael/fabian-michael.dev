@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Form, Input } from '$components/form/index.js';
-	import { zod } from 'sveltekit-superforms/adapters';
 	import { schema } from './schema.js';
 
 	const { data } = $props();
@@ -13,8 +12,8 @@
 	<div class="w-full px-6 mx-auto max-w-screen-xs">
 		<div class="shadow-lg card bg-base-100">
 			<Form
+				{schema}
 				data={loginForm}
-				validationAdapter={zod(schema)}
 				action="/login"
 				class="card-body"
 			>
