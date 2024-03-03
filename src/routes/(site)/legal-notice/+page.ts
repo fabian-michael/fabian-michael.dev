@@ -1,4 +1,3 @@
-import type { Payload } from '$lib/types/payload';
 import { makePayloadRequest } from '$lib/utils';
 import { error, type NumericRange } from '@sveltejs/kit';
 import type { PageLoad } from './$types';

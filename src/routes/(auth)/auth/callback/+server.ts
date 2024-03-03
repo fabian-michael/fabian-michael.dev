@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 
-export const GET = async ({ url, locals }) => {
+export const GET = async ({ url }) => {
     const code = url.searchParams.get('code');
     const redirectTo = url.searchParams.get('redirectTo') || '/';
 
@@ -9,4 +9,4 @@ export const GET = async ({ url, locals }) => {
     }
 
     redirect(303, redirectTo);
-}
+};

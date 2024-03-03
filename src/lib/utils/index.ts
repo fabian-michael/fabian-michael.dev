@@ -27,7 +27,7 @@ export const trimCurried = (char: string) => (str: string) => trim(str, char);
 
 export function buildUrl(
 	parts: string[],
-	{ trailingSlash, leadingSlash }: { trailingSlash?: boolean; leadingSlash?: boolean } = {},
+	{ trailingSlash, leadingSlash }: { trailingSlash?: boolean; leadingSlash?: boolean } = {}
 ): string {
 	const url = parts.filter(Boolean).map(trimCurried('/')).join('/');
 
@@ -43,7 +43,7 @@ export async function makePayloadRequest<T>({
 	slug: string;
 	fetch: (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
 	init?: RequestInit;
-	where?: Record<string, any>;
+	where?: Record<string, unknown>;
 }): Promise<T> {
 	const urlParts = [PUBLIC_PAYLOAD_BASE, slug];
 
@@ -54,7 +54,7 @@ export async function makePayloadRequest<T>({
 			},
 			{
 				addQueryPrefix: true,
-			},
+			}
 		);
 
 		urlParts.push(queryString);

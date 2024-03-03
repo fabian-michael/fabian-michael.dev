@@ -9,13 +9,13 @@ export function clickOutside(node: Node, callback?: (event: MouseEvent) => void)
         ) {
             callback?.(event);
         }
-    }
+    };
 
     document.addEventListener('click', handleClick);
 
     return {
         destroy() {
             document.removeEventListener('click', handleClick);
-        }
-    }
+        },
+    };
 }

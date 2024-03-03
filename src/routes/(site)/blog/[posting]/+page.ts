@@ -1,4 +1,3 @@
-import type { Payload } from '$lib/types/payload';
 import { makePayloadRequest } from '$lib/utils';
 import { error, isHttpError, type NumericRange } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
@@ -14,7 +13,7 @@ export const load = (async ({ params, fetch }) => {
                 slug: {
                     equals: params.posting,
                 },
-            }
+            },
         });
 
         if (data.totalDocs === 0) {

@@ -2,7 +2,7 @@ import { error, redirect } from '@sveltejs/kit';
 
 export const prerender = false;
 
-export const load = async ({ locals, url, }) => {
+export const load = async ({ url }) => {
     const session = null; // TODO
     const redirectTo = url.pathname;
 
