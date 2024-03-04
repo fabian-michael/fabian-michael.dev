@@ -1,6 +1,6 @@
-import { makePayloadRequest } from '$lib/utils';
+import { makePayloadRequest } from '$lib/utils/payload';
 import { error, isHttpError, type NumericRange } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
 
 const PAYLOAD_SLUG = '/api/blog-postings';
 
@@ -33,4 +33,4 @@ export const load = (async ({ params, fetch }) => {
             error(503);
         }
     }
-}) satisfies PageLoad;
+}) satisfies PageServerLoad;

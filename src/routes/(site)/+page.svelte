@@ -43,7 +43,7 @@
 
 		<div class="grid grid-cols-1 gap-8 mt-8 sm:grid-cols-2 md:grid-cols-3">
 			{#await data.blogPostings}
-				{#each Array(3) as _, index}
+				{#each Array(3) as _}
 					<div class="w-full space-y-4">
 						<div class="w-full aspect-video skeleton rounded-xl"></div>
 						<div class="w-10/12 h-4 skeleton"></div>
@@ -52,7 +52,7 @@
 					</div>
 				{/each}
 			{:then blogPostings}
-				{#each blogPostings.docs as blogPosting}
+				{#each blogPostings?.docs ?? [] as blogPosting}
 					<article class="w-full space-y-4 blog-posting">
 						<header class="space-y-4">
 							<a
@@ -87,6 +87,8 @@
 							</time>
 						</div>
 					</article>
+				{:else}
+					<p>There are no blog postings yet.</p>
 				{/each}
 			{/await}
 		</div>

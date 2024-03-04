@@ -1,5 +1,5 @@
 import { dev } from '$app/environment';
-import { makePayloadRequest } from '$lib/utils';
+import { makePayloadRequest } from '$lib/utils/payload';
 import { safePromise } from '$lib/utils/safePromise';
 import { error, fail, redirect } from '@sveltejs/kit';
 import { setFlash } from 'sveltekit-flash-message/server';
