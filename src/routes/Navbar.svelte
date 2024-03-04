@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { Collapsible } from '$components/collapsible';
 	import { Logo } from '$components/logo';
@@ -9,6 +10,10 @@
 
 	export let isMenuOpen = false;
 	let menuTrigger: any;
+
+	afterNavigate(() => {
+		isMenuOpen = false;
+	});
 </script>
 
 <header class="fixed bottom-0 z-30 flex flex-col-reverse w-full py-4 sm:relative sm:flex-col">
