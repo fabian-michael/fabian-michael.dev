@@ -16,8 +16,20 @@ declare global {
 			title?: string;
 			message: string;
 		}
+
+		interface User {
+			token: string;
+			email: string;
+			verified: boolean;
+		}
+
+		interface Session {
+			user: User;
+		}
+
 		// interface Error {}
 		interface Locals {
+			session?: Session;
 		}
 		interface PageData {
 			flash?: FlashMessage;
@@ -29,7 +41,7 @@ declare global {
 	}
 
 	namespace Payload {
-		type ImageProperties = {
+		interface ImageProperties {
 			filename: string;
 			filesize: number;
 			height: number;
@@ -38,21 +50,21 @@ declare global {
 			width: number;
 		}
 
-		type Image = ImageProperties & {
+		interface Image extends ImageProperties {
 			id: string;
 			sizes: {
 				[key: string]: ImageProperties;
 			},
 		}
 
-		type Collection = {
+		interface Collection {
 			id: string;
 			_status: 'published' | 'draft';
 			createdAt: string;
 			updatedAt: string;
 		}
 
-		type CollectionResponse<T extends Collection> = {
+		interface CollectionResponse<T extends Collection> {
 			docs: T[];
 			totalDocs: number;
 			limit: number;
@@ -66,7 +78,7 @@ declare global {
 		}
 
 		namespace Collections {
-			type BlogPostings = Collection & {
+			interface BlogPostings extends Collection {
 				image: Image;
 				title: string;
 				abstract: string;
@@ -76,7 +88,7 @@ declare global {
 		}
 
 		namespace Globals {
-			type Home = {
+			interface Home {
 				general: {
 					title: string;
 				},
@@ -86,21 +98,21 @@ declare global {
 				}
 			}
 
-			type LegalNotice = {
+			interface LegalNotice {
 				title: string;
 				text_html: string;
 			}
 		}
 
 		namespace Auth {
-			type User = {
+			interface User {
 				id: string;
 				email: string;
 				createdAt: string;
 				updatedAt: string;
 			}
 
-			type LoginResponse = {
+			interface LoginResponse {
 				user: User;
 				token: string;
 				exp: number;

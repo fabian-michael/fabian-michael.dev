@@ -1,3 +1,4 @@
+import { dev } from '$app/environment';
 import { makePayloadRequest } from '$lib/utils';
 import { safePromise } from '$lib/utils/safePromise';
 import { error, fail, redirect } from '@sveltejs/kit';
@@ -31,7 +32,7 @@ const PAYLOAD_SLUG = '/api/frontend-users/login';
 
 export const actions: Actions = {
     default: async (event) => {
-        const { request, fetch } = event;
+        const { request, fetch, cookies } = event;
         const form = await superValidate(request, zod(schema));
 
         if (!form.valid) {
@@ -43,6 +44,10 @@ export const actions: Actions = {
             fetch,
             init: {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
                 body: JSON.stringify(form.data),
             },
         }), {
@@ -67,6 +72,14 @@ export const actions: Actions = {
 
             return error(501);
         }
+
+        cookies.set('user', data.token, {
+            path: '/',
+            httpOnly: true,
+            secure: !dev,
+            maxAge: 14 * 24 * 60 * 60,
+        });
+
 
         setFlash({
             title: 'Success',
