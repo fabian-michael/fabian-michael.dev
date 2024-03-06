@@ -14,6 +14,9 @@ dependencies:
   date-fns-tz:
     specifier: ^2.0.0
     version: 2.0.0(date-fns@3.3.1)
+  jose:
+    specifier: ^5.2.2
+    version: 5.2.2
   qs:
     specifier: ^6.11.2
     version: 6.11.2
@@ -2281,6 +2284,10 @@ packages:
       '@sideway/pinpoint': 2.0.0
     dev: false
     optional: true
+
+  /jose@5.2.2:
+    resolution: {integrity: sha512-/WByRr4jDcsKlvMd1dRJnPfS1GVO3WuKyaurJ/vvXcOaUQO8rnNObCQMlv/5uCceVQIq5Q4WLF44ohsdiTohdg==}
+    dev: false
 
   /js-tokens@8.0.3:
     resolution: {integrity: sha512-UfJMcSJc+SEXEl9lH/VLHSZbThQyLpw1vLO1Lb+j4RWDvG3N2f7yj3PVQA3cmkTBNldJ9eFnM+xEXxHIXrYiJw==}

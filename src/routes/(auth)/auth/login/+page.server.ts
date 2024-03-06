@@ -11,11 +11,11 @@ import { schema } from './schema';
 export const ssr = false;
 export const csr = true;
 
-export const load: PageServerLoad = async ({ url }) => {
-    const session = null;
+export const load: PageServerLoad = async ({ url, locals }) => {
+    const session = locals.session;
     const redirectTo = url.searchParams.get('redirectTo') || '/';
 
-    if (session) {
+    if (session?.user) {
         redirect(303, redirectTo);
     }
 

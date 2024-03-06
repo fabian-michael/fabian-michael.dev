@@ -5,10 +5,10 @@ export const config = {
     isr: false,
 };
 
-export const load = async () => {
-    const session = null;
+export const load = async ({ locals }) => {
+    const session = locals.session;
 
-    if (!session) {
+    if (!session?.user) {
         throw redirect(303, '/auth/login?redirectTo=/resume');
     }
 };

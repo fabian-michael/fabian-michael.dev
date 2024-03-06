@@ -5,68 +5,70 @@
 
 <div class="container">
 	<div class="flex flex-col gap-48 xl:flex-row">
-		<div class="flex flex-col gap-16 flex-1 min-w-[300px]">
-			<div class="w-full max-w-xs mx-auto aspect-square">
-				<Avatar
-					name="Fabian Michael"
-					size="fill"
-				/>
-			</div>
-
-			<section class="max-w-xs">
-				<div class="prose">
-					<h2 class="relative pl-12">
-						<!-- <IconAddressBook
-							class="absolute left-0 inline-block align-middle"
-							size="1.3333em"
-						/> -->
-						<span class="align-middle">Contact</span>
-					</h2>
-
-					<p class="relative pl-8">
-						<!-- <IconMapPin class="absolute left-0 inline-block" /> -->
-						Adlerstr. 75, 14612 Falkensee, Brandenburg, Germany
-					</p>
-					<p class="relative pl-8">
-						<!-- <IconPhone class="absolute left-0 inline-block" /> -->
-						<a
-							href="tel:+4917622214373"
-							title=""
-						>
-							(+49) 176 222 143 73
-						</a>
-					</p>
-					<p class="relative pl-8">
-						<!-- <IconMail class="absolute left-0 inline-block" /> -->
-						<a
-							href="mailto:hello@fabian-michael.dev"
-							title=""
-						>
-							hello@fabian-michael.dev
-						</a>
-					</p>
-					<p class="relative pl-8">
-						<!-- <IconWorld class="absolute left-0 inline-block" /> -->
-						<a
-							href="https://fabian-michael.dev"
-							title=""
-						>
-							fabian-michael.dev
-						</a>
-					</p>
+		<div class="flex-1 min-w-[300px]">
+			<div class="flex flex-col gap-16 xl:sticky xl:top-16">
+				<div class="w-full max-w-xs mx-auto aspect-square">
+					<Avatar
+						name="Fabian Michael"
+						size="fill"
+					/>
 				</div>
-			</section>
 
-			<section>
-				<div class="prose"></div>
-			</section>
+				<section class="max-w-xs">
+					<div class="prose">
+						<h2 class="relative pl-12">
+							<!-- <IconAddressBook
+								class="absolute left-0 inline-block align-middle"
+								size="1.3333em"
+							/> -->
+							<span class="align-middle">Contact</span>
+						</h2>
+
+						<p class="relative pl-8">
+							<!-- <IconMapPin class="absolute left-0 inline-block" /> -->
+							Adlerstr. 75, 14612 Falkensee, Brandenburg, Germany
+						</p>
+						<p class="relative pl-8">
+							<!-- <IconPhone class="absolute left-0 inline-block" /> -->
+							<a
+								href="tel:+4917622214373"
+								title=""
+							>
+								(+49) 176 222 143 73
+							</a>
+						</p>
+						<p class="relative pl-8">
+							<!-- <IconMail class="absolute left-0 inline-block" /> -->
+							<a
+								href="mailto:hello@fabian-michael.dev"
+								title=""
+							>
+								hello@fabian-michael.dev
+							</a>
+						</p>
+						<p class="relative pl-8">
+							<!-- <IconWorld class="absolute left-0 inline-block" /> -->
+							<a
+								href="https://fabian-michael.dev"
+								title=""
+							>
+								fabian-michael.dev
+							</a>
+						</p>
+					</div>
+				</section>
+
+				<section>
+					<div class="prose"></div>
+				</section>
+			</div>
 		</div>
 
 		<div class="flex flex-col flex-auto gap-16">
 			<section>
 				<div class="prose">
 					<h1 class="text-4xl md:text-6xl">FABIAN MICHAEL</h1>
-					<p class="text-xl -mt-8">FULL STACK WEB DEVELOPER</p>
+					<p class="-mt-8 text-xl">FULL STACK WEB DEVELOPER</p>
 
 					<hr />
 
@@ -103,7 +105,7 @@
 					</h2>
 				</div>
 				<Timeline
-					items="{[
+					items={[
 						{
 							title: 'Full Stack Web Developer',
 							date: '2020 - NOW',
@@ -118,7 +120,7 @@
 								'While studying at BHT, I worked as a student assistant at Fraunhofer FOKUS. There I learned a lot about automated testing and test automation.',
 							location: 'Fraunhofer FOKUS, Berlin',
 						},
-					]}"
+					]}
 				/>
 			</section>
 
@@ -134,7 +136,7 @@
 				</div>
 
 				<Timeline
-					items="{[
+					items={[
 						{
 							title: 'Apprenticeship as "IT Specialist for Application Development"',
 							date: '2018 - 2020',
@@ -160,7 +162,7 @@
 							location: 'OSZ TIEM, Berlin',
 							content: 'Completed with a focus on mathematics and computer science',
 						},
-					]}"
+					]}
 				/>
 			</section>
 		</div>

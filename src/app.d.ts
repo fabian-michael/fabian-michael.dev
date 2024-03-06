@@ -18,13 +18,11 @@ declare global {
 		}
 
 		interface User {
-			token: string;
 			email: string;
-			verified: boolean;
 		}
 
 		interface Session {
-			user: User;
+			user?: User;
 		}
 
 		// interface Error {}
