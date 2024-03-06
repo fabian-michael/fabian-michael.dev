@@ -39,7 +39,7 @@ export const actions: Actions = {
             return fail(400, { form });
         }
 
-        const { data, error: err } = await safePromise(makePayloadRequest<Payload.Auth.LoginResponse>({
+        const [data, err] = await safePromise(makePayloadRequest<Payload.Auth.LoginResponse>({
             slug: PAYLOAD_SLUG,
             fetch,
             init: {

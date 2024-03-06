@@ -13,7 +13,7 @@ export const load = (async ({ fetch }) => {
         slug: PAYLOAD_BLOGPOSTINGS_SLUG,
     }).catch(() => undefined);
 
-    const { data: homeData, error: err } = await safePromise(makePayloadRequest<Payload.Globals.Home>({
+    const [homeData, err] = await safePromise(makePayloadRequest<Payload.Globals.Home>({
         fetch,
         slug: PAYLOAD_SLUG,
     }));

@@ -15,7 +15,7 @@ interface SafePromiseOptions {
 export async function safePromise<T>(
     promise: Promise<T>,
     options: SafePromiseOptions = {}
-): Promise<{ data: T, error?: never } | { data?: never, error: Error }> {
+): Promise<[T, undefined] | [undefined, Error]> {
     const {
         logErrors = true,
         logger = console.error,
@@ -36,17 +36,13 @@ export async function safePromise<T>(
 
     try {
         const result = await Promise.race([promise, timeoutPromise]);
-        return {
-            data: result as T,
-        };
+        return [result as T, undefined];
     } catch (err) {
         const error = new Error(errorMessage, { cause: err });
         if (logErrors) {
             logger(error);
         }
-        return {
-            error,
-        };
+        return [undefined, error];
     } finally {
         if (timeoutId !== null) {
             clearTimeout(timeoutId);
