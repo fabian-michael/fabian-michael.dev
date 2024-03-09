@@ -3,7 +3,6 @@
 	import { schema } from './schema.js';
 
 	const { data } = $props();
-	const loginForm = $derived(data.loginForm);
 </script>
 
 <div class="fixed inset-0 z-0 grid items-end py-24 sm:items-center">
@@ -11,7 +10,7 @@
 		<div class="shadow-lg card bg-base-100">
 			<Form
 				{schema}
-				data={loginForm}
+				data={data.loginForm}
 				action="/login"
 				class="card-body"
 				let:form
@@ -54,8 +53,10 @@
 						<div>
 							<a
 								href=""
-								class="text-xs link">Forgot password</a
+								class="text-xs link"
 							>
+								Forgot password
+							</a>
 						</div>
 					</div>
 					<button
@@ -70,10 +71,19 @@
 						{/if}
 					</button>
 
+					<div
+						role="separator"
+						class="divider"
+					>
+						OR
+					</div>
+
 					<a
 						href=""
-						class="self-end text-xs link">Request access</a
+						class="w-full btn btn-secondary"
 					>
+						Request access
+					</a>
 				</div>
 			</Form>
 		</div>

@@ -151,6 +151,12 @@ declare global {
 				token: string;
 				exp: number;
 			}
+
+			interface RefreshTokenResponse {
+				exp: number;
+				refreshedToken: string;
+				user: User;
+			}
 		}
 	}
 }

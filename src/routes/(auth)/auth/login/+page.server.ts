@@ -44,10 +44,6 @@ export const actions: Actions = {
             fetch,
             init: {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
                 body: JSON.stringify(form.data),
             },
         }), {
@@ -73,23 +69,28 @@ export const actions: Actions = {
             return error(501);
         }
 
-        cookies.set('user', data.token, {
+        cookies.set('token', data.token, {
             path: '/',
             httpOnly: true,
             secure: !dev,
-            maxAge: 14 * 24 * 60 * 60,
+            maxAge: form.data.remember_me
+                ? 14 * 24 * 60 * 60 // 14 days
+                : undefined,
         });
 
-
-        setFlash({
-            title: 'Success',
-            message: 'The login was successful',
-            type: 'success',
-        }, event);
+        if (form.data.remember_me) {
+            cookies.set('remember_user', '1', {
+                path: '/',
+                httpOnly: false,
+                secure: !dev,
+                maxAge: form.data.remember_me
+                    ? 14 * 24 * 60 * 60 // 14 days
+                    : undefined,
+            });
+        }
 
         return {
             form,
         };
-
     },
 };
