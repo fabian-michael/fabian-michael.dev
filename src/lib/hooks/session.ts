@@ -32,8 +32,8 @@ export const session: Handle = async ({ event, resolve }) => {
         token = await refreshToken({ token, event });
         event.locals.session.user = {
             email: jwt.email,
+            token,
         };
-        event.locals.session.userToken = token;
     }
 
     return resolve(event);

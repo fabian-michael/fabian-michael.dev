@@ -17,13 +17,17 @@ declare global {
 			message: string;
 		}
 
-		interface User {
+		interface SessionUser {
+			email: string;
+			token: string;
+		}
+
+		interface FrontendUser {
 			email: string;
 		}
 
 		interface Session {
-			user?: User;
-			userToken?: string;
+			user?: SessionUser;
 		}
 
 		// interface Error {}
@@ -31,6 +35,7 @@ declare global {
 			session?: Session;
 		}
 		interface PageData {
+			user?: FrontendUser;
 			flash?: FlashMessage;
 		}
 		interface ActionData {

@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { clickOutside } from '$lib/client/actions/clickOutside';
-	import OouiLock from '~icons/ooui/lock';
+	import PhLock from '~icons/ph/lock';
+	import PhLockOpen from '~icons/ph/lock-open';
 	import NavigationItem from './NavigationItem.svelte';
 
 	const { onClickOutside } = $props<{
@@ -24,7 +26,7 @@
 				href="/resume"
 				preload={false}
 			>
-				<OouiLock /> Resume (tbd)
+				<svelte:component this={$page.data.user ? PhLockOpen : PhLock} /> Resume (tbd)
 			</NavigationItem>
 		</li>
 	</ul>

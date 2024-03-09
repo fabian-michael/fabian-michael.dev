@@ -19,7 +19,7 @@ export const load = async ({ locals, fetch }) => {
     const [resume, err] = await safePromise(makePayloadRequest<Payload.Globals.Resume>({
         slug: PAYLOAD_SLUG,
         fetch,
-        token: session.userToken!,
+        token: session.user.token,
     }), {
         errorMessage: 'Failed to load resume data',
     });

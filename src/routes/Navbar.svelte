@@ -6,6 +6,7 @@
 	import { Logo } from '$components/logo';
 	import { ThemeSelect } from '$components/theme-select';
 	import { melt } from '@melt-ui/svelte';
+	import PhSignOut from '~icons/ph/sign-out';
 	import Navigation from './Navigation.svelte';
 
 	export let isMenuOpen = false;
@@ -31,12 +32,12 @@
 			<div class="navbar-center"></div>
 
 			<div class="navbar-end">
-				{#if browser && $page.data.session}
+				{#if browser && $page.data.user}
 					<a
 						href="/auth/logout?redirectTo={$page.url.pathname}"
 						class="btn btn-square btn-ghost"
 					>
-						<!-- <IconLogout /> -->
+						<PhSignOut class="w-6 h-6" />
 					</a>
 				{/if}
 
