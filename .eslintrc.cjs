@@ -24,6 +24,7 @@ module.exports = {
 	],
 	rules: {
 		'@typescript-eslint/ban-ts-comment': 'off',
+		'@typescript-eslint/no-var-requires': 'off',
 		'svelte/no-at-html-tags': 'off',
 		semi: ['error'],
 		quotes: [

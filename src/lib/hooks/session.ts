@@ -17,6 +17,7 @@ export const session: Handle = ({ event, resolve }) => {
         event.locals.session.user = {
             email: jwt.email,
         };
+        event.locals.session.userToken = token;
     }
 
     return resolve(event);

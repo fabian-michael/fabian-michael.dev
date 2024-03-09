@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { cn } from '$lib/utils';
+
 	interface TimelineItem {
 		title: string;
 		date: string;
@@ -9,67 +11,43 @@
 	export let items: TimelineItem[] = [];
 </script>
 
-<div class="relative">
-	<div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-2 bg-neutral z-0">
-		<div class="absolute bottom-full w-1 h-1 border-4 border-transparent border-b-neutral"></div>
-		<div class="absolute top-full w-1 h-1 border-4 border-neutral border-b-transparent"></div>
-	</div>
-
-	<ol class="relative list-none grid grid-flow-row auto-rows-auto gap-12">
-		{#each items as item, i}
-			<li class="grid grid-cols-[1fr_auto_1fr] gap-12 items-center">
-				{#if i % 2 === 1}
-					<div class="text-right">
-						<p class="text-lg font-medium">
-							{item.date}
-						</p>
-					</div>
-
-					<div class="rounded-full w-4 h-4 bg-neutral mx-auto p-1">
-						<div class="w-2 h-2 bg-base-100 rounded-full"></div>
-					</div>
-
-					<div class="prose">
-						<h3>
-							{item.title}
-						</h3>
-						<p>
-							{item.content}
-						</p>
-						{#if item.location}
-							<p>
-								{item.location}
-							</p>
-						{/if}
-					</div>
-				{/if}
-
-				{#if i % 2 === 0}
-					<div class="prose">
-						<h3>
-							{item.title}
-						</h3>
-						<p>
-							{item.content}
-						</p>
-						{#if item.location}
-							<p>
-								{item.location}
-							</p>
-						{/if}
-					</div>
-
-					<div class="rounded-full w-4 h-4 bg-neutral mx-auto p-1">
-						<div class="w-2 h-2 bg-base-100 rounded-full"></div>
-					</div>
-
-					<div>
-						<p class="text-lg font-medium">
-							{item.date}
-						</p>
-					</div>
-				{/if}
-			</li>
-		{/each}
-	</ol>
-</div>
+<ol class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+	{#each items as item, i (item.date)}
+		<li>
+			{#if i > 0}
+				<hr />
+			{/if}
+			<div class="timeline-middle">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 20 20"
+					class="w-5 h-5"
+				>
+					<circle
+						cx="10"
+						cy="10"
+						r="6"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="4"
+					/>
+				</svg>
+			</div>
+			<div
+				class={cn('mb-10 space-y-4', {
+					'timeline-start md:text-end mr-4': i % 2 === 0,
+					'timeline-end ml-4': i % 2 === 1,
+				})}
+			>
+				<p>
+					<time class="font-mono italic">{item.date}</time>
+				</p>
+				<p class="text-lg font-black">{item.title}</p>
+				<div class="prose">
+					{@html item.content}
+				</div>
+			</div>
+			<hr />
+		</li>
+	{/each}
+</ol>

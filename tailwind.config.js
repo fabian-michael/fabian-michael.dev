@@ -7,28 +7,28 @@ module.exports = {
 		themes: [
 			{
 				light: {
-					"primary": "#38bdf8",
-					"secondary": "#4f46e5",
-					"accent": "#d946ef",
-					"neutral": "#1f2937",
-					"base-100": "#ffffff",
-					"info": "#00beff",
-					"success": "#22c55e",
-					"warning": "#facc15",
-					"error": "#f87171",
+					'primary': '#38bdf8',
+					'secondary': '#4f46e5',
+					'accent': '#d946ef',
+					'neutral': '#1f2937',
+					'base-100': '#ffffff',
+					'info': '#00beff',
+					'success': '#22c55e',
+					'warning': '#facc15',
+					'error': '#f87171',
 				},
 			},
 			{
 				dark: {
-					"primary": "#38bdf8",
-					"secondary": "#4f46e5",
-					"accent": "#d946ef",
-					"neutral": "#1f2937",
-					"base-100": "#111827",
-					"info": "#00beff",
-					"success": "#22c55e",
-					"warning": "#facc15",
-					"error": "#f87171",
+					'primary': '#38bdf8',
+					'secondary': '#4f46e5',
+					'accent': '#d946ef',
+					'neutral': '#1f2937',
+					'base-100': '#111827',
+					'info': '#00beff',
+					'success': '#22c55e',
+					'warning': '#facc15',
+					'error': '#f87171',
 				},
 			},
 		],
@@ -49,7 +49,7 @@ module.exports = {
 				md: '768px',
 				lg: '1024px',
 				xl: '1280px',
-			}
+			},
 		},
 
 		extend: {
@@ -66,6 +66,6 @@ module.exports = {
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
-		require('daisyui')
+		require('daisyui'),
 	],
 };

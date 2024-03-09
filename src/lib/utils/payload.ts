@@ -3,17 +3,23 @@ import { PUBLIC_PAYLOAD_BASE } from '$env/static/public';
 import QueryString from 'qs';
 import { buildUrl } from './url';
 
-export async function makePayloadRequest<T>({
-    slug,
-    fetch,
-    where,
-    init,
-}: {
+interface MakePayloadRequestOptions {
     slug: string;
+    where?: Record<string, unknown>;
+    token?: string;
+    apiKey?: string;
     fetch: (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
     init?: RequestInit;
-    where?: Record<string, unknown>;
-}): Promise<T> {
+}
+
+export async function makePayloadRequest<T>({
+    slug,
+    where,
+    token,
+    apiKey = PAYLOAD_API_KEY,
+    fetch,
+    init = {},
+}: MakePayloadRequestOptions): Promise<T> {
     const urlParts = [PUBLIC_PAYLOAD_BASE, slug];
 
     if (where) {
@@ -30,15 +36,21 @@ export async function makePayloadRequest<T>({
     }
 
     const url = buildUrl(urlParts);
+    const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        ...(init?.headers as Record<string, string> ?? {}),
+    };
+
+    if (token) {
+        headers['Authorization'] = `JWT ${token}`;
+    } else if (apiKey) {
+        headers['Authorization'] = `api-keys API-Key ${apiKey}`;
+    }
 
     const payloadResponse = await fetch(url, {
         ...init,
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Authorization': `api-keys API-Key ${PAYLOAD_API_KEY}`,
-            ...(init?.headers ?? {}),
-        },
+        headers,
     });
 
     if (!payloadResponse.ok) {

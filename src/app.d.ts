@@ -23,6 +23,7 @@ declare global {
 
 		interface Session {
 			user?: User;
+			userToken?: string;
 		}
 
 		// interface Error {}
@@ -99,6 +100,41 @@ declare global {
 			interface LegalNotice {
 				title: string;
 				text_html: string;
+			}
+
+			interface Resume {
+				contact: {
+					avatar?: Image;
+					address: string;
+					phone: string;
+					email: string;
+				};
+
+				about: {
+					job_title: string;
+					profile_html: string;
+				};
+
+				experience: {
+					entries: Array<{
+						company: string;
+						job_title: string;
+						is_current_job: boolean;
+						start_date: string;
+						end_date?: string;
+						description_html: string;
+					}>;
+				};
+
+				education: {
+					entries: Array<{
+						institution: string;
+						title: string;
+						start_date: string;
+						end_date: string;
+						description_html: string;
+					}>;
+				};
 			}
 		}
 
