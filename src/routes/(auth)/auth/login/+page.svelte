@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Form, Input } from '$components/form/index.js';
+	import { userStore } from '$lib/client/stores/user-store.svelte.js';
 	import { schema } from './schema.js';
 
 	const { data } = $props();
@@ -13,6 +14,9 @@
 				data={data.loginForm}
 				action="/login"
 				class="card-body"
+				onResult={() => {
+					userStore.fetchUser();
+				}}
 				let:form
 				let:submitting
 			>

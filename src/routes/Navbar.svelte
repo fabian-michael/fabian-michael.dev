@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { Collapsible } from '$components/collapsible';
 	import { Logo } from '$components/logo';
 	import { ThemeSelect } from '$components/theme-select';
+	import { userStore } from '$lib/client/stores/user-store.svelte';
 	import { melt } from '@melt-ui/svelte';
 	import PhSignOut from '~icons/ph/sign-out';
 	import Navigation from './Navigation.svelte';
 
-	export let isMenuOpen = false;
-	let menuTrigger: any;
+	let isMenuOpen = $state(false);
+	let menuTrigger = $state<any>();
 
 	afterNavigate(() => {
 		isMenuOpen = false;
@@ -32,7 +32,7 @@
 			<div class="navbar-center"></div>
 
 			<div class="navbar-end">
-				{#if browser && $page.data.user}
+				{#if userStore.user}
 					<a
 						href="/auth/logout?redirectTo={$page.url.pathname}"
 						class="btn btn-square btn-ghost"

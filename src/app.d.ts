@@ -35,7 +35,6 @@ declare global {
 			session?: Session;
 		}
 		interface PageData {
-			user?: FrontendUser;
 			flash?: FlashMessage;
 		}
 		interface ActionData {

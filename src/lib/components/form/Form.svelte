@@ -7,20 +7,32 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 
 	import type { HTMLFormAttributes } from 'svelte/elements';
-	import type { Infer, SuperValidated } from 'sveltekit-superforms';
+	import type { Infer, SuperFormEvents, SuperValidated } from 'sveltekit-superforms';
 	import { superForm, type FormOptions } from 'sveltekit-superforms/client';
 
 	type FormProps<S extends ZodObject<ZodRawShape>, T extends Record<string, unknown> = Infer<S>> = Omit<
 		HTMLFormAttributes,
-		'action'
-	> & {
-		schema: S;
-		data: SuperValidated<T>;
-		action: string | FormOptions<T>['onUpdate'];
-		spa?: true;
-	};
+		'action' | 'method' | 'onsubmit'
+	> &
+		SuperFormEvents<Infer<S>, any> & {
+			schema: S;
+			data: SuperValidated<T>;
+			action: string | FormOptions<T>['onUpdate'];
+			spa?: true;
+		};
 
-	const { data: data, spa, schema, action, ...restProps } = $props<FormProps<S>>();
+	const {
+		data: data,
+		spa,
+		schema,
+		action,
+		onError,
+		onResult,
+		onSubmit,
+		onUpdate,
+		onUpdated,
+		...restProps
+	} = $props<FormProps<S>>();
 
 	const form = superForm(data, {
 		SPA: spa,
@@ -35,7 +47,13 @@
 	{...restProps}
 	novalidate
 	method="post"
-	use:enhance
+	use:enhance={{
+		onError,
+		onResult,
+		onSubmit,
+		onUpdate,
+		onUpdated,
+	}}
 >
 	<slot
 		{form}

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { clickOutside } from '$lib/client/actions/clickOutside';
+	import { userStore } from '$lib/client/stores/user-store.svelte';
 	import PhLock from '~icons/ph/lock';
 	import PhLockOpen from '~icons/ph/lock-open';
 	import NavigationItem from './NavigationItem.svelte';
@@ -26,7 +26,7 @@
 				href="/resume"
 				preload={false}
 			>
-				<svelte:component this={$page.data.user ? PhLockOpen : PhLock} /> Resume (tbd)
+				<svelte:component this={userStore.user ? PhLockOpen : PhLock} /> Resume (tbd)
 			</NavigationItem>
 		</li>
 	</ul>
