@@ -13,9 +13,9 @@
 <section>
 	<div class="container flex flex-wrap items-center justify-between gap-12">
 		{#if data?.hero?.text_html}
-			<div class="flex-1 prose">
+			<Prose class="flex-1">
 				{@html data.hero.text_html}
-			</div>
+			</Prose>
 		{/if}
 		{#if data?.hero?.image?.sizes?.square?.url}
 			<div class="w-full px-8 sm:px-0 sm:w-2/5 lg:w-1/4 shrink-0 avatar-wrapper">

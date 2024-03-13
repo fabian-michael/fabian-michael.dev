@@ -18,3 +18,15 @@
 >
 	{@render children()}
 </div>
+
+<style lang="postcss">
+	.prose {
+		:global(.gradient-text) {
+			@apply bg-gradient-to-r
+				from-primary
+				to-secondary
+				text-transparent
+				bg-clip-text;
+		}
+	}
+</style>
