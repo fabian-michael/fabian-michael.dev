@@ -4,7 +4,7 @@
 >
 	import type { ZodObject, ZodRawShape } from 'zod';
 
-	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { zod } from 'sveltekit-superforms/adapters';
 
 	import type { HTMLFormAttributes } from 'svelte/elements';
 	import type { Infer, SuperFormEvents, SuperValidated } from 'sveltekit-superforms';
@@ -14,38 +14,34 @@
 		HTMLFormAttributes,
 		'action' | 'method' | 'onsubmit'
 	> &
-		SuperFormEvents<Infer<S>, any> & {
+		SuperFormEvents<Infer<S>, unknown> & {
+			dataType?: 'json' | 'form';
 			schema: S;
 			data: SuperValidated<T>;
 			action: string | FormOptions<T>['onUpdate'];
 			spa?: true;
 		};
 
-	const {
-		data: data,
-		spa,
-		schema,
-		action,
-		onError,
-		onResult,
-		onSubmit,
-		onUpdate,
-		onUpdated,
-		...restProps
-	} = $props<FormProps<S>>();
+	const { dataType, data, spa, schema, action, onError, onResult, onSubmit, onUpdate, onUpdated, ...restProps } =
+		$props<FormProps<S>>();
 
 	const form = superForm(data, {
+		dataType,
 		SPA: spa,
-		validators: zodClient(schema),
+		validators: zod(schema),
 		onUpdate: typeof action !== 'string' ? action : undefined,
 	});
 
-	const { enhance, submitting } = form;
+	const { enhance, submitting, options } = form;
+
+	// update the validators when the schema changes (multi-steps forms)
+	$effect(() => {
+		options.validators = zod(schema);
+	});
 </script>
 
 <form
 	{...restProps}
-	novalidate
 	method="post"
 	use:enhance={{
 		onError,

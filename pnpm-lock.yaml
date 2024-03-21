@@ -61,6 +61,9 @@ devDependencies:
   '@tailwindcss/typography':
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.4.1)
+  '@types/cloudflare-turnstile':
+    specifier: ^0.1.4
+    version: 0.1.4
   '@types/eslint':
     specifier: 8.56.6
     version: 8.56.6
@@ -711,8 +714,8 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@sinclair/typebox@0.32.17:
-    resolution: {integrity: sha512-jgY31gR1xtOB9XpGo+xqrq6K3ssdEyCPKSrB6uRUPNuZ26L5S4u8Qi+bhiNa6PbJklozEoFZvbev7SoQ9ffuAA==}
+  /@sinclair/typebox@0.32.18:
+    resolution: {integrity: sha512-ioMK5TA5YOloYf/GcnF+1fT4eTvowJes2j7Pm0Ivlm9xq61keqQw/XtbQQnPG8O4uq2y2DDenU8OqNc93xn11Q==}
     requiresBuild: true
     dev: false
     optional: true
@@ -808,6 +811,10 @@ packages:
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.4.1
+    dev: true
+
+  /@types/cloudflare-turnstile@0.1.4:
+    resolution: {integrity: sha512-ogT/d/JS6SZNbmg6nx0Vdtqfvc36aSEqahyPIJ9+Ud0sUcrhFz58Sttt2cgwKgXlrqMxSBtl9f5qVv7uaYGevQ==}
     dev: true
 
   /@types/cookie@0.6.0:
@@ -3043,7 +3050,7 @@ packages:
       ts-deepmerge: 7.0.0
     optionalDependencies:
       '@gcornut/valibot-json-schema': 0.0.26(@types/json-schema@7.0.15)(esbuild-runner@2.2.2)(esbuild@0.20.2)(valibot@0.30.0)
-      '@sinclair/typebox': 0.32.17
+      '@sinclair/typebox': 0.32.18
       '@sodaru/yup-to-json-schema': 2.0.1
       '@vinejs/vine': 1.8.0
       arktype: 1.0.29-alpha
