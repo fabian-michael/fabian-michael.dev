@@ -185,7 +185,7 @@
 					disabled={$submitting}
 				>
 					{#if $submitting}
-						<span class="loading loading-spinner"></span>
+						<span class="loading loading-ball"></span>
 					{:else if step === steps.length}
 						Request access
 					{:else}

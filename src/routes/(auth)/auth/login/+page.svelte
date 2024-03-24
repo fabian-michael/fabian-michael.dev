@@ -77,7 +77,7 @@
 					disabled={submitting}
 				>
 					{#if submitting}
-						<span class="loading loading-spinner"></span>
+						<span class="loading loading-ball"></span>
 					{:else}
 						Login
 					{/if}

@@ -37,6 +37,7 @@
 	<div
 		class="flex items-center gap-2 input input-bordered"
 		class:input-error={$errors?.length}
+		class:input-disabled={props.disabled}
 	>
 		{#if icon}
 			<svelte:component this={icon} />
