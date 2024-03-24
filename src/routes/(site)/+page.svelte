@@ -41,7 +41,7 @@
 			</p>
 		</Prose>
 
-		<div class="grid grid-cols-1 gap-8 mt-8 sm:grid-cols-2 md:grid-cols-3">
+		<div class="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
 			{#await data.blogPostings}
 				{#each Array(3) as _}
 					<div class="w-full space-y-4">

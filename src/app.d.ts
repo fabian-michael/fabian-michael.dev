@@ -40,6 +40,10 @@ declare global {
 		interface ActionData {
 			flash?: FlashMessage;
 		}
+		interface PageState {
+			step?: number;
+			formState?: unknown;
+		}
 		// interface Platform {}
 	}
 

@@ -15,6 +15,7 @@
 
 	let container = $state<HTMLDivElement | undefined>();
 	let widgetId = $state<string | undefined>();
+	let ready = $state(false);
 
 	const { form, ...props } = $props<InputProps<T>>();
 
@@ -39,6 +40,8 @@
 
 	onDestroy(() => {
 		value.set(undefined as FormPathType<T, FormPathLeaves<T>>);
+		// @ts-ignore 'remove' is not in the typedefs but it is in the code
+		turnstile.remove(widgetId);
 	});
 </script>
 
@@ -51,7 +54,10 @@
 			{props.label}
 		</span>
 	</label>
-	<div bind:this={container} />
+	<div
+		class="mx-auto w-fit"
+		bind:this={container}
+	/>
 	{#if $errors?.length}
 		<span class="label">
 			<span class="label-text text-error">

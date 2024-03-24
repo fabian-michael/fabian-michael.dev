@@ -27,6 +27,7 @@ module.exports = {
 		'@typescript-eslint/no-var-requires': 'off',
 		'svelte/no-at-html-tags': 'off',
 		'no-undef': 'off',
+		'no-useless-escape': 'off',
 		semi: ['error'],
 		quotes: [
 			'error',

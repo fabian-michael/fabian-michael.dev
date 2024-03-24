@@ -4,19 +4,21 @@
 >
 	import type { ComponentType } from 'svelte';
 	import type { HTMLInputAttributes } from 'svelte/elements';
-	import { formFieldProxy, type FormPathLeaves, type SuperForm } from 'sveltekit-superforms';
+	import { formFieldProxy, stringProxy, type FormPathLeaves, type SuperForm } from 'sveltekit-superforms';
 
 	type InputProps<T extends Record<string, unknown>> = Omit<HTMLInputAttributes, 'form' | 'name' | 'value'> & {
 		form: SuperForm<T>;
 		label: string;
-		// name: FormPathLeaves<T>; not working in multi-step forms
-		name: string;
+		name: FormPathLeaves<T>;
 		icon?: ComponentType;
 	};
 
 	const { form, icon, ...props } = $props<InputProps<T>>();
 
-	const { value, errors, constraints } = formFieldProxy(form, props.name as FormPathLeaves<T>);
+	const { errors, constraints } = formFieldProxy(form, props.name as FormPathLeaves<T>);
+	const value = stringProxy(form, props.name as FormPathLeaves<T>, {
+		empty: 'undefined',
+	});
 </script>
 
 <div class="form-control">

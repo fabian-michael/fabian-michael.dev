@@ -1,5 +1,5 @@
-<div class="grid items-end pt-12 pb-24 sm:items-center">
-	<div class="w-full px-6 mx-auto max-w-screen-xs">
+<div class="grid items-end pt-6 pb-24 sm:items-center">
+	<div class="w-full max-w-lg px-4 mx-auto">
 		<slot />
 	</div>
 </div>

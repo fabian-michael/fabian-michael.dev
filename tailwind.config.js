@@ -42,7 +42,10 @@ module.exports = {
 
 		container: {
 			center: true,
-			padding: '1.5rem',
+			padding: {
+				DEFAULT: '1rem',
+				sm: '1.5rem',
+			},
 			screens: {
 				xs: '475px',
 				sm: '640px',
@@ -61,6 +64,7 @@ module.exports = {
 				'overpass': ['Overpass', 'cursive'],
 				'poppins': ['Poppins', 'cursive'],
 				'sans': ['Poppins', 'sans-serif'],
+				'symbols': ['Material Symbols Rounded', 'sans-serif'],
 			},
 		},
 	},

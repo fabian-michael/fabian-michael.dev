@@ -9,8 +9,7 @@
 	type InputProps<T extends Record<string, unknown>> = Omit<HTMLTextareaAttributes, 'form' | 'name' | 'value'> & {
 		form: SuperForm<T>;
 		label: string;
-		// name: FormPathLeaves<T>; not working in multi-step forms
-		name: string;
+		name: FormPathLeaves<T>;
 		icon?: ComponentType;
 	};
 
