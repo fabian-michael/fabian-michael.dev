@@ -11,7 +11,7 @@ export const schemaClientStep1 = z.object({
     phone: z
         .string()
         .regex(
-            /^(?:([+]\d{1,4})[\-.\s]?)?(?:\((\d{1,3})\)[\-.\s]?)?(\d{1,4})[\-.\s]?(\d{1,4})[\-.\s]?(\d{1,9})$/,
+            /^(\+\d{1,4}|\(\+\d{1,4}\)|0+\d{1,5}|\(0+\d{1,5}\))[\d\s\-\/]*\d+$/,
             { message: 'Please enter a valid phone number' }
         )
         .optional()
