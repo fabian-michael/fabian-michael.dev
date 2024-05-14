@@ -1,4 +1,4 @@
-import type { RequestHandler } from "./$types";
+import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = ({ locals }) => {
     let user: App.FrontendUser | null = null;
@@ -11,7 +11,7 @@ export const GET: RequestHandler = ({ locals }) => {
 
     return new Response(JSON.stringify(user), {
         headers: {
-            'Content-Type': 'application/json'
-        }
+            'Content-Type': 'application/json',
+        },
     });
-}
+}; 

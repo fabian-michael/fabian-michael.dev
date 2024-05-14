@@ -24,7 +24,7 @@ export const load: PageServerLoad = async ({ url, locals }) => {
     };
 };
 
-const PAYLOAD_SLUG = '/api/frontend-users/login';
+const PAYLOAD_SLUG = ''; // TODO 
 
 export const actions: Actions = {
     default: async (event) => {
@@ -34,6 +34,8 @@ export const actions: Actions = {
         if (!form.valid) {
             return fail(400, { form });
         }
+
+        console.dir(form.data);
 
         return {
             form,

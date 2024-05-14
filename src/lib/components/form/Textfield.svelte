@@ -6,14 +6,14 @@
 	import type { HTMLInputAttributes } from 'svelte/elements';
 	import { formFieldProxy, stringProxy, type FormPathLeaves, type SuperForm } from 'sveltekit-superforms';
 
-	type InputProps<T extends Record<string, unknown>> = Omit<HTMLInputAttributes, 'form' | 'name' | 'value'> & {
+	type TextFieldProps<T extends Record<string, unknown>> = Omit<HTMLInputAttributes, 'form' | 'name' | 'value'> & {
 		form: SuperForm<T>;
 		label: string;
 		name: FormPathLeaves<T>;
 		icon?: ComponentType;
 	};
 
-	const { form, icon, ...props } = $props<InputProps<T>>();
+	const { form, icon, ...props } = $props<TextFieldProps<T>>();
 
 	const { errors, constraints } = formFieldProxy(form, props.name as FormPathLeaves<T>);
 	const value = stringProxy(form, props.name as FormPathLeaves<T>, {

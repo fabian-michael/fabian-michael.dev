@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Form, Textfield } from '$components/form/index.js';
+	import { Form, TextField } from '$components/form/index.js';
 	import { userStore } from '$lib/client/stores/user-store.svelte.js';
 	import PhEnvelopeSimple from '~icons/ph/envelope-simple';
 	import PhPassword from '~icons/ph/password';
@@ -24,7 +24,7 @@
 			let:form
 			let:submitting
 		>
-			<Textfield
+			<TextField
 				{form}
 				type="email"
 				id="login-email"
@@ -36,7 +36,7 @@
 				autocomplete="username"
 			/>
 
-			<Textfield
+			<TextField
 				{form}
 				type="password"
 				id="login-password"

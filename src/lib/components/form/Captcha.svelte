@@ -14,8 +14,7 @@
 	};
 
 	let container = $state<HTMLDivElement | undefined>();
-	let widgetId = $state<string | undefined>();
-	let ready = $state(false);
+	let widgetId = $state<string | undefined | null>();
 
 	const { form, ...props } = $props<InputProps<T>>();
 
@@ -32,14 +31,14 @@
 			widgetId = turnstile.render(container, {
 				sitekey: PUBLIC_CF_TURNSTILE_SITE_KEY,
 				callback: (token) => {
-					value.set(token as FormPathType<T, FormPathLeaves<T>>);
+					value.set(token as FormPathType<Record<string, unknown>, FormPathLeaves<T>>);
 				},
 			});
 		}
 	});
 
 	onDestroy(() => {
-		value.set(undefined as FormPathType<T, FormPathLeaves<T>>);
+		value.set(undefined as FormPathType<Record<string, unknown>, FormPathLeaves<T>>);
 		// @ts-ignore 'remove' is not in the typedefs but it is in the code
 		turnstile.remove(widgetId);
 	});
@@ -54,10 +53,7 @@
 			{props.label}
 		</span>
 	</label>
-	<div
-		class="mx-auto w-fit"
-		bind:this={container}
-	/>
+	<div bind:this={container} />
 	{#if $errors?.length}
 		<span class="label">
 			<span class="label-text text-error">

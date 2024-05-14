@@ -2,7 +2,7 @@ import { CF_TURNSTILE_SECRET } from '$env/static/private';
 import { makeRequest } from '$lib/utils/fetch';
 import { safePromise } from '$lib/utils/safePromise';
 import { z } from 'zod';
-import { schemaClientStep2 } from './schema-client';
+import { schemaClientStep3 } from './schema-client';
 
 type TurnstileVerificationResponse = {
     success: boolean;
@@ -11,7 +11,7 @@ type TurnstileVerificationResponse = {
     hostname: string;
 }
 
-export const schemaServer = schemaClientStep2.extend({
+export const schemaServer = schemaClientStep3.extend({
     'cf-turnstile-response': z.string()
         .refine(async (token) => {
             if (

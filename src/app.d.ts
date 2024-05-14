@@ -27,7 +27,9 @@ declare global {
 		}
 
 		interface Session {
+			id: string;
 			user?: SessionUser;
+			challenge?: string;
 		}
 
 		// interface Error {}
