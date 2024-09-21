@@ -19,14 +19,11 @@
 			<NavigationItem href="/">Home</NavigationItem>
 		</li>
 		<li>
-			<NavigationItem href="/about">About me</NavigationItem>
-		</li>
-		<li>
 			<NavigationItem
 				href="/resume"
 				preload={false}
 			>
-				<svelte:component this={userStore.user ? PhLockOpen : PhLock} /> Resume (tbd)
+				<svelte:component this={userStore.user ? PhLockOpen : PhLock} /> Resume (work in progress)
 			</NavigationItem>
 		</li>
 	</ul>

@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { Form, TextField } from '$components/form/index.js';
 	import { userStore } from '$lib/client/stores/user-store.svelte.js';
+	import { getFlash } from 'sveltekit-flash-message';
 	import PhEnvelopeSimple from '~icons/ph/envelope-simple';
-	import PhPassword from '~icons/ph/password';
 	import { schema } from './schema.js';
 
 	const { data } = $props();
@@ -10,7 +11,7 @@
 
 <section class="space-y-6">
 	<header>
-		<div class="text-2xl text-center">Login</div>
+		<div class="text-2xl text-center">Login (Work in progress)</div>
 	</header>
 	<div class="shadow-lg card bg-base-100 card-compact sm:card-normal">
 		<Form
@@ -20,6 +21,11 @@
 			class="card-body"
 			onResult={() => {
 				userStore.fetchUser();
+				getFlash(page).set({
+					type: 'info',
+					title: 'Wotk in progress',
+					message: 'This is work in progress',
+				});
 			}}
 			let:form
 			let:submitting
@@ -36,18 +42,6 @@
 				autocomplete="username"
 			/>
 
-			<TextField
-				{form}
-				type="password"
-				id="login-password"
-				name="password"
-				label="Password"
-				placeholder="Password"
-				icon={PhPassword}
-				disabled={submitting}
-				autocomplete="current-password"
-			/>
-
 			<div class="flex-col items-stretch mt-6 card-actions">
 				<div class="flex items-center justify-between">
 					<div class="form-control">
@@ -60,15 +54,6 @@
 							/>
 							<span class="ml-2 text-xs label-text">Remember me</span>
 						</label>
-					</div>
-
-					<div>
-						<a
-							href=""
-							class="text-xs link"
-						>
-							Forgot password
-						</a>
 					</div>
 				</div>
 				<button

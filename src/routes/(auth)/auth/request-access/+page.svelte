@@ -1,11 +1,10 @@
 <script lang="ts">
-	import { dev } from '$app/environment';
 	import { page } from '$app/stores';
 	import { Captcha, HiddenField, Textarea, TextField } from '$components/form';
 	import { makeRequest } from '$lib/utils/fetch.js';
 	import { safePromise } from '$lib/utils/safePromise.js';
 	import { client } from '@passwordless-id/webauthn';
-	import type { CredentialKey } from '@passwordless-id/webauthn/dist/esm/types.js';
+	import type { RegistrationJSON } from '@passwordless-id/webauthn/dist/esm/types.js';
 	import { getFlash } from 'sveltekit-flash-message';
 	import { zod } from 'sveltekit-superforms/adapters';
 	import { superForm } from 'sveltekit-superforms/client';
@@ -40,6 +39,11 @@
 		dataType: 'json',
 		onSubmit: ({ cancel, formElement }) => {
 			if (step === steps.length) {
+				$flash = {
+					type: 'info',
+					title: 'Wotk in progress',
+					message: 'This is work in progress',
+				};
 				return; // default form submission
 			}
 
@@ -58,13 +62,13 @@
 			}
 		},
 	});
-	const { enhance, submitting, capture, restore, options, form: formData, errors, validate } = form;
+	const { enhance, submitting, capture, restore, options, form: formData, errors } = form;
 	$inspect($errors);
 
 	// State
 	let step = $state(1);
 	let schema = $derived(steps[step - 1] as typeof schemaClientStep3);
-	let passkey = $state<CredentialKey | null>(null);
+	let passkey = $state<RegistrationJSON | null>(null);
 	let passkeyState = $state<'none' | 'adding' | 'added' | 'error'>('none');
 
 	// Effects
@@ -115,12 +119,11 @@
 		}
 
 		const [registration, registerError] = await safePromise(
-			client.register($formData.email, response.challenge, {
-				authenticatorType: 'auto',
-				userVerification: 'required',
-				timeout: 60000,
+			client.register({
+				user: $formData.email,
+				challenge: response.challenge,
 				attestation: true,
-				debug: dev,
+				timeout: 60000,
 			}),
 			{
 				logErrors: false,
@@ -137,14 +140,14 @@
 			return;
 		}
 
-		passkey = registration.credential;
+		passkey = registration;
 		passkeyState = 'added';
 	};
 </script>
 
 <section class="space-y-6">
 	<header>
-		<h1 class="text-2xl text-center">Request access (tbd)</h1>
+		<h1 class="text-2xl text-center">Request access (work in progresss)</h1>
 	</header>
 	<div class="shadow-lg card bg-base-100 card-compact sm:card-normal">
 		<form
@@ -155,15 +158,13 @@
 			<header class="mb-6 space-y-4">
 				<ul class="w-full steps">
 					{#each steps as _, i}
+						{@const Icon = stepIcons[i]}
 						<li
 							class="step after:font-symbols"
 							class:step-secondary={step >= i + 1}
 							data-content={step === i + 1 ? '\ue3c9' : step > i + 1 ? '\ue876' : ''}
 						>
-							<svelte:component
-								this={stepIcons[i]}
-								class="mt-2"
-							/>
+							<Icon class="mt-2" />
 							{stepLabels[i]}
 						</li>
 					{/each}
@@ -323,13 +324,13 @@
 				<HiddenField
 					{form}
 					name="passkey.algorithm"
-					value={passkey?.algorithm ?? ''}
+					value={passkey?.response?.publicKeyAlgorithm ?? ''}
 					showErrors={false}
 				/>
 				<HiddenField
 					{form}
 					name="passkey.publicKey"
-					value={passkey?.publicKey ?? ''}
+					value={passkey?.response?.publicKey ?? ''}
 					showErrors={false}
 				/>
 				<HiddenField

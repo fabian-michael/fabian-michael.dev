@@ -10,7 +10,7 @@
 
 <footer class="rounded footer footer-center gap-y-6 pb-24 sm:pb-6 bg-base-200 text-base-content sticky top-[100dvh]">
 	<div class="w-full py-4">
-		<ul class="flex items-center justify-center text-2xl gap-8">
+		<ul class="flex items-center justify-center gap-8 text-2xl">
 			<li>
 				<a
 					class="inline-flex items-center gap-2 hover:text-white"
@@ -55,10 +55,6 @@
 	</div>
 
 	<div class="grid grid-flow-col gap-4">
-		<a
-			class="link link-hover"
-			href="/about">About me</a
-		>
 		<a
 			class="link link-hover"
 			href="mailto:bucolic-ductile0d@icloud.com?subject=Hi%20Fabian%20%F0%9F%91%8B">Contact</a
