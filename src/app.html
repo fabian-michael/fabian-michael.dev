@@ -1,98 +1,54 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link
-			href="%sveltekit.assets%/favicon-light.png"
-			rel="icon"
-			media="(prefers-color-scheme: light)"
-		/>
-		<link
-			href="%sveltekit.assets%/favicon-dark.png"
-			rel="icon"
-			media="(prefers-color-scheme: dark)"
-		/>
+<!DOCTYPE html>
+<html lang="%paraglide.lang%" dir="%paraglide.textDirection%">
+    <head>
+        <meta charset="utf-8" />
+        <link
+            href="%sveltekit.assets%/favicon-light.png"
+            rel="icon"
+            media="(prefers-color-scheme: light)"
+        />
+        <link
+            href="%sveltekit.assets%/favicon-dark.png"
+            rel="icon"
+            media="(prefers-color-scheme: dark)"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-		<meta
-			name="viewport"
-			content="width=device-width"
-		/>
+        <script>
+            // apply the theme from local storage here to avoid flickering
+            (() => {
+                const root = document.documentElement;
+                const theme = localStorage.getItem("theme");
 
-		<script type="text/javascript">
-			const defaultTheme = '';
-			const darkTheme = 'dark';
-			const lightTheme = 'light';
+                if (theme !== null) {
+                    root.dataset.theme = theme;
+                }
+            })();
+        </script>
 
-			window.setTheme = function (theme) {
-				const prefersColorSchemeDark = window.matchMedia('(prefers-color-scheme: dark)');
+        <link
+            rel="stylesheet"
+            href="/fonts/pacifico-v22-latin/pacifico-v22-latin.css"
+        />
 
-				// update local storage
-				localStorage.setItem('theme', theme);
+        <link
+            rel="stylesheet"
+            href="/fonts/overpass-v12-latin/overpass-v12-latin.css"
+        />
 
-				// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-				if (theme === darkTheme || (!theme && prefersColorSchemeDark.matches)) {
-					document.documentElement.dataset.theme = darkTheme;
-				} else {
-					document.documentElement.dataset.theme = lightTheme;
-				}
-			};
+        <link
+            rel="stylesheet"
+            href="/fonts/poppins-v20-latin/poppins-v20-latin.css"
+        />
 
-			(function () {
-				// init local storage
-				if (!localStorage.getItem('theme')) {
-					localStorage.setItem('theme', defaultTheme);
-				}
+        <link
+            rel="stylesheet"
+            href="/fonts/material-symbols-rounded-v165-latin/material-symbols-rounded-v165-latin.css"
+        />
 
-				// update theme if system preference changes
-				const prefersColorSchemeDark = window.matchMedia('(prefers-color-scheme: dark)');
-				setTheme(localStorage.getItem('theme'));
-				prefersColorSchemeDark.addEventListener('change', () => {
-					setTheme(localStorage.getItem('theme'));
-				});
-
-				// update theme if local storage changes in another tab
-				window.addEventListener('storage', (event) => {
-					if (event.key === 'theme') {
-						setTheme(event.newValue);
-					}
-				});
-			})();
-		</script>
-
-		<script
-			src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
-			async
-			defer
-		></script>
-
-		<link
-			rel="stylesheet"
-			href="/fonts/pacifico-v22-latin/pacifico-v22-latin.css"
-		/>
-
-		<link
-			rel="stylesheet"
-			href="/fonts/overpass-v12-latin/overpass-v12-latin.css"
-		/>
-
-		<link
-			rel="stylesheet"
-			href="/fonts/poppins-v20-latin/poppins-v20-latin.css"
-		/>
-
-		<link
-			rel="stylesheet"
-			href="/fonts/material-symbols-rounded-v165-latin/material-symbols-rounded-v165-latin.css"
-		/>
-
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div
-			id="app"
-			style="display: contents"
-		>
-			%sveltekit.body%
-		</div>
-	</body>
+        %sveltekit.head%
+    </head>
+    <body data-sveltekit-preload-data="hover">
+        <div style="display: contents">%sveltekit.body%</div>
+    </body>
 </html>

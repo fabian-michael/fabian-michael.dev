@@ -1,18 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @layer base {
-	html {
-		height: 100dvh;
-	}
+    html {
+        height: 100dvh;
+    }
 
-	body {
-		min-height: 100dvh;
-
-		--bg-gradient-left: oklch(var(--p) / 0.15);
-		--bg-gradient-right: oklch(var(--s) / 0.15);
-		background-image: radial-gradient(at -20vw 20dvh, var(--bg-gradient-left) 0px, rgba(0, 0, 0, 0) 60%),
-			radial-gradient(at 120vw 120dvh, var(--bg-gradient-right) 0px, rgba(0, 0, 0, 0) 60%);
-	}
+    body {
+        min-height: 100dvh;
+    }
 }
