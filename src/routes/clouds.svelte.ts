@@ -119,7 +119,7 @@ export function initClouds(container: HTMLDivElement) {
                     cloudColor,
                     cloudSize: new Vector3(
                         Math.random() + 1.5,
-                        Math.random() + 0.2,
+                        Math.random() * 0.5 + 0.5,
                         Math.random() + 0.5,
                     ),
                     position: new Vector3(
