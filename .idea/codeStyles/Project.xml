@@ -4,5 +4,14 @@
       <option name="FORCE_SEMICOLON_STYLE" value="true" />
       <option name="ENFORCE_TRAILING_COMMA" value="WhenMultiline" />
     </JSCodeStyleSettings>
+    <XML>
+      <option name="XML_ATTRIBUTE_WRAP" value="2" />
+    </XML>
+    <codeStyleSettings language="JavaScript">
+      <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
+    </codeStyleSettings>
+    <codeStyleSettings language="TypeScript">
+      <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
+    </codeStyleSettings>
   </code_scheme>
 </component>

@@ -3,6 +3,12 @@ import 'unplugin-icons/types/svelte';
 // See https://svelte.dev/docs/kit/types#app
 // for information about these interfaces
 declare global {
+    // shaders
+    module '*.frag' {
+        const value: string;
+        export default value;
+    }
+
     namespace App {
         // interface Error {}
         // interface Locals {}

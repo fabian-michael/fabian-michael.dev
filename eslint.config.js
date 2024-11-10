@@ -29,7 +29,8 @@ export default ts.config(
     },
     {
         rules: {
-            semi: ['error'],
+            '@typescript-eslint/ban-ts-comment': 'off',
+            'semi': ['error'],
             'comma-dangle': [
                 'error',
                 'always-multiline',

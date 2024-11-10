@@ -1,0 +1,12 @@
+<svg viewBox="0 0 250 250"
+     xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="noiseFilter">
+            <feTurbulence
+                type='fractalNoise'
+                baseFrequency='6.29'
+                numOctaves='6'
+                stitchTiles='stitch'/>
+        </filter>
+    </defs>
+</svg>

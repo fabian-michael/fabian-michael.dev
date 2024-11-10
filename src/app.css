@@ -3,6 +3,11 @@
 @import "tailwindcss/utilities";
 
 @layer base {
+    html,
+    body {
+        overflow-x: clip;
+    }
+
     html {
         height: 100dvh;
     }
