@@ -71,23 +71,12 @@
 
     <svg
         viewBox="0 0 360.56435 237.74781"
-        class="w-full h-auto text-base-300 relative -bottom-12"
+        class="w-full h-auto text-white dark:text-[#010109] relative -bottom-12 blur-sm scale-105"
     >
         <use href="/images/foreground.svg#foreground"/>
     </svg>
 
-    <div class="bg-base-300 content">
-        <!-- horizontal paint brush stroke-->
-        <!--<svg
-            viewBox="0 0 261.56 60.652"
-            xmlns="http://www.w3.org/2000/svg"
-            class="absolute w-[calc(100%+200px)] h-auto text-base-300 -top-20 -left-[100px]"
-        >
-            <use href="/images/brush-stroke.svg#brush-stroke"/>
-        </svg>-->
-
-
-
+    <div class="bg-white dark:bg-[#010109] content min-h-[150dvh]">
         <div class="container relative prose">
             <h2>Recent blog postings</h2>
         </div>
@@ -133,24 +122,27 @@
         );
 
         transform: translateY(var(--translate-y));
-        filter: brightness(120%);
+        filter: brightness(120%) saturate(80%);
     }
 
     .noise {
         background: #000000;
-        mix-blend-mode: darken;
-        mix-blend-mode: difference;
-        mix-blend-mode: exclusion;
-        mix-blend-mode: multiply;
+        mix-blend-mode: screen;
+        opacity: 0.7;
         filter: url("/images/noise.svg#noiseFilter");
+
+        --initial-translate-y: 0px;
+        --final-translate-y: -200px;
+        --translate-y: calc(
+            var(--initial-translate-y) +
+            (var(--final-translate-y) - var(--initial-translate-y)) *
+            var(--scroll-progress)
+        );
+
+        transform: translateY(var(--translate-y));
     }
 
     .content {
-        background: linear-gradient(
-            to bottom,
-            theme("colors.base-300") 50%,
-            theme("colors.sky.100")
-        );
     }
 
     :global([data-theme="night"]) {
@@ -173,6 +165,11 @@
 
         .mountains {
             background-image: url("/images/mountains-dark.png");
+            filter: none;
+        }
+
+        .noise {
+            opacity: 0.2;
         }
     }
 </style>
