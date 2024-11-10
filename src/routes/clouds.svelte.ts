@@ -3,6 +3,7 @@ import fragmentShader from "./clouds.frag";
 // @ts-expect-error
 import {FullScreenQuad} from "three/examples/jsm/postprocessing/Pass";
 import {Camera, Color, PerspectiveCamera, ShaderMaterial, Vector2, Vector3, WebGLRenderer} from "three";
+import {THEME_DARK, ThemeStore} from "$lib/client/stores/ThemeStore.svelte";
 
 class Cloud extends FullScreenQuad {
     material: ShaderMaterial;
@@ -108,9 +109,14 @@ export function initClouds(container: HTMLDivElement) {
 
         // generate random clouds
         function generateClouds(count: number): Cloud[] {
+            const isDarkTheme = ThemeStore.theme === THEME_DARK;
+            const cloudColor = isDarkTheme
+                ? new Color(0x5C687C)
+                : new Color(0xF8F8FF);
             const clouds: Cloud[] = [];
             for (let i = 0; i < count; i++) {
                 const cloud = new Cloud({
+                    cloudColor,
                     cloudSize: new Vector3(
                         Math.random() + 1.5,
                         Math.random() + 0.5,

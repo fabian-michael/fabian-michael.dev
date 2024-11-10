@@ -50,7 +50,7 @@
             <div class="absolute inset-0" bind:this={skyContainer}>
                 <canvas
                     bind:this={skyCanvas}
-                    class="absolute h-[calc(100dvh)] w-screen top-0"
+                    class="absolute h-[calc(100dvh)] w-screen top-0 -z-10"
                 ></canvas>
             </div>
         </div>
