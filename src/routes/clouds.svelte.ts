@@ -103,7 +103,7 @@ export function initClouds(container: HTMLDivElement) {
         });
         container.appendChild(renderer.domElement);
 
-        const camera = new PerspectiveCamera(30);
+        const camera = new PerspectiveCamera(40);
         camera.position.set(0, 0, 20);
         camera.lookAt(0, 0, 0);
 
@@ -119,7 +119,7 @@ export function initClouds(container: HTMLDivElement) {
                     cloudColor,
                     cloudSize: new Vector3(
                         Math.random() + 1.5,
-                        Math.random() + 0.5,
+                        Math.random() + 0.2,
                         Math.random() + 0.5,
                     ),
                     position: new Vector3(
