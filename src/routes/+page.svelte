@@ -1,36 +1,10 @@
 <script lang="ts">
     import {initStars} from "./stars.svelte";
     import {initClouds} from "./clouds.svelte.js";
+    import {scrollProgress} from "$lib/client/actions/scrollProgress";
 
-    let parallaxContainer: HTMLDivElement;
-    let scrollProgress = $state(0);
     let skyContainer: HTMLDivElement;
     let skyCanvas: HTMLCanvasElement;
-
-
-    // handle scroll
-    $effect(() => {
-        const handleScroll = () => {
-            if (!parallaxContainer) return;
-
-            const rect = parallaxContainer.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            // Calculate the scroll progress
-            const start = rect.top + window.scrollY;
-            const end = start + parallaxContainer.scrollHeight - windowHeight;
-            // scrollProgress = progress;
-            scrollProgress = Math.min(
-                Math.max((window.scrollY - start) / (end - start), 0),
-                1,
-            );
-        };
-        window.addEventListener("scroll", handleScroll);
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    });
 
     $effect(() => {
         if (!skyCanvas) return;
@@ -40,14 +14,34 @@
     });
 </script>
 
+<svg
+    class="sr-only"
+    aria-hidden="true"
+>
+    <defs>
+        <filter id="noiseFilter">
+            <feTurbulence
+                type="fractalNoise"
+                baseFrequency="1.2"
+                numOctaves="16"
+                stitchTiles="stitch"
+            />
+        </filter>
+    </defs>
+</svg>
+
 <div
-    class="h-[300dvh] absolute top-0 w-screen"
-    bind:this={parallaxContainer}
-    style="--scroll-progress: {scrollProgress};"
+    class="h-[400dvh] absolute top-0 w-screen"
+    use:scrollProgress={{
+        onChange: (progress, element) => element.style.setProperty('--scroll-progress', String(progress)),
+    }}
 >
     <div class="sticky top-0 h-screen overflow-clip parallax-inner">
         <div class="absolute h-[calc(100dvh+100px)] w-screen top-0 sky">
-            <div class="absolute inset-0" bind:this={skyContainer}>
+            <div
+                class="absolute inset-0"
+                bind:this={skyContainer}
+            >
                 <canvas
                     bind:this={skyCanvas}
                     class="absolute h-[calc(100dvh)] w-screen top-0 -z-10"
@@ -58,36 +52,59 @@
         <div
             class="absolute h-[calc(100dvh+100px)] w-screen top-0 mountains"
         ></div>
-        <div class="noise absolute inset-0"></div>
-        <div class="absolute w-screen h-screen grid place-content-center top-0">
-            <h1 class="text-center text-6xl font-bold">
-                hi, I'm Fabian
-            </h1>
-        </div>
+        <div class="noise absolute inset-0 -top-[100px]"></div>
     </div>
 </div>
 
-<div class="relative pt-[50dvh]">
+<section
+    class="relative w-screen h-screen grid place-content-center top-0"
+    use:scrollProgress={{
+        offset: ['20% start', 'end 60%'],
+        onChange: (progress, element) => element.style.opacity = String(1 - progress),
+    }}
+>
+    <h1 class="text-center text-6xl font-bold">
+        hi, I'm Fabian
+    </h1>
+</section>
+
+<section
+    class="relative w-screen h-screen grid place-content-center top-0"
+    use:scrollProgress={{
+        offset: ['20% start', 'end 60%'],
+        onChange: (progress, element) => element.style.opacity = String(1 - progress),
+    }}
+>
+    <p class="text-center text-2xl max-w-3xl">
+        I'm a dedicated web developer with a passion for creating beautiful and functional websites.
+    </p>
+</section>
+
+<section class="relative">
 
     <svg
         viewBox="0 0 360.56435 237.74781"
-        class="w-full h-auto text-white dark:text-[#010109] relative -bottom-12 blur-sm scale-105"
+        class="w-full h-auto text-white dark:text-[#010109] relative -bottom-12 scale-105"
     >
         <use href="/images/foreground.svg#foreground"/>
     </svg>
 
     <div class="bg-white dark:bg-[#010109] content min-h-[150dvh]">
-        <div class="container relative prose">
-            <h2>Recent blog postings</h2>
+        <div class="container relative">
+            <div class="prose">
+                <h2>Recent blog postings</h2>
+                <p>Explose my recent blog postings, where I unravel the latest trends, hacks, and breakthroughs in web
+                   development. Dive right in and level up your coding game!</p>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 
 <style>
     .sky {
         --initial-translate-y: 0px;
-        --final-translate-y: -100px;
+        --final-translate-y: -50px;
         --translate-y: calc(
             var(--initial-translate-y) +
             (var(--final-translate-y) - var(--initial-translate-y)) *
@@ -113,8 +130,8 @@
         background: url("/images/mountains.png") no-repeat center center;
         background-size: cover;
 
-        --initial-translate-y: 0px;
-        --final-translate-y: -200px;
+        --initial-translate-y: 100px;
+        --final-translate-y: 0px;
         --translate-y: calc(
             var(--initial-translate-y) +
             (var(--final-translate-y) - var(--initial-translate-y)) *
@@ -122,17 +139,17 @@
         );
 
         transform: translateY(var(--translate-y));
-        filter: brightness(120%) saturate(80%);
+        filter: brightness(130%) saturate(80%) contrast(70%);
     }
 
     .noise {
         background: #000000;
         mix-blend-mode: screen;
-        opacity: 0.7;
-        filter: url("/images/noise.svg#noiseFilter");
+        opacity: 0.8;
+        filter: url("#noiseFilter");
 
-        --initial-translate-y: 0px;
-        --final-translate-y: -200px;
+        --initial-translate-y: 100px;
+        --final-translate-y: 0px;
         --translate-y: calc(
             var(--initial-translate-y) +
             (var(--final-translate-y) - var(--initial-translate-y)) *
@@ -140,9 +157,6 @@
         );
 
         transform: translateY(var(--translate-y));
-    }
-
-    .content {
     }
 
     :global([data-theme="night"]) {
