@@ -33,10 +33,7 @@
 
 <div use:melt={$root}>
 	{#if $open}
-		<div
-			use:melt={$content}
-			transition:slide={{ duration: 300 }}
-		>
+		<div use:melt={$content} transition:slide={{ duration: 300 }}>
 			<div transition:fade={{ duration: 200 }}>
 				<div transition:fly={{ y: -32, duration: 300 }}>
 					{@render children()}

@@ -10,23 +10,12 @@
 	export let value: string | undefined = '';
 </script>
 
-<select
-	class={cn('select select-sm accent-accent', className)}
-	bind:value
->
-	<option
-		value=""
-		disabled
-		selected
-		hidden
-	>
+<select class={cn('select select-sm accent-accent', className)} bind:value>
+	<option value="" disabled selected hidden>
 		{placeholder}
 	</option>
 	{#each options as item}
-		<option
-			class="font-sans option accent-accent"
-			value={item.value}
-		>
+		<option class="option font-sans accent-accent" value={item.value}>
 			{item.label}
 		</option>
 	{/each}

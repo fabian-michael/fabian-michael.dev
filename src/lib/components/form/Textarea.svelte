@@ -1,12 +1,12 @@
-<script
-	lang="ts"
-	generics="T extends Record<string, unknown>"
->
+<script lang="ts" generics="T extends Record<string, unknown>">
 	import type { ComponentType } from 'svelte';
 	import type { HTMLTextareaAttributes } from 'svelte/elements';
 	import { formFieldProxy, type FormPathLeaves, type SuperForm } from 'sveltekit-superforms';
 
-	type TextareaProps<T extends Record<string, unknown>> = Omit<HTMLTextareaAttributes, 'form' | 'name' | 'value'> & {
+	type TextareaProps<T extends Record<string, unknown>> = Omit<
+		HTMLTextareaAttributes,
+		'form' | 'name' | 'value'
+	> & {
 		form: SuperForm<T>;
 		label: string;
 		name: FormPathLeaves<T>;
@@ -19,14 +19,8 @@
 </script>
 
 <div class="form-control">
-	<label
-		for={props.id}
-		class="label"
-	>
-		<span
-			class="label-text"
-			class:font-medium={$constraints?.required}
-		>
+	<label for={props.id} class="label">
+		<span class="label-text" class:font-medium={$constraints?.required}>
 			{props.label}
 			{$constraints?.required && '*'}
 		</span>
@@ -34,7 +28,7 @@
 	<textarea
 		{...props}
 		bind:value={$value}
-		class="h-24 textarea textarea-bordered"
+		class="textarea-bordered textarea h-24"
 		class:textarea-error={$errors?.length}
 		{...$constraints}
 	/>

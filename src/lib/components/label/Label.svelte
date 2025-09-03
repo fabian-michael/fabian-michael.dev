@@ -12,13 +12,8 @@
 </script>
 
 <span class="whitespace-nowrap">
-	<Icon
-		{icon}
-		class="align-middle"
-		width="1em"
-		height="1em"
-	/>
-	<span class="whitespace-normal align-middle">
+	<Icon {icon} class="align-middle" width="1em" height="1em" />
+	<span class="align-middle whitespace-normal">
 		<slot />
 	</span>
 </span>

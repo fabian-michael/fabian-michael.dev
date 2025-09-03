@@ -32,25 +32,19 @@
 
 <slot />
 
-<div
-	class="z-50 toast toast-top"
-	use:portal
->
+<div class="toast-top toast z-50" use:portal>
 	{#each $toasts as { id, data } (id)}
 		<div
 			use:melt={$content(id)}
 			animate:flip={{ duration: 500 }}
 			in:fly={{ duration: 150, x: '100%' }}
 			out:fly={{ duration: 150, x: '100%' }}
-			class="shadow-lg alert"
+			class="alert shadow-lg"
 			class:alert-error={data.type === 'error'}
 		>
 			<div>
 				{#if data.title}
-					<h3
-						use:melt={$title(id)}
-						class="font-semibold"
-					>
+					<h3 use:melt={$title(id)} class="font-semibold">
 						{data.title}
 					</h3>
 				{/if}
@@ -58,13 +52,10 @@
 					{data.message}
 				</div>
 			</div>
-			<button
-				use:melt={$close(id)}
-				class="btn btn-sm btn-error btn-circle"
-			>
+			<button use:melt={$close(id)} class="btn btn-circle btn-sm btn-error">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
-					class="w-4 h-4"
+					class="h-4 w-4"
 					fill="none"
 					viewBox="0 0 24 24"
 					stroke="currentColor"

@@ -1,12 +1,12 @@
 import { redirect } from '@sveltejs/kit';
 
 export const GET = async ({ url }) => {
-    const code = url.searchParams.get('code');
-    const redirectTo = url.searchParams.get('redirectTo') || '/';
+	const code = url.searchParams.get('code');
+	const redirectTo = url.searchParams.get('redirectTo') || '/';
 
-    if (code) {
-        // TODO
-    }
+	if (code) {
+		// TODO
+	}
 
-    redirect(303, redirectTo);
+	redirect(303, redirectTo);
 };

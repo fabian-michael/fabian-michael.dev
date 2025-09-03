@@ -1,7 +1,4 @@
-<script
-	lang="ts"
-	generics="S extends ZodObject<ZodRawShape>"
->
+<script lang="ts" generics="S extends ZodObject<ZodRawShape>">
 	import type { ZodObject, ZodRawShape } from 'zod';
 
 	import { zod } from 'sveltekit-superforms/adapters';
@@ -10,10 +7,10 @@
 	import type { Infer, SuperFormEvents, SuperValidated } from 'sveltekit-superforms';
 	import { superForm, type FormOptions } from 'sveltekit-superforms/client';
 
-	type FormProps<S extends ZodObject<ZodRawShape>, T extends Record<string, unknown> = Infer<S>> = Omit<
-		HTMLFormAttributes,
-		'action' | 'method' | 'onsubmit'
-	> &
+	type FormProps<
+		S extends ZodObject<ZodRawShape>,
+		T extends Record<string, unknown> = Infer<S>,
+	> = Omit<HTMLFormAttributes, 'action' | 'method' | 'onsubmit'> &
 		SuperFormEvents<Infer<S>, unknown> & {
 			dataType?: 'json' | 'form';
 			schema: S;
@@ -22,8 +19,19 @@
 			spa?: true;
 		};
 
-	const { dataType, data, spa, schema, action, onError, onResult, onSubmit, onUpdate, onUpdated, ...restProps } =
-		$props<FormProps<S>>();
+	const {
+		dataType,
+		data,
+		spa,
+		schema,
+		action,
+		onError,
+		onResult,
+		onSubmit,
+		onUpdate,
+		onUpdated,
+		...restProps
+	} = $props<FormProps<S>>();
 
 	const form = superForm(data, {
 		dataType,
@@ -51,8 +59,5 @@
 		onUpdated,
 	}}
 >
-	<slot
-		{form}
-		submitting={$submitting}
-	/>
+	<slot {form} submitting={$submitting} />
 </form>

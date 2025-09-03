@@ -7,10 +7,7 @@
 
 <svelte:head>
 	<title>{data.title} | Fabian Michael</title>
-	<meta
-		name="description"
-		content={data.abstract}
-	/>
+	<meta name="description" content={data.abstract} />
 </svelte:head>
 
 <section>
@@ -30,7 +27,7 @@
 				{#if data.image}
 					<img
 						id="header-image"
-						class="object-cover aspect-video"
+						class="aspect-video object-cover"
 						src={data.image.url}
 						alt={data.title}
 					/>
@@ -40,10 +37,7 @@
 	</header>
 
 	<div class="container">
-		<Prose
-			class="prose-img:aspect-video prose-img:object-cover"
-			centered
-		>
+		<Prose class="prose-img:aspect-video prose-img:object-cover" centered>
 			{@html data.text_html}
 		</Prose>
 	</div>

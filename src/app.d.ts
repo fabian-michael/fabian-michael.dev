@@ -5,7 +5,6 @@ import type { Theme } from '$lib/client/stores/theme-store';
 
 // for information about these interfaces
 declare global {
-
 	interface Window {
 		setTheme(theme: Theme): void;
 	}
@@ -63,7 +62,7 @@ declare global {
 			id: string;
 			sizes: {
 				[key: string]: ImageProperties;
-			},
+			};
 		}
 
 		interface Collection {
@@ -100,11 +99,11 @@ declare global {
 			interface Home {
 				general: {
 					title: string;
-				},
+				};
 				hero: {
 					text_html: string;
 					image: Image;
-				}
+				};
 			}
 
 			interface LegalNotice {
@@ -171,5 +170,4 @@ declare global {
 	}
 }
 
-export { };
-
+export {};

@@ -1,7 +1,4 @@
-<script
-	lang="ts"
-	generics="T extends string | number"
->
+<script lang="ts" generics="T extends string | number">
 	import { fade } from 'svelte/transition';
 
 	import { Icon } from '$components/icon';
@@ -27,9 +24,18 @@
 		triggerRef?: (trigger: Trigger) => void;
 	}
 
-	let { class: className, title, options, defaultValue, value, onchange, triggerRef } = $props<IListboxProps<T>>();
+	let {
+		class: className,
+		title,
+		options,
+		defaultValue,
+		value,
+		onchange,
+		triggerRef,
+	} = $props<IListboxProps<T>>();
 
-	const findSelectedOptionByValue = () => options.find((option) => option.value === value ?? defaultValue)!;
+	const findSelectedOptionByValue = () =>
+		options.find((option) => option.value === value ?? defaultValue)!;
 	const selected = writable<SelectOption<T>>(findSelectedOptionByValue());
 
 	const {
@@ -68,12 +74,12 @@
 
 	{#if $open}
 		<ul
-			class="shadow-lg rounded-box dropdown-content bg-base-200 menu"
+			class="dropdown-content menu rounded-box bg-base-200 shadow-lg"
 			use:melt={$menu}
 			transition:fade={{ duration: 150 }}
 		>
 			{#if title}
-				<li class="text-center menu-title">{title}</li>
+				<li class="menu-title text-center">{title}</li>
 			{/if}
 
 			{#each options as _option}
@@ -85,7 +91,7 @@
 						})}
 					>
 						<span
-							class={cn('inline-block w-4 h-4 shrink-0', {
+							class={cn('inline-block h-4 w-4 shrink-0', {
 								invisible: !$isSelected(_option.value),
 							})}
 						>
@@ -95,10 +101,7 @@
 						<span class="flex-1">{_option.label}</span>
 
 						{#if _option.icon}
-							<Icon
-								class="w-auto h-5 ml-2 shrink-0"
-								icon={_option.icon}
-							/>
+							<Icon class="ml-2 h-5 w-auto shrink-0" icon={_option.icon} />
 						{/if}
 					</button>
 				</li>

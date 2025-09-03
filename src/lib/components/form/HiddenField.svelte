@@ -1,11 +1,16 @@
-<script
-	lang="ts"
-	generics="T extends Record<string, unknown>"
->
+<script lang="ts" generics="T extends Record<string, unknown>">
 	import type { HTMLInputAttributes } from 'svelte/elements';
-	import { formFieldProxy, stringProxy, type FormPathLeaves, type SuperForm } from 'sveltekit-superforms';
+	import {
+		formFieldProxy,
+		stringProxy,
+		type FormPathLeaves,
+		type SuperForm,
+	} from 'sveltekit-superforms';
 
-	type HiddenFieldProps<T extends Record<string, unknown>> = Omit<HTMLInputAttributes, 'type' | 'form' | 'name'> & {
+	type HiddenFieldProps<T extends Record<string, unknown>> = Omit<
+		HTMLInputAttributes,
+		'type' | 'form' | 'name'
+	> & {
 		form: SuperForm<T>;
 		name: FormPathLeaves<T>;
 		showErrors?: boolean;
@@ -24,12 +29,7 @@
 </script>
 
 <div class="sr-only">
-	<input
-		{...props}
-		type="hidden"
-		value={$value}
-		{...$constraints}
-	/>
+	<input {...props} type="hidden" value={$value} {...$constraints} />
 </div>
 {#if $errors?.length && showErrors}
 	<div class="label">

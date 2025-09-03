@@ -17,15 +17,12 @@
 	});
 </script>
 
-<header class="fixed bottom-0 z-30 flex flex-col-reverse w-full py-4 sm:relative sm:flex-col">
+<header class="fixed bottom-0 z-30 flex w-full flex-col-reverse py-4 sm:relative sm:flex-col">
 	<div class="container">
-		<div class="shadow-lg navbar bg-base-100 rounded-box sm:bg-transparent sm:shadow-none">
+		<div class="navbar rounded-box bg-base-100 shadow-lg sm:bg-transparent sm:shadow-none">
 			<div class="navbar-start">
-				<a
-					href="/"
-					class="block"
-				>
-					<Logo class="w-auto h-6 sm:h-8" />
+				<a href="/" class="block">
+					<Logo class="h-6 w-auto sm:h-8" />
 				</a>
 			</div>
 
@@ -37,7 +34,7 @@
 						href="/auth/logout?redirectTo={$page.url.pathname}"
 						class="btn btn-square btn-ghost"
 					>
-						<PhSignOut class="w-6 h-6" />
+						<PhSignOut class="h-6 w-6" />
 					</a>
 				{/if}
 
@@ -45,35 +42,35 @@
 
 				{#if typeof menuTrigger !== 'undefined'}
 					<button
-						class="btn btn-square btn-ghost !grid !place-content-center"
+						class="btn grid! btn-square place-content-center! btn-ghost"
 						title="Toggle menu"
 						onclick={(event) => event.stopPropagation()}
 						use:melt={$menuTrigger}
 					>
 						<span
-							class="block w-6 h-0.5 bg-base-content row-span-full col-span-full transition-all"
+							class="col-span-full row-span-full block h-0.5 w-6 bg-base-content transition-all"
 							class:rotate-45={isMenuOpen}
 							class:-translate-y-1.5={!isMenuOpen}
 						></span>
 						<span
-							class="block w-6 h-0.5 bg-base-content row-span-full col-span-full transition-all"
+							class="col-span-full row-span-full block h-0.5 w-6 bg-base-content transition-all"
 							class:-rotate-45={isMenuOpen}
 							class:translate-y-1.5={!isMenuOpen}
 						></span>
 					</button>
 				{:else}
 					<button
-						class="btn btn-square btn-ghost !grid !place-content-center"
+						class="btn grid! btn-square place-content-center! btn-ghost"
 						title="Toggle menu"
 						disabled
 					>
 						<span
-							class="block w-6 h-0.5 bg-base-content row-span-full col-span-full transition-all"
+							class="col-span-full row-span-full block h-0.5 w-6 bg-base-content transition-all"
 							class:rotate-45={isMenuOpen}
 							class:-translate-y-1.5={!isMenuOpen}
 						></span>
 						<span
-							class="block w-6 h-0.5 bg-base-content row-span-full col-span-full transition-all"
+							class="col-span-full row-span-full block h-0.5 w-6 bg-base-content transition-all"
 							class:-rotate-45={isMenuOpen}
 							class:translate-y-1.5={!isMenuOpen}
 						></span>

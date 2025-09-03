@@ -1,14 +1,19 @@
-<script
-	lang="ts"
-	generics="T extends Record<string, unknown>"
->
+<script lang="ts" generics="T extends Record<string, unknown>">
 	import { PUBLIC_CF_TURNSTILE_SITE_KEY } from '$env/static/public';
 
 	import { onDestroy } from 'svelte';
 	import type { HTMLInputAttributes } from 'svelte/elements';
-	import { formFieldProxy, type FormPathLeaves, type FormPathType, type SuperForm } from 'sveltekit-superforms';
+	import {
+		formFieldProxy,
+		type FormPathLeaves,
+		type FormPathType,
+		type SuperForm,
+	} from 'sveltekit-superforms';
 
-	type InputProps<T extends Record<string, unknown>> = Omit<HTMLInputAttributes, 'form' | 'name' | 'value'> & {
+	type InputProps<T extends Record<string, unknown>> = Omit<
+		HTMLInputAttributes,
+		'form' | 'name' | 'value'
+	> & {
 		form: SuperForm<T>;
 		label: string;
 	};
@@ -45,10 +50,7 @@
 </script>
 
 <div class="form-control">
-	<label
-		for={props.id}
-		class="label"
-	>
+	<label for={props.id} class="label">
 		<span class="label-text">
 			{props.label}
 		</span>

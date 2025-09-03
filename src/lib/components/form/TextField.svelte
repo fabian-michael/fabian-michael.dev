@@ -1,12 +1,17 @@
-<script
-	lang="ts"
-	generics="T extends Record<string, unknown>"
->
+<script lang="ts" generics="T extends Record<string, unknown>">
 	import type { ComponentType } from 'svelte';
 	import type { HTMLInputAttributes } from 'svelte/elements';
-	import { formFieldProxy, stringProxy, type FormPathLeaves, type SuperForm } from 'sveltekit-superforms';
+	import {
+		formFieldProxy,
+		stringProxy,
+		type FormPathLeaves,
+		type SuperForm,
+	} from 'sveltekit-superforms';
 
-	type TextFieldProps<T extends Record<string, unknown>> = Omit<HTMLInputAttributes, 'form' | 'name' | 'value'> & {
+	type TextFieldProps<T extends Record<string, unknown>> = Omit<
+		HTMLInputAttributes,
+		'form' | 'name' | 'value'
+	> & {
 		form: SuperForm<T>;
 		label: string;
 		name: FormPathLeaves<T>;
@@ -22,32 +27,21 @@
 </script>
 
 <div class="form-control">
-	<label
-		for={props.id}
-		class="label"
-	>
-		<span
-			class="label-text"
-			class:font-medium={$constraints?.required}
-		>
+	<label for={props.id} class="label">
+		<span class="label-text" class:font-medium={$constraints?.required}>
 			{props.label}
 			{$constraints?.required && '*'}
 		</span>
 	</label>
 	<div
-		class="flex items-center gap-2 input input-bordered"
+		class="input-bordered input flex items-center gap-2"
 		class:input-error={$errors?.length}
 		class:input-disabled={props.disabled}
 	>
 		{#if icon}
 			<svelte:component this={icon} />
 		{/if}
-		<input
-			{...props}
-			bind:value={$value}
-			class="grow"
-			{...$constraints}
-		/>
+		<input {...props} bind:value={$value} class="grow" {...$constraints} />
 	</div>
 	{#if $errors?.length}
 		<span class="label">

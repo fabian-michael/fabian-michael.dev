@@ -11,18 +11,14 @@
 	export let items: TimelineItem[] = [];
 </script>
 
-<ol class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+<ol class="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
 	{#each items as item, i (item.date)}
 		<li>
 			{#if i > 0}
 				<hr />
 			{/if}
 			<div class="timeline-middle">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 20 20"
-					class="w-5 h-5"
-				>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="h-5 w-5">
 					<circle
 						cx="10"
 						cy="10"
@@ -35,7 +31,7 @@
 			</div>
 			<div
 				class={cn('mb-10 space-y-4', {
-					'timeline-start md:text-end mr-4': i % 2 === 0,
+					'timeline-start mr-4 md:text-end': i % 2 === 0,
 					'timeline-end ml-4': i % 2 === 1,
 				})}
 			>

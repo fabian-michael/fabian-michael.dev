@@ -16,7 +16,8 @@
 </script>
 
 {#if showProgress}
-	<progress class="absolute inset-x-0 top-0 w-full h-0.5 progress progress-accent z-20"></progress>
+	<progress class="progress absolute inset-x-0 top-0 z-20 h-0.5 w-full progress-accent"
+	></progress>
 {/if}
 
 <Toaster>

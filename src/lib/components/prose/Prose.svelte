@@ -12,21 +12,16 @@
 	}>();
 </script>
 
-<div
-	class="prose prose-img:rounded-xl {className}"
-	class:mx-auto={centered}
->
+<div class="prose prose-img:rounded-xl {className}" class:mx-auto={centered}>
 	{@render children()}
 </div>
 
 <style lang="postcss">
+    @reference '../../../app.css';
+
 	.prose {
 		:global(.gradient-text) {
-			@apply bg-gradient-to-r
-				from-primary
-				to-secondary
-				text-transparent
-				bg-clip-text;
+			@apply bg-linear-to-r from-primary to-secondary bg-clip-text text-transparent;
 		}
 	}
 </style>

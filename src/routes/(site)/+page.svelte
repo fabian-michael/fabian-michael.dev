@@ -18,8 +18,8 @@
 			</Prose>
 		{/if}
 		{#if data?.hero?.image?.sizes?.square?.url}
-			<div class="w-full px-8 sm:px-0 sm:w-2/5 lg:w-1/4 shrink-0 avatar-wrapper">
-				<div class="w-full overflow-hidden shadow-2xl aspect-square rounded-3xl">
+			<div class="avatar-wrapper w-full shrink-0 px-8 sm:w-2/5 sm:px-0 lg:w-1/4">
+				<div class="aspect-square w-full overflow-hidden rounded-3xl shadow-2xl">
 					<Avatar
 						name="Fabian Michael"
 						src={data.hero.image.sizes.square.url}
@@ -36,8 +36,8 @@
 		<Prose class="prose-a:no-underline">
 			<h2>Recent blog postings</h2>
 			<p>
-				Explose my recent blog postings, where I unravel the latest trends, hacks, and breakthroughs in web
-				development. Dive right in and level up your coding game!
+				Explose my recent blog postings, where I unravel the latest trends, hacks, and
+				breakthroughs in web development. Dive right in and level up your coding game!
 			</p>
 		</Prose>
 
@@ -45,31 +45,28 @@
 			{#await data.blogPostings}
 				{#each Array(3) as _}
 					<div class="w-full space-y-4">
-						<div class="w-full aspect-video skeleton rounded-xl"></div>
-						<div class="w-10/12 h-4 skeleton"></div>
-						<div class="w-full h-4 skeleton"></div>
-						<div class="w-full h-4 skeleton"></div>
+						<div class="aspect-video w-full skeleton rounded-xl"></div>
+						<div class="h-4 w-10/12 skeleton"></div>
+						<div class="h-4 w-full skeleton"></div>
+						<div class="h-4 w-full skeleton"></div>
 					</div>
 				{/each}
 			{:then blogPostings}
 				{#each blogPostings?.docs ?? [] as blogPosting}
-					<article class="w-full space-y-4 blog-posting">
+					<article class="blog-posting w-full space-y-4">
 						<header class="space-y-4">
 							<a
-								class="block overflow-hidden aspect-video rounded-xl"
+								class="block aspect-video overflow-hidden rounded-xl"
 								href="/blog/{blogPosting.slug}"
 							>
 								<img
-									class="block object-cover my-0 size-full"
+									class="my-0 block size-full object-cover"
 									src={blogPosting.image.url}
 									alt={blogPosting.title}
 								/>
 							</a>
 							<div class="font-bold">
-								<a
-									class="title"
-									href="/blog/{blogPosting.slug}"
-								>
+								<a class="title" href="/blog/{blogPosting.slug}">
 									{blogPosting.title}
 								</a>
 							</div>
@@ -96,12 +93,14 @@
 </section>
 
 <style lang="postcss">
+    @reference '../../app.css';
 	.avatar-wrapper {
 		transform-style: preserve-3d;
 		--translateX: 0;
 		--rotateY: 0deg;
 		--rotateZ: 0deg;
-		transform: perspective(500px) rotateY(var(--rotateY)) rotateZ(var(--rotateZ)) translateX(var(--translateX));
+		transform: perspective(500px) rotateY(var(--rotateY)) rotateZ(var(--rotateZ))
+			translateX(var(--translateX));
 	}
 
 	@screen sm {

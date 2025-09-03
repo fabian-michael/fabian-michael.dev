@@ -8,37 +8,37 @@ export const ssr = false;
 export const csr = true;
 
 export const load: PageServerLoad = async ({ url, locals }) => {
-    const session = locals.session;
-    const redirectTo = url.searchParams.get('redirectTo') || '/';
+	const session = locals.session;
+	const redirectTo = url.searchParams.get('redirectTo') || '/';
 
-    if (session?.user) {
-        redirect(303, redirectTo);
-    }
+	if (session?.user) {
+		redirect(303, redirectTo);
+	}
 
-    const requestAccessForm = await superValidate(zod(schemaServer));
+	const requestAccessForm = await superValidate(zod(schemaServer));
 
-    return {
-        requestAccessForm,
-        url: url.origin,
-        redirectTo,
-    };
+	return {
+		requestAccessForm,
+		url: url.origin,
+		redirectTo,
+	};
 };
 
-const PAYLOAD_SLUG = ''; // TODO 
+const PAYLOAD_SLUG = ''; // TODO
 
 export const actions: Actions = {
-    default: async (event) => {
-        const { request, fetch, cookies } = event;
-        const form = await superValidate(request, zod(schemaServer));
+	default: async (event) => {
+		const { request, fetch, cookies } = event;
+		const form = await superValidate(request, zod(schemaServer));
 
-        if (!form.valid) {
-            return fail(400, { form });
-        }
+		if (!form.valid) {
+			return fail(400, { form });
+		}
 
-        console.dir(form.data);
+		console.dir(form.data);
 
-        return {
-            form,
-        };
-    },
+		return {
+			form,
+		};
+	},
 };

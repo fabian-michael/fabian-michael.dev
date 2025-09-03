@@ -1,7 +1,13 @@
 <script lang="ts">
 	import { Icon } from '$components/icon';
 	import { Listbox, type IListboxOption } from '$components/listbox';
-	import { DARK_THEME, LIGHT_THEME, SYSTEM_THEME, themeStore, type Theme } from '$lib/client/stores/theme-store';
+	import {
+		DARK_THEME,
+		LIGHT_THEME,
+		SYSTEM_THEME,
+		themeStore,
+		type Theme,
+	} from '$lib/client/stores/theme-store';
 	import { melt } from '@melt-ui/svelte';
 	import PhGearFine from '~icons/ph/gear-fine';
 	import TablerMoonStars from '~icons/tabler/moon-stars';
@@ -48,14 +54,11 @@
 	triggerRef={(trigger) => (listboxTrigger = trigger)}
 >
 	{#if loading}
-		<span class="btn btn-ghost btn-square">
-			<span class="text-white loading loading-spinner"></span>
+		<span class="btn btn-square btn-ghost">
+			<span class="loading loading-spinner text-white"></span>
 		</span>
 	{:else}
-		<button
-			class="text-lg btn btn-ghost btn-square"
-			use:melt={$listboxTrigger}
-		>
+		<button class="btn btn-square text-lg btn-ghost" use:melt={$listboxTrigger}>
 			{#if icon}
 				<Icon {icon} />
 			{:else}

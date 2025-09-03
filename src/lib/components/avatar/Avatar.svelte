@@ -25,7 +25,7 @@
 		name
 			.split(' ')
 			.map((word) => word[0].toUpperCase())
-			.join('')
+			.join(''),
 	);
 
 	const {
@@ -36,18 +36,9 @@
 	});
 </script>
 
-<div
-	class={avatar({ size })}
-	class:placeholder={$loadingStatus !== 'loaded'}
->
-	<div class="w-full h-full">
-		<img
-			use:melt={$image}
-			alt={name}
-		/>
-		<span
-			class="block"
-			use:melt={$fallback}>{initials}</span
-		>
+<div class={avatar({ size })} class:placeholder={$loadingStatus !== 'loaded'}>
+	<div class="h-full w-full">
+		<img use:melt={$image} alt={name} />
+		<span class="block" use:melt={$fallback}>{initials}</span>
 	</div>
 </div>

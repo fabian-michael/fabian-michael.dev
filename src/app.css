@@ -1,6 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@plugin "daisyui" {
+    themes: winter --default, night --prefersdark;
+}
+
+@theme {
+	--aspect-wide: 21 / 9;
+
+	--breakpoint-xs: 480px;
+
+	--font-pacifico: 'Pacifico', cursive;
+	--font-overpass: 'Overpass', cursive;
+	--font-poppins: 'Poppins', sans-serif;
+	--font-sans: 'Poppins', sans-serif;
+	--font-symbols: 'Material Symbols Rounded', sans-serif;
+}
+
+@utility container {
+	margin-inline: auto;
+	padding-inline: 2rem;
+}
 
 @layer base {
 	html {
@@ -10,9 +29,10 @@
 	body {
 		min-height: 100dvh;
 
-		--bg-gradient-left: oklch(var(--p) / 0.15);
-		--bg-gradient-right: oklch(var(--s) / 0.15);
-		background-image: radial-gradient(at -20vw 20dvh, var(--bg-gradient-left) 0px, rgba(0, 0, 0, 0) 60%),
+        --bg-gradient-left: color-mix(in oklch, var(--color-primary) 15%, transparent);
+        --bg-gradient-right: color-mix(in oklch, var(--color-primary) 15%, transparent);
+		background-image:
+			radial-gradient(at -20vw 20dvh, var(--bg-gradient-left) 0px, rgba(0, 0, 0, 0) 60%),
 			radial-gradient(at 120vw 120dvh, var(--bg-gradient-right) 0px, rgba(0, 0, 0, 0) 60%);
 	}
 }

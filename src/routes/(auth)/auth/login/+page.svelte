@@ -11,9 +11,9 @@
 
 <section class="space-y-6">
 	<header>
-		<div class="text-2xl text-center">Login (Work in progress)</div>
+		<div class="text-center text-2xl">Login (Work in progress)</div>
 	</header>
-	<div class="shadow-lg card bg-base-100 card-compact sm:card-normal">
+	<div class="card-compact sm:card-normal card bg-base-100 shadow-lg">
 		<Form
 			{schema}
 			data={data.loginForm}
@@ -42,25 +42,21 @@
 				autocomplete="username"
 			/>
 
-			<div class="flex-col items-stretch mt-6 card-actions">
+			<div class="mt-6 card-actions flex-col items-stretch">
 				<div class="flex items-center justify-between">
 					<div class="form-control">
-						<label class="cursor-pointer label">
+						<label class="label cursor-pointer">
 							<input
 								name="remember_me"
 								type="checkbox"
 								class="toggle toggle-sm"
 								checked
 							/>
-							<span class="ml-2 text-xs label-text">Remember me</span>
+							<span class="label-text ml-2 text-xs">Remember me</span>
 						</label>
 					</div>
 				</div>
-				<button
-					type="submit"
-					class="w-full btn btn-primary"
-					disabled={submitting}
-				>
+				<button type="submit" class="btn w-full btn-primary" disabled={submitting}>
 					{#if submitting}
 						<span class="loading loading-ball"></span>
 					{:else}
@@ -68,17 +64,9 @@
 					{/if}
 				</button>
 
-				<div
-					role="separator"
-					class="text-sm divider"
-				>
-					No access yet?
-				</div>
+				<div role="separator" class="divider text-sm">No access yet?</div>
 
-				<a
-					href="/auth/request-access"
-					class="w-full btn btn-primary btn-outline"
-				>
+				<a href="/auth/request-access" class="btn w-full btn-outline btn-primary">
 					Request access now
 				</a>
 			</div>

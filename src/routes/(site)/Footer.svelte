@@ -8,7 +8,9 @@
 	import SimpleIconsXing from '~icons/simple-icons/xing';
 </script>
 
-<footer class="rounded footer footer-center gap-y-6 pb-24 sm:pb-6 bg-base-200 text-base-content sticky top-[100dvh]">
+<footer
+	class="footer-center sticky top-[100dvh] footer gap-y-6 rounded bg-base-200 pb-24 text-base-content sm:pb-6"
+>
 	<div class="w-full py-4">
 		<ul class="flex items-center justify-center gap-8 text-2xl">
 			<li>
@@ -59,19 +61,16 @@
 			class="link link-hover"
 			href="mailto:bucolic-ductile0d@icloud.com?subject=Hi%20Fabian%20%F0%9F%91%8B">Contact</a
 		>
-		<a
-			class="link link-hover"
-			href="/legal-notice">Legal notice</a
-		>
+		<a class="link link-hover" href="/legal-notice">Legal notice</a>
 	</div>
 
-	<div class="flex items-center justify-center w-full gap-8">
+	<div class="flex w-full items-center justify-center gap-8">
 		<span class="text-center">
 			powered by
 			<a
 				href="https://kit.svelte.dev"
 				target="_blank"
-				class="inline-block font-normal font-overpass"
+				class="inline-block font-overpass font-normal"
 			>
 				<SvelteLogo class="inline-block h-6 align-middle" />
 			</a>

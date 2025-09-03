@@ -10,19 +10,15 @@
 	}>();
 </script>
 
-<nav
-	aria-label="Main navigation"
-	use:clickOutside={onClickOutside}
->
-	<ul class="shadow-lg menu sm:menu-horizontal bg-base-100 sm:bg-transparent rounded-box sm:shadow-none">
+<nav aria-label="Main navigation" use:clickOutside={onClickOutside}>
+	<ul
+		class="menu rounded-box bg-base-100 shadow-lg sm:menu-horizontal sm:bg-transparent sm:shadow-none"
+	>
 		<li>
 			<NavigationItem href="/">Home</NavigationItem>
 		</li>
 		<li>
-			<NavigationItem
-				href="/resume"
-				preload={false}
-			>
+			<NavigationItem href="/resume" preload={false}>
 				<svelte:component this={userStore.user ? PhLockOpen : PhLock} /> Resume (work in progress)
 			</NavigationItem>
 		</li>

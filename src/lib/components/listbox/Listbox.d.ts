@@ -3,5 +3,5 @@ import type { SvelteComponent } from 'svelte';
 import type { SvelteHTMLElements } from 'svelte/elements';
 
 export interface IListboxOption<T extends string | number = unknown> extends SelectOption<T> {
-    icon?: ComponentType<SvelteComponent<SvelteHTMLElements['svg']>>;
+	icon?: ComponentType<SvelteComponent<SvelteHTMLElements['svg']>>;
 }

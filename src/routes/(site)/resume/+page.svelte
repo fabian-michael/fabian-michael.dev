@@ -15,15 +15,13 @@
 
 <div class="container">
 	<div class="flex flex-col gap-48 xl:flex-row">
-		<div class="flex-1 min-w-[300px]">
+		<div class="min-w-[300px] flex-1">
 			<div class="flex flex-col gap-16 xl:sticky xl:top-16">
 				{#if data.contact.avatar}
-					<div class="w-full max-w-xs mx-auto overflow-hidden shadow-2xl aspect-square rounded-3xl">
-						<Avatar
-							src={data.contact.avatar.url}
-							name="Fabian Michael"
-							size="fill"
-						/>
+					<div
+						class="mx-auto aspect-square w-full max-w-xs overflow-hidden rounded-3xl shadow-2xl"
+					>
+						<Avatar src={data.contact.avatar.url} name="Fabian Michael" size="fill" />
 					</div>
 				{/if}
 
@@ -35,12 +33,12 @@
 						</h2>
 
 						<p class="pl-[1.45em] -indent-[1.45em]">
-							<PhMapPin class="inline-block mr-1" /><span class="align-middle">
+							<PhMapPin class="mr-1 inline-block" /><span class="align-middle">
 								{data.contact.address}
 							</span>
 						</p>
 						<p class="pl-[1.45em] -indent-[1.45em]">
-							<PhPhone class="inline-block mr-1" /><a
+							<PhPhone class="mr-1 inline-block" /><a
 								class="align-middle"
 								href="tel:{data.contact.phone}"
 								title=""
@@ -49,7 +47,7 @@
 							</a>
 						</p>
 						<p class="pl-[1.45em] -indent-[1.45em]">
-							<PhEnvelopeSimple class="inline-block mr-1" /><a
+							<PhEnvelopeSimple class="mr-1 inline-block" /><a
 								class="align-middle"
 								href="mailto:{data.contact.email}"
 								title=""
@@ -66,7 +64,7 @@
 			</div>
 		</div>
 
-		<div class="flex flex-col flex-auto gap-16">
+		<div class="flex flex-auto flex-col gap-16">
 			<section>
 				<div class="prose">
 					<h1 class="text-4xl md:text-6xl">FABIAN MICHAEL</h1>

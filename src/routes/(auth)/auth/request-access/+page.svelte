@@ -147,16 +147,12 @@
 
 <section class="space-y-6">
 	<header>
-		<h1 class="text-2xl text-center">Request access (work in progresss)</h1>
+		<h1 class="text-center text-2xl">Request access (work in progresss)</h1>
 	</header>
-	<div class="shadow-lg card bg-base-100 card-compact sm:card-normal">
-		<form
-			use:enhance
-			method="post"
-			class="card-body"
-		>
+	<div class="card-compact sm:card-normal card bg-base-100 shadow-lg">
+		<form use:enhance method="post" class="card-body">
 			<header class="mb-6 space-y-4">
-				<ul class="w-full steps">
+				<ul class="steps w-full">
 					{#each steps as _, i}
 						{@const Icon = stepIcons[i]}
 						<li
@@ -243,9 +239,10 @@
 			{:else if step === 3}
 				<p class="font-bold">What are passkeys?</p>
 				<p>
-					Passkeys offer a more secure and convenient authentication method, verifying your identity through
-					biometric data (like fingerprints or face scans), device passwords, or PINs, making them a
-					streamlined replacement for traditional passwords and two-factor authentication methods.
+					Passkeys offer a more secure and convenient authentication method, verifying
+					your identity through biometric data (like fingerprints or face scans), device
+					passwords, or PINs, making them a streamlined replacement for traditional
+					passwords and two-factor authentication methods.
 				</p>
 
 				{#if passkeyState !== 'added'}
@@ -278,35 +275,41 @@
 					<table class="table w-full max-w-full table-xs">
 						<thead>
 							<tr>
-								<th class="w-1/3 min-w-0 overflow-hidden text-ellipsis max-w-0">Name</th>
-								<th class="w-1/3 min-w-0 overflow-hidden text-ellipsis max-w-0">Public Key</th>
-								<th class="w-1/3 min-w-0 overflow-hidden text-ellipsis max-w-0">ID</th>
+								<th class="w-1/3 max-w-0 min-w-0 overflow-hidden text-ellipsis"
+									>Name</th
+								>
+								<th class="w-1/3 max-w-0 min-w-0 overflow-hidden text-ellipsis"
+									>Public Key</th
+								>
+								<th class="w-1/3 max-w-0 min-w-0 overflow-hidden text-ellipsis"
+									>ID</th
+								>
 								<th class="w-8 min-w-0 px-0"></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="whitespace-nowrap text-nowrap">
+							<tr class="text-nowrap whitespace-nowrap">
 								<td
-									class="min-w-0 overflow-hidden text-ellipsis max-w-0"
+									class="max-w-0 min-w-0 overflow-hidden text-ellipsis"
 									title={$formData.passkey_name}
 								>
 									{$formData.passkey_name}
 								</td>
 								<td
-									class="min-w-0 overflow-hidden text-ellipsis max-w-0"
+									class="max-w-0 min-w-0 overflow-hidden text-ellipsis"
 									title={$formData.passkey.publicKey}
 								>
 									{$formData.passkey.publicKey}
 								</td>
 								<td
-									class="min-w-0 overflow-hidden text-ellipsis max-w-0"
+									class="max-w-0 min-w-0 overflow-hidden text-ellipsis"
 									title={$formData.passkey.id}
 								>
 									{$formData.passkey.id}
 								</td>
 								<td class="min-w-0 px-0">
 									<button
-										class="btn btn-ghost btn-circle btn-sm"
+										class="btn btn-circle btn-ghost btn-sm"
 										onclick={() => {
 											passkey = null;
 											passkeyState = 'none';
@@ -344,17 +347,14 @@
 					<p class="text-error">Please add a passkey.</p>
 				{/if}
 
-				<Captcha
-					{form}
-					label="Prove you're not a robot"
-				/>
+				<Captcha {form} label="Prove you're not a robot" />
 			{/if}
 
-			<div class="grid grid-cols-1 gap-2 mt-6 sm:grid-cols-2 card-actions">
+			<div class="mt-6 card-actions grid grid-cols-1 gap-2 sm:grid-cols-2">
 				{#if step > 1}
 					<button
 						type="button"
-						class="btn btn-primary btn-outline"
+						class="btn btn-outline btn-primary"
 						onclick={() => step--}
 						disabled={$submitting}
 					>
@@ -378,17 +378,11 @@
 				</button>
 
 				{#if step === 1}
-					<div
-						role="separator"
-						class="col-span-2 text-sm divider"
-					>
+					<div role="separator" class="col-span-2 divider text-sm">
 						Already have an account?
 					</div>
 
-					<a
-						href="/auth/login"
-						class="col-span-2 btn btn-primary btn-outline"
-					>
+					<a href="/auth/login" class="btn col-span-2 btn-outline btn-primary">
 						Go back to login
 					</a>
 				{/if}
