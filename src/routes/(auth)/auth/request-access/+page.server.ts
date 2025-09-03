@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms';
-import { zod } from 'sveltekit-superforms/adapters';
+import { zod4 } from 'sveltekit-superforms/adapters';
 import type { Actions, PageServerLoad } from './$types';
 import { schemaServer } from './schema-server';
 
@@ -15,7 +15,7 @@ export const load: PageServerLoad = async ({ url, locals }) => {
 		redirect(303, redirectTo);
 	}
 
-	const requestAccessForm = await superValidate(zod(schemaServer));
+	const requestAccessForm = await superValidate(zod4(schemaServer));
 
 	return {
 		requestAccessForm,
@@ -29,7 +29,7 @@ const PAYLOAD_SLUG = ''; // TODO
 export const actions: Actions = {
 	default: async (event) => {
 		const { request, fetch, cookies } = event;
-		const form = await superValidate(request, zod(schemaServer));
+		const form = await superValidate(request, zod4(schemaServer));
 
 		if (!form.valid) {
 			return fail(400, { form });

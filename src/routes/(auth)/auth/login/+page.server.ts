@@ -4,7 +4,7 @@ import { safePromise } from '$lib/utils/safePromise';
 import { error, fail, redirect } from '@sveltejs/kit';
 import { setFlash } from 'sveltekit-flash-message/server';
 import { superValidate } from 'sveltekit-superforms';
-import { zod } from 'sveltekit-superforms/adapters';
+import { zod4 } from 'sveltekit-superforms/adapters';
 import type { Actions, PageServerLoad } from './$types';
 import { schema } from './schema';
 
@@ -19,7 +19,7 @@ export const load: PageServerLoad = async ({ url, locals }) => {
 		redirect(303, redirectTo);
 	}
 
-	const loginForm = await superValidate(zod(schema));
+	const loginForm = await superValidate(zod4(schema));
 
 	return {
 		loginForm,
@@ -33,7 +33,7 @@ const PAYLOAD_SLUG = '/api/frontend-users/login';
 export const actions: Actions = {
 	default: async (event) => {
 		const { request, fetch, cookies } = event;
-		const form = await superValidate(request, zod(schema));
+		const form = await superValidate(request, zod4(schema));
 
 		if (!form.valid) {
 			return fail(400, { form });

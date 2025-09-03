@@ -34,7 +34,7 @@
 		</span>
 	</label>
 	<div
-		class="input-bordered input flex items-center gap-2"
+		class="input-bordered input flex items-center gap-2 w-full"
 		class:input-error={$errors?.length}
 		class:input-disabled={props.disabled}
 	>

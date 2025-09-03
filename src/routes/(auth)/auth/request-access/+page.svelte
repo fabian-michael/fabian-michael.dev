@@ -6,7 +6,7 @@
 	import { client } from '@passwordless-id/webauthn';
 	import type { RegistrationJSON } from '@passwordless-id/webauthn/dist/esm/types.js';
 	import { getFlash } from 'sveltekit-flash-message';
-	import { zod } from 'sveltekit-superforms/adapters';
+	import { zod4 } from 'sveltekit-superforms/adapters';
 	import { superForm } from 'sveltekit-superforms/client';
 	import FluentPersonPasskey20Regular from '~icons/fluent/person-passkey-20-regular';
 	import MaterialSymbolsFingerprint from '~icons/material-symbols/fingerprint';
@@ -73,7 +73,7 @@
 
 	// Effects
 	$effect(() => {
-		options.validators = zod(schema);
+		options.validators = zod4(schema);
 	});
 
 	// Hooks

@@ -1,36 +1,48 @@
 import { z } from 'zod';
 
 export const schemaClientStep1 = z.object({
-	email: z
-		.string({ required_error: 'Please enter your E-Mail address' })
-		.email({ message: 'Please enter a valid E-Mail address' })
+	email: z.email({
+                error: 'Please enter a valid E-Mail address'
+            })
 		.trim(),
-	full_name: z.string({ required_error: 'Please enter your full name' }).trim(),
+	full_name: z.string({
+        error: (issue) => issue.input === undefined ? 'Please enter your full name' : undefined
+    }).trim(),
 	phone: z
 		.string()
 		.trim()
 		.optional()
 		.or(
 			z.string().regex(/^(\+\d{1,4}|\(\+\d{1,4}\)|0+\d{1,5}|\(0+\d{1,5}\))[\d\s\-\/]*\d+$/, {
-				message: 'Please enter a valid phone number',
-			}),
+                error: 'Please enter a valid phone number'
+            }),
 		),
 });
 
 export const schemaClientStep2 = schemaClientStep1.extend({
-	company: z.string({ required_error: 'Please enter your company name' }).trim(),
-	address: z.string({ required_error: 'Please enter the company address' }).trim(),
-	website: z
-		.string({ required_error: 'Please enter the company website' })
-		.trim()
-		.url({ message: 'Please enter a valid URL' }),
-	message: z.string({ required_error: 'Please enter a message' }).trim(),
+	company: z.string({
+        error: (issue) => issue.input === undefined ? 'Please enter your company name' : undefined
+    }).trim(),
+	address: z.string({
+        error: (issue) => issue.input === undefined ? 'Please enter the company address' : undefined
+    }).trim(),
+	website: z.url({
+                error: 'Please enter a valid URL'
+            })
+    		.trim(),
+	message: z.string({
+        error: (issue) => issue.input === undefined ? 'Please enter a message' : undefined
+    }).trim(),
 });
 
 export const schemaClientStep3 = schemaClientStep2.extend({
 	passkey_name: z
-		.string({ required_error: 'Please enter a name for your passkey' })
-		.regex(/^[a-zA-Z0-9\-_]+$/, { message: 'Please enter a valid passkey name' })
+		.string({
+            error: (issue) => issue.input === undefined ? 'Please enter a name for your passkey' : undefined
+        })
+		.regex(/^[a-zA-Z0-9\-_]+$/, {
+            error: 'Please enter a valid passkey name'
+        })
 		.trim(),
 
 	passkey: z.object({
@@ -39,5 +51,7 @@ export const schemaClientStep3 = schemaClientStep2.extend({
 		publicKey: z.string(),
 	}),
 
-	'cf-turnstile-response': z.string({ required_error: 'Please complete the captcha' }),
+	'cf-turnstile-response': z.string({
+        error: (issue) => issue.input === undefined ? 'Please complete the captcha' : undefined
+    }),
 });

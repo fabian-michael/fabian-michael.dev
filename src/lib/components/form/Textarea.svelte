@@ -28,7 +28,7 @@
 	<textarea
 		{...props}
 		bind:value={$value}
-		class="textarea-bordered textarea h-24"
+		class="textarea-bordered textarea h-24 w-full"
 		class:textarea-error={$errors?.length}
 		{...$constraints}
 	/>

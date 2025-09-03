@@ -4,92 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6459bd55-e8a8-4cde-a6ea-3e07c2163a0b" name="Changes" comment="implement scroll progress action">
+    <list default="true" id="6459bd55-e8a8-4cde-a6ea-3e07c2163a0b" name="Changes" comment="upgrade project">
       <change afterPath="$PROJECT_DIR$/../cms/src/payload-types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eslint.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project.inlang/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cms/src/globals/Home/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cms/src/globals/Home/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierignore" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcss.config.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks.server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/session.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/session.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/client/actions/accordion.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/client/actions/accordion.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/client/actions/clickOutside.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/client/actions/clickOutside.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/client/stores/theme-store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/client/stores/theme-store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/client/stores/user-store.svelte.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/client/stores/user-store.svelte.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/avatar/Avatar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/avatar/Avatar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/collapsible/Collapsible.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/collapsible/Collapsible.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/form/Captcha.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/form/Captcha.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/components/form/Form.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/form/Form.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/form/HiddenField.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/form/HiddenField.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/components/form/TextField.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/form/TextField.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/components/form/Textarea.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/form/Textarea.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/form/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/form/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/label/Label.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/label/Label.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/listbox/Listbox.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/listbox/Listbox.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/listbox/Listbox.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/listbox/Listbox.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/listbox/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/listbox/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/logo/Logo.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/logo/Logo.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/logo/Logo_.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/logo/Logo_.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/prose/Prose.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/prose/Prose.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/select/Select.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/select/Select.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/select/Select.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/select/Select.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/select/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/select/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/theme-select/ThemeSelect.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/theme-select/ThemeSelect.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/timeline/Timeline.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/timeline/Timeline.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/toaster/Toaster.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/toaster/Toaster.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/components/toaster/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/components/toaster/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/server/kv.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/server/kv.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/server/session.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/server/session.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/utils/fetch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/fetch.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/utils/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/utils/payload.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/payload.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/utils/safePromise.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/safePromise.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/utils/string.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/string.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/utils/url.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/utils/url.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(auth)/auth/+layout.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(auth)/auth/+layout.server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(auth)/auth/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(auth)/auth/+layout.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(auth)/auth/callback/+server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(auth)/auth/callback/+server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/(auth)/auth/login/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(auth)/auth/login/+page.server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(auth)/auth/login/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(auth)/auth/login/+page.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/(auth)/auth/login/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(auth)/auth/login/schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(auth)/auth/logout/+server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(auth)/auth/logout/+server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/(auth)/auth/request-access/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(auth)/auth/request-access/+page.server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/(auth)/auth/request-access/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(auth)/auth/request-access/+page.svelte" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/(auth)/auth/request-access/schema-client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(auth)/auth/request-access/schema-client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(auth)/auth/request-access/schema-server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(auth)/auth/request-access/schema-server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(site)/+layout.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(site)/+layout.server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(site)/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(site)/+layout.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(site)/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(site)/+page.server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(site)/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(site)/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(site)/Footer.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(site)/Footer.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(site)/blog/[posting]/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(site)/blog/[posting]/+page.server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(site)/blog/[posting]/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(site)/blog/[posting]/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(site)/legal-notice/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(site)/legal-notice/+page.server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(site)/resume/+page.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(site)/resume/+page.server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(site)/resume/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(site)/resume/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(site)/resume/SideBar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(site)/resume/SideBar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/+layout.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/+layout.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/+layout.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Navbar.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Navbar.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Navigation.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Navigation.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/api/user/+server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/api/user/+server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/api/webauthn/challenge/+server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/api/webauthn/challenge/+server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/fm-logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/fm-logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svelte.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/svelte.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +120,7 @@
       <workItem from="1732180392238" duration="10391000" />
       <workItem from="1756031648230" duration="116000" />
       <workItem from="1756031768186" duration="495000" />
-      <workItem from="1756066158821" duration="5861000" />
+      <workItem from="1756066158821" duration="7478000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit of relaunch">
       <option name="closed" value="true" />
@@ -338,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731531336423</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="upgrade project">
+      <option name="closed" value="true" />
+      <created>1756929127505</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1756929127505</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,6 +321,7 @@
     <MESSAGE value="optimize theme store" />
     <MESSAGE value="update noise &amp; foreground" />
     <MESSAGE value="implement scroll progress action" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement scroll progress action" />
+    <MESSAGE value="upgrade project" />
+    <option name="LAST_COMMIT_MESSAGE" value="upgrade project" />
   </component>
 </project>

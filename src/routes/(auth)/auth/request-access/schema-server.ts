@@ -40,8 +40,8 @@ export const schemaServer = schemaClientStep3.extend({
 			return result.success;
 		},
 		{
-			message: 'Captcha verification failed',
-		},
+            error: 'Captcha verification failed'
+        },
 	),
 });
 

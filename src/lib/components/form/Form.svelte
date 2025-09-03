@@ -1,7 +1,7 @@
 <script lang="ts" generics="S extends ZodObject<ZodRawShape>">
 	import type { ZodObject, ZodRawShape } from 'zod';
 
-	import { zod } from 'sveltekit-superforms/adapters';
+	import { zod4 } from 'sveltekit-superforms/adapters';
 
 	import type { HTMLFormAttributes } from 'svelte/elements';
 	import type { Infer, SuperFormEvents, SuperValidated } from 'sveltekit-superforms';
@@ -36,7 +36,7 @@
 	const form = superForm(data, {
 		dataType,
 		SPA: spa,
-		validators: zod(schema),
+		validators: zod4(schema),
 		onUpdate: typeof action !== 'string' ? action : undefined,
 	});
 
@@ -44,7 +44,7 @@
 
 	// update the validators when the schema changes (multi-steps forms)
 	$effect(() => {
-		options.validators = zod(schema);
+		options.validators = zod4(schema);
 	});
 </script>
 
